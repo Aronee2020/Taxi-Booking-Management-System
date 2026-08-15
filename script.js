@@ -1649,3 +1649,26 @@ function escapeHTML(value) {
         .replace(/'/g, "&#039;");
 
 }
+// =========================================
+// TOTAL PAX CALCULATION
+// =========================================
+
+function calculateTotalPax() {
+    const adults =
+        parseInt(document.getElementById("adults").value) || 0;
+
+    const children =
+        parseInt(document.getElementById("children").value) || 0;
+
+    document.getElementById("totalPax").value =
+        adults + children;
+}
+
+
+// Calculate automatically when Adults or Children changes
+document.getElementById("adults").addEventListener("input", calculateTotalPax);
+document.getElementById("children").addEventListener("input", calculateTotalPax);
+
+
+// Calculate once when the page loads
+calculateTotalPax();
