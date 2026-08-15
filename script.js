@@ -1179,83 +1179,97 @@ function searchBookings() {
 
 function updateDashboard() {
 
-    const total =
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+
+    const todayBookings = bookings.filter(function (booking) {
+
+        if (!booking.pickupDate) {
+            return false;
+        }
+
+        const pickupDate =
+            new Date(booking.pickupDate + "T00:00:00");
+
+        pickupDate.setHours(0, 0, 0, 0);
+
+        return pickupDate.getTime() === today.getTime();
+
+    }).length;
+
+
+    const tomorrowBookings = bookings.filter(function (booking) {
+
+        if (!booking.pickupDate) {
+            return false;
+        }
+
+        const pickupDate =
+            new Date(booking.pickupDate + "T00:00:00");
+
+        pickupDate.setHours(0, 0, 0, 0);
+
+        return pickupDate.getTime() === tomorrow.getTime();
+
+    }).length;
+
+
+    const totalBookings =
         bookings.length;
 
 
-    const today =
-        new Date();
-
-    today.setHours(0, 0, 0, 0);
-
-
-    const upcoming =
+    const postponedBookings =
         bookings.filter(function (booking) {
 
-            if (!booking.pickupDate) {
-                return false;
-            }
-
-            const date =
-                new Date(
-                    booking.pickupDate
-                );
-
-            date.setHours(0, 0, 0, 0);
-
-            return (
-                date >= today &&
-                booking.bookingStatus !== "Cancelled"
-            );
+            return booking.bookingStatus === "Postponed";
 
         }).length;
 
 
-    const completed =
+    const confirmedBookings =
         bookings.filter(function (booking) {
 
-            return booking.bookingStatus ===
-                "Completed";
+            return booking.bookingStatus === "Confirmed";
 
         }).length;
 
 
-    const revenue =
-        bookings.reduce(function (sum, booking) {
+    const cancelledBookings =
+        bookings.filter(function (booking) {
 
-            return sum +
-                Number(
-                    booking.totalAmount || 0
-                );
+            return booking.bookingStatus === "Cancelled";
 
-        }, 0);
+        }).length;
 
 
-    document.getElementById(
-        "totalBookings"
-    ).textContent =
-        total;
+    document.getElementById("todayBookings").textContent =
+        todayBookings;
 
 
-    document.getElementById(
-        "upcomingBookings"
-    ).textContent =
-        upcoming;
+    document.getElementById("tomorrowBookings").textContent =
+        tomorrowBookings;
 
 
-    document.getElementById(
-        "completedBookings"
-    ).textContent =
-        completed;
+    document.getElementById("totalBookings").textContent =
+        totalBookings;
 
 
-    document.getElementById(
-        "totalRevenue"
-    ).textContent =
-        "₹" + formatNumber(revenue);
+    document.getElementById("postponedBookings").textContent =
+        postponedBookings;
+
+
+    document.getElementById("confirmedBookings").textContent =
+        confirmedBookings;
+
+
+    document.getElementById("cancelledBookings").textContent =
+        cancelledBookings;
 
 }
-
 
 /* =========================================================
    EXPORT CSV / EXCEL
