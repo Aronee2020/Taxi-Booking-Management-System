@@ -599,3 +599,43 @@ footer {
     }
 
 }
+/* =========================================
+   DASHBOARD - 6 CARDS HORIZONTAL
+========================================= */
+
+.summary-grid {
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 95px;
+
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+
+    padding: 15px !important;
+}
+
+/* Keep icon and text side-by-side */
+.summary-card .summary-icon {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+/* Prevent labels from forcing cards bigger */
+.summary-card p {
+    white-space: nowrap;
+    font-size: 11px;
+}
+
+.summary-card h3 {
+    margin: 0;
+    font-size: 20px;
+}
