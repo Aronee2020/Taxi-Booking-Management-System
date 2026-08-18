@@ -639,3 +639,85 @@ footer {
     margin: 0;
     font-size: 20px;
 }
+/* =====================================================
+   GUEST DETAILS
+===================================================== */
+
+.guest-details-box {
+    width: 100%;
+}
+
+#guestList {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.guest-row {
+    display: grid;
+    grid-template-columns: 1fr 150px 45px;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.guest-row input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.guest-row input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.remove-guest-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    background: #dc3545;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.remove-guest-btn:hover {
+    background: #c82333;
+}
+
+.add-guest-btn {
+    margin-top: 5px;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #198754;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.add-guest-btn:hover {
+    background: #157347;
+}
+
+#totalMembers,
+#adultCount,
+#childCount {
+    background: #f3f3f3;
+    font-weight: 600;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .guest-row {
+        grid-template-columns: 1fr 100px 40px;
+    }
+
+}
