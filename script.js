@@ -276,7 +276,160 @@ function calculateAmounts() {
 
 }
 
+/* =========================================================
+   GUEST DETAILS
+========================================================= */
 
+function addGuest() {
+
+    const guestList =
+        document.getElementById("guestList");
+
+    const guestRow =
+        document.createElement("div");
+
+    guestRow.className = "guest-row";
+
+    guestRow.innerHTML = `
+        <input
+            type="text"
+            class="guest-name"
+            placeholder="Guest Name">
+
+        <input
+            type="number"
+            class="guest-age"
+            placeholder="Age"
+            min="0"
+            max="120">
+
+        <button
+            type="button"
+            class="remove-guest-btn"
+            onclick="removeGuest(this)">
+            ✕
+        </button>
+    `;
+
+    guestList.appendChild(guestRow);
+
+    addGuestInputListeners();
+
+    updateGuestCounts();
+}
+
+
+/* =========================================================
+   REMOVE GUEST
+========================================================= */
+
+function removeGuest(button) {
+
+    const guestList =
+        document.getElementById("guestList");
+
+    const rows =
+        guestList.querySelectorAll(".guest-row");
+
+    if (rows.length === 1) {
+
+        rows[0].querySelector(".guest-name").value = "";
+        rows[0].querySelector(".guest-age").value = "";
+
+    } else {
+
+        button.parentElement.remove();
+
+    }
+
+    updateGuestCounts();
+}
+
+
+/* =========================================================
+   UPDATE GUEST COUNTS
+========================================================= */
+
+function updateGuestCounts() {
+
+    const rows =
+        document.querySelectorAll(".guest-row");
+
+    let totalMembers = 0;
+    let adults = 0;
+    let children = 0;
+
+    rows.forEach(function (row) {
+
+        const name =
+            row.querySelector(".guest-name")
+                .value
+                .trim();
+
+        const ageValue =
+            row.querySelector(".guest-age")
+                .value;
+
+        if (
+            name !== "" &&
+            ageValue !== ""
+        ) {
+
+            const age =
+                Number(ageValue);
+
+            totalMembers++;
+
+            if (age >= 18) {
+
+                adults++;
+
+            } else {
+
+                children++;
+
+            }
+
+        }
+
+    });
+
+
+    document.getElementById("totalMembers").value =
+        totalMembers;
+
+    document.getElementById("adultCount").value =
+        adults;
+
+    document.getElementById("childCount").value =
+        children;
+
+}
+
+
+/* =========================================================
+   GUEST INPUT LISTENERS
+========================================================= */
+
+function addGuestInputListeners() {
+
+    document
+        .querySelectorAll(".guest-name, .guest-age")
+        .forEach(function (input) {
+
+            input.removeEventListener(
+                "input",
+                updateGuestCounts
+            );
+
+            input.addEventListener(
+                "input",
+                updateGuestCounts
+            );
+
+        });
+
+}
 /* =========================================================
    GET FORM DATA
 ========================================================= */
@@ -1649,26 +1802,3 @@ function escapeHTML(value) {
         .replace(/'/g, "&#039;");
 
 }
-// =========================================
-// TOTAL PAX CALCULATION
-// =========================================
-
-function calculateTotalPax() {
-    const adults =
-        parseInt(document.getElementById("adults").value) || 0;
-
-    const children =
-        parseInt(document.getElementById("children").value) || 0;
-
-    document.getElementById("totalPax").value =
-        adults + children;
-}
-
-
-// Calculate automatically when Adults or Children changes
-document.getElementById("adults").addEventListener("input", calculateTotalPax);
-document.getElementById("children").addEventListener("input", calculateTotalPax);
-
-
-// Calculate once when the page loads
-calculateTotalPax();
