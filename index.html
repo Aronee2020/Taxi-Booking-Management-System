@@ -212,7 +212,50 @@
                         type="time"
                         id="pickupTime">
                 </div>
+<div class="form-group">
+    <label for="dropDate">Drop Date</label>
+    <input type="date" id="dropDate">
+</div>
 
+<div class="form-group">
+    <label for="dropTime">Drop Time</label>
+    <input type="time" id="dropTime">
+</div>
+
+<div class="form-group">
+    <label for="pickupLocation">Pickup Location <span class="required">*</span></label>
+    <input type="text" id="pickupLocation" placeholder="Enter pickup location">
+</div>
+
+<div class="form-group">
+    <label for="dropLocation">Drop Location <span class="required">*</span></label>
+    <input type="text" id="dropLocation" placeholder="Enter drop location">
+</div>
+                <div class="form-group">
+    <label for="tripType">Trip Type</label>
+    <select id="tripType">
+        <option value="One Way">One Way</option>
+        <option value="Round Trip">Round Trip</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="vehicle">Vehicle</label>
+    <select id="vehicle">
+        <option value="">Select Vehicle</option>
+        <!-- your existing vehicle options -->
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="driver">Driver</label>
+    <input type="text" id="driver" placeholder="Driver name">
+</div>
+
+<div class="form-group">
+    <label for="numberOfDays">Number of Days</label>
+    <input type="number" id="numberOfDays" value="1" min="1">
+</div>
                 <div class="form-group">
                     <label>Pickup Location <span>*</span></label>
                     <input
