@@ -151,25 +151,82 @@
     <input type="text" id="address" placeholder="Enter customer address">
 </div>
 
-               <div class="form-group">
-    <label>Adults</label>
-    <input type="number" id="adults" value="1" min="0">
-</div>
+            <!-- =================================================
+     GUEST DETAILS
+================================================== -->
 
-<div class="form-group">
-    <label>Children</label>
-    <input type="number" id="children" value="0" min="0">
-</div>
+<div class="form-group full-width guest-details-box">
 
-<div class="form-group">
-    <label>Total Pax</label>
-    <input type="number" id="totalPax" value="1" readonly>
-</div>            </div>
+    <label>Guest Details</label>
+
+    <div id="guestList">
+
+        <div class="guest-row">
+
+            <input
+                type="text"
+                class="guest-name"
+                placeholder="Guest Name">
+
+            <input
+                type="number"
+                class="guest-age"
+                placeholder="Age"
+                min="0"
+                max="120">
+
+            <button
+                type="button"
+                class="remove-guest-btn"
+                onclick="removeGuest(this)">
+                ✕
+            </button>
 
         </div>
 
+    </div>
+
+    <button
+        type="button"
+        class="add-guest-btn"
+        onclick="addGuest()">
+        + Add Guest
+    </button>
+
+</div>
 
 
+<!-- Guest Count Summary -->
+
+<div class="form-group">
+    <label>Total Members</label>
+    <input
+        type="number"
+        id="totalMembers"
+        value="0"
+        readonly>
+</div>
+
+<div class="form-group">
+    <label>Adults (18+)</label>
+    <input
+        type="number"
+        id="adultCount"
+        value="0"
+        readonly>
+</div>
+
+<div class="form-group">
+    <label>Children (&lt;18)</label>
+    <input
+        type="number"
+        id="childCount"
+        value="0"
+        readonly>
+</div>
+            </div>
+
+        </div>
         <!-- =================================================
              TRIP DETAILS
         ================================================== -->
