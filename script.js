@@ -350,14 +350,25 @@ function removeGuest(button) {
    UPDATE GUEST COUNTS
 ========================================================= */
 
+/* =========================================================
+   UPDATE GUEST COUNTS
+   CUSTOMER IS ALSO INCLUDED AS 1 ADULT
+========================================================= */
+
 function updateGuestCounts() {
 
     const rows =
         document.querySelectorAll(".guest-row");
 
-    let totalMembers = 0;
-    let adults = 0;
+    /*
+       Customer is automatically counted
+       as 1 adult.
+    */
+
+    let totalMembers = 1;
+    let adults = 1;
     let children = 0;
+
 
     rows.forEach(function (row) {
 
@@ -370,6 +381,12 @@ function updateGuestCounts() {
             row.querySelector(".guest-age")
                 .value;
 
+
+        /*
+           Count only guests where
+           both name and age are entered.
+        */
+
         if (
             name !== "" &&
             ageValue !== ""
@@ -378,7 +395,9 @@ function updateGuestCounts() {
             const age =
                 Number(ageValue);
 
+
             totalMembers++;
+
 
             if (age >= 18) {
 
@@ -404,10 +423,7 @@ function updateGuestCounts() {
     document.getElementById("childCount").value =
         children;
 
-}
-
-
-/* =========================================================
+}/* =========================================================
    GUEST INPUT LISTENERS
 ========================================================= */
 
