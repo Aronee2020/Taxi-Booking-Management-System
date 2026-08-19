@@ -721,11 +721,12 @@ footer {
     }
 
 }
-
 .package-field {
-    flex: 0 0 450px !important;
+    width: 280px !important;
+    min-width: 280px !important;
+    flex: 0 0 280px !important;
 }
 
 .package-field input {
-    width: 100% !important;
+    width: 280px !important;
 }
