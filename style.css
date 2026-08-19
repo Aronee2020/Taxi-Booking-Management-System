@@ -722,3 +722,6 @@ footer {
 
 }
 
+.package-field {
+    flex: 1.4;
+}
