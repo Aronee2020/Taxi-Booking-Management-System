@@ -162,31 +162,40 @@
 
     <div id="guestList">
 
-        <div class="guest-row">
+    <div class="guest-row">
 
-            <input
-                type="text"
-                class="guest-name"
-                placeholder="Guest Name">
+        <input
+            type="text"
+            class="guest-name"
+            placeholder="Guest Name">
 
-            <input
-                type="number"
-                class="guest-age"
-                placeholder="Age"
-                min="0"
-                max="120">
+        <input
+            type="number"
+            class="guest-age"
+            placeholder="Age"
+            min="0"
+            max="120">
 
-            <button
-                type="button"
-                class="remove-guest-btn"
-                onclick="removeGuest(this)">
-                ✕
-            </button>
+        <input
+            type="text"
+            class="guest-id-proof"
+            placeholder="ID Proof Name">
 
-        </div>
+        <input
+            type="text"
+            class="guest-id-number"
+            placeholder="ID Number">
+
+        <button
+            type="button"
+            class="remove-guest-btn"
+            onclick="removeGuest(this)">
+            ✕
+        </button>
 
     </div>
 
+</div>
     <button
         type="button"
         class="add-guest-btn"
