@@ -303,6 +303,16 @@ function addGuest() {
             min="0"
             max="120">
 
+        <input
+            type="text"
+            class="guest-id-proof"
+            placeholder="ID Proof Name">
+
+        <input
+            type="text"
+            class="guest-id-number"
+            placeholder="ID Number">
+
         <button
             type="button"
             class="remove-guest-btn"
@@ -316,10 +326,7 @@ function addGuest() {
     addGuestInputListeners();
 
     updateGuestCounts();
-}
-
-
-/* =========================================================
+}/* =========================================================
    REMOVE GUEST
 ========================================================= */
 
