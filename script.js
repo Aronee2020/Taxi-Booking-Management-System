@@ -241,15 +241,15 @@ function generateCustomerId() {
 
 function calculateAmounts() {
 
-   const toll =
-    Number(
-        document.getElementById("toll").value
-    ) || 0;
-
-
-    const extraCharges =
+    const taxiFare =
         Number(
-            document.getElementById("extraCharges").value
+            document.getElementById("taxiFare").value
+        ) || 0;
+
+
+    const toll =
+        Number(
+            document.getElementById("toll").value
         ) || 0;
 
 
@@ -260,7 +260,7 @@ function calculateAmounts() {
 
 
     const total =
-         taxiFare + toll;
+        taxiFare + toll;
 
 
     const balance =
@@ -275,7 +275,6 @@ function calculateAmounts() {
         balance;
 
 }
-
 /* =========================================================
    GUEST DETAILS
 ========================================================= */
@@ -473,52 +472,55 @@ function getFormData() {
             document.getElementById("children").value
         ) || 0;
 
-/* =========================================================
-   COLLECT GUEST DETAILS
-========================================================= */
 
-const guestDetails = [];
+    /* =====================================================
+       COLLECT GUEST DETAILS
+    ===================================================== */
 
-document.querySelectorAll(".guest-row")
-    .forEach(function (row) {
+    const guestDetails = [];
 
-        const name =
-            row.querySelector(".guest-name")
-                .value
-                .trim();
+    document.querySelectorAll(".guest-row")
+        .forEach(function (row) {
 
-        const age =
-            row.querySelector(".guest-age")
-                .value;
+            const name =
+                row.querySelector(".guest-name")
+                    .value
+                    .trim();
 
-        const idProofName =
-            row.querySelector(".guest-id-proof")
-                .value
-                .trim();
+            const age =
+                row.querySelector(".guest-age")
+                    .value;
 
-        const idNumber =
-            row.querySelector(".guest-id-number")
-                .value
-                .trim();
+            const idProofName =
+                row.querySelector(".guest-id-proof")
+                    .value
+                    .trim();
+
+            const idNumber =
+                row.querySelector(".guest-id-number")
+                    .value
+                    .trim();
 
 
-        if (name !== "" && age !== "") {
+            if (name !== "" && age !== "") {
 
-            guestDetails.push({
+                guestDetails.push({
 
-                name: name,
+                    name: name,
 
-                age: Number(age),
+                    age: Number(age),
 
-                idProofName: idProofName,
+                    idProofName: idProofName,
 
-                idNumber: idNumber
+                    idNumber: idNumber
 
-            });
+                });
 
-        }
+            }
 
-    });
+        });
+
+
     return {
 
         bookingId:
@@ -542,7 +544,9 @@ document.querySelectorAll(".guest-row")
         adults: adults,
 
         children: children,
-       guestDetails: guestDetails,
+
+        guestDetails: guestDetails,
+
 
         pickupDate:
             document.getElementById("pickupDate").value,
@@ -556,22 +560,20 @@ document.querySelectorAll(".guest-row")
         dropLocation:
             document.getElementById("dropLocation").value.trim(),
 
+
         tripType:
             document.getElementById("tripType").value,
 
-        vehicle:
-            document.getElementById("vehicle").value,
+        package:
+            document.getElementById("package").value.trim(),
 
-        driver:
-            document.getElementById("driver").value.trim(),
 
-        days:
-            Number(
-                document.getElementById("days").value
-            ) || 1,
+        itinerary:
+            document.getElementById("itinerary").value.trim(),
 
-        itinerary: document.getElementById("itinerary").value,
-       totalKmHrs: document.getElementById("totalKmHrs").value,
+        totalKmHrs:
+            document.getElementById("totalKmHrs").value.trim(),
+
 
         taxiFare:
             Number(
@@ -579,9 +581,10 @@ document.querySelectorAll(".guest-row")
             ) || 0,
 
         toll:
-    Number(
-        document.getElementById("toll").value
-    ) || 0,
+            Number(
+                document.getElementById("toll").value
+            ) || 0,
+
 
         totalAmount:
             Number(
@@ -601,6 +604,7 @@ document.querySelectorAll(".guest-row")
                 document.getElementById("balanceAmount").value
             ) || 0,
 
+
         bookingStatus:
             document.getElementById("bookingStatus").value,
 
@@ -609,14 +613,13 @@ document.querySelectorAll(".guest-row")
                 "bookingNotes"
             ).value.trim(),
 
+
         createdAt:
             new Date().toISOString()
 
     };
 
 }
-
-
 /* =========================================================
    VALIDATE BOOKING
 ========================================================= */
@@ -888,67 +891,90 @@ function clearForm() {
         "customerName"
     ).value = "";
 
+
     document.getElementById(
         "mobile"
     ).value = "";
+
 
     document.getElementById(
         "email"
     ).value = "";
 
+
     document.getElementById(
         "adults"
     ).value = "1";
+
 
     document.getElementById(
         "children"
     ).value = "0";
 
+
     document.getElementById(
         "pickupLocation"
     ).value = "";
+
 
     document.getElementById(
         "dropLocation"
     ).value = "";
 
+
     document.getElementById(
         "pickupTime"
     ).value = "";
 
+
     document.getElementById(
-        "vehicle"
+        "tripType"
     ).value = "";
 
+
     document.getElementById(
-        "driver"
+        "package"
     ).value = "";
 
-    document.getElementById(
-        "days"
-    ).value = "1";
-
-itinerary: document.getElementById("itinerary").value
-
-  document.getElementById(
-    "taxiFare"
-).value = "";
 
     document.getElementById(
-        "extraCharges"
-    ).value = "0";
+        "itinerary"
+    ).value = "";
+
+
+    document.getElementById(
+        "totalKmHrs"
+    ).value = "";
+
+
+    /* Taxi Fare blank */
+
+    document.getElementById(
+        "taxiFare"
+    ).value = "";
+
+
+    /* Toll blank */
+
+    document.getElementById(
+        "toll"
+    ).value = "";
+
 
     document.getElementById(
         "advanceReceived"
     ).value = "0";
 
+
     document.getElementById(
         "paymentMode"
     ).value = "";
 
+
     document.getElementById(
         "bookingStatus"
     ).value = "Pending";
+
 
     document.getElementById(
         "bookingNotes"
@@ -965,10 +991,7 @@ itinerary: document.getElementById("itinerary").value
 
     selectedBookingId = null;
 
-}
-
-
-/* =========================================================
+}/* =========================================================
    DISPLAY BOOKINGS
 ========================================================= */
 
@@ -1518,11 +1541,11 @@ function exportBookings() {
         "Pickup Location",
         "Drop Location",
         "Trip Type",
-        "Vehicle",
-        "Driver",
-        "Days",
-        "Taxi Fare",
-        "Extra Charges",
+"Package",
+"Itinerary",
+"Total KM / Hrs",
+"Taxi Fare",
+"Toll",
         "Total Amount",
         "Advance Received",
         "Payment Mode",
@@ -1552,18 +1575,17 @@ function exportBookings() {
                 booking.pickupLocation,
                 booking.dropLocation,
                 booking.tripType,
-                booking.vehicle,
-                booking.driver,
-                booking.days,
-                booking.taxiFare,
-                booking.extraCharges,
-                booking.totalAmount,
-                booking.advanceReceived,
-                booking.paymentMode,
-                booking.balanceAmount,
-                booking.bookingStatus,
-                booking.specialInstructions,
-                booking.bookingNotes
+booking.package,
+booking.itinerary,
+booking.totalKmHrs,
+booking.taxiFare,
+booking.toll,
+booking.totalAmount,
+booking.advanceReceived,
+booking.paymentMode,
+booking.balanceAmount,
+booking.bookingStatus,
+booking.bookingNotes
 
             ];
 
