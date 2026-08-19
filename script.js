@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("taxiFare")
         .addEventListener("input", calculateAmounts);
 
-    document.getElementById("extraCharges")
+    document.getElementById("toll")
         .addEventListener("input", calculateAmounts);
 
     document.getElementById("advanceReceived")
@@ -241,10 +241,10 @@ function generateCustomerId() {
 
 function calculateAmounts() {
 
-    const taxiFare =
-        Number(
-            document.getElementById("taxiFare").value
-        ) || 0;
+   const toll =
+    Number(
+        document.getElementById("toll").value
+    ) || 0;
 
 
     const extraCharges =
@@ -260,7 +260,7 @@ function calculateAmounts() {
 
 
     const total =
-        taxiFare + extraCharges;
+         taxiFare + toll;
 
 
     const balance =
@@ -578,10 +578,10 @@ document.querySelectorAll(".guest-row")
                 document.getElementById("taxiFare").value
             ) || 0,
 
-        extraCharges:
-            Number(
-                document.getElementById("extraCharges").value
-            ) || 0,
+        toll:
+    Number(
+        document.getElementById("toll").value
+    ) || 0,
 
         totalAmount:
             Number(
