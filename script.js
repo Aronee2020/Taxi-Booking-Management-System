@@ -571,6 +571,7 @@ document.querySelectorAll(".guest-row")
             ) || 1,
 
         itinerary: document.getElementById("itinerary").value,
+       totalKmHrs: document.getElementById("totalKmHrs").value,
 
         taxiFare:
             Number(
