@@ -1270,7 +1270,7 @@ function selectBooking(bookingId) {
 
     document.getElementById("itinerary").value =
     booking.itinerary || "";
-
+ document.getElementById("totalKmHrs").value = booking.totalKmHrs || "";
 
     document.getElementById(
         "taxiFare"
