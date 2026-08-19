@@ -1786,40 +1786,36 @@ function formatDate(dateString) {
 /* =========================================================
    FORMAT TIME
 ========================================================= */
-
 function formatTime(timeString) {
 
     if (!timeString) {
         return "-";
     }
 
+    const value = String(timeString).trim();
 
-    const parts =
-        timeString.split(":");
-
-
-    if (parts.length < 2) {
-        return timeString;
+    // If already entered as 12-hour format
+    if (/[AP]M$/i.test(value)) {
+        return value.toUpperCase();
     }
 
+    // Support old saved 24-hour values such as 14:30
+    const parts = value.split(":");
 
-    let hours =
-        parseInt(parts[0], 10);
+    if (parts.length < 2) {
+        return value;
+    }
 
+    let hours = parseInt(parts[0], 10);
+    const minutes = parts[1];
 
-    const minutes =
-        parts[1];
+    if (isNaN(hours)) {
+        return value;
+    }
 
+    const ampm = hours >= 12 ? "PM" : "AM";
 
-    const ampm =
-        hours >= 12
-            ? "PM"
-            : "AM";
-
-
-    hours =
-        hours % 12 || 12;
-
+    hours = hours % 12 || 12;
 
     return (
         String(hours).padStart(2, "0") +
@@ -1828,11 +1824,7 @@ function formatTime(timeString) {
         " " +
         ampm
     );
-
-}
-
-
-/* =========================================================
+}/* =========================================================
    FORMAT NUMBER
 ========================================================= */
 
