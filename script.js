@@ -549,21 +549,34 @@ function getFormData() {
 
 
         pickupDate:
-            document.getElementById("pickupDate").value,
+    document.getElementById("pickupDate").value,
 
-        pickupTime:
-            document.getElementById("pickupTime").value,
+pickupTime:
+    document.getElementById("pickupTime").value,
 
-        pickupLocation:
-            document.getElementById("pickupLocation").value.trim(),
+dropDate:
+    document.getElementById("dropDate").value,
 
-        dropLocation:
-            document.getElementById("dropLocation").value.trim(),
+dropTime:
+    document.getElementById("dropTime").value,
 
+pickupLocation:
+    document.getElementById("pickupLocation").value.trim(),
 
-        tripType:
-            document.getElementById("tripType").value,
+dropLocation:
+    document.getElementById("dropLocation").value.trim(),
 
+tripType:
+    document.getElementById("tripType").value,
+
+vehicle:
+    document.getElementById("vehicle").value.trim(),
+
+driver:
+    document.getElementById("driver").value.trim(),
+
+noOfDays:
+    document.getElementById("noOfDays").value.trim(),
         package:
             document.getElementById("package").value.trim(),
 
