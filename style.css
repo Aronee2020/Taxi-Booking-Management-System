@@ -723,5 +723,9 @@ footer {
 }
 
 .package-field {
-    flex: 2.4;
+    flex: 0 0 280px !important;
+}
+
+.package-field input {
+    width: 100% !important;
 }
