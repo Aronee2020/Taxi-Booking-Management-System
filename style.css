@@ -654,7 +654,7 @@ footer {
 
 .guest-row {
     display: grid;
-    grid-template-columns: 1fr 150px 45px;
+    grid-template-columns: 1.5fr 100px 1.2fr 1.5fr 45px;
     gap: 10px;
     margin-bottom: 10px;
     align-items: center;
