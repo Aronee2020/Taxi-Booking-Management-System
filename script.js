@@ -473,7 +473,52 @@ function getFormData() {
             document.getElementById("children").value
         ) || 0;
 
+/* =========================================================
+   COLLECT GUEST DETAILS
+========================================================= */
 
+const guestDetails = [];
+
+document.querySelectorAll(".guest-row")
+    .forEach(function (row) {
+
+        const name =
+            row.querySelector(".guest-name")
+                .value
+                .trim();
+
+        const age =
+            row.querySelector(".guest-age")
+                .value;
+
+        const idProofName =
+            row.querySelector(".guest-id-proof")
+                .value
+                .trim();
+
+        const idNumber =
+            row.querySelector(".guest-id-number")
+                .value
+                .trim();
+
+
+        if (name !== "" && age !== "") {
+
+            guestDetails.push({
+
+                name: name,
+
+                age: Number(age),
+
+                idProofName: idProofName,
+
+                idNumber: idNumber
+
+            });
+
+        }
+
+    });
     return {
 
         bookingId:
@@ -497,6 +542,7 @@ function getFormData() {
         adults: adults,
 
         children: children,
+       guestDetails: guestDetails,
 
         pickupDate:
             document.getElementById("pickupDate").value,
