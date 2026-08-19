@@ -930,9 +930,9 @@ function clearForm() {
 
 itinerary: document.getElementById("itinerary").value
 
-    document.getElementById(
-        "taxiFare"
-    ).value = "0";
+  document.getElementById(
+    "taxiFare"
+).value = "";
 
     document.getElementById(
         "extraCharges"
@@ -1272,10 +1272,10 @@ function selectBooking(bookingId) {
     booking.itinerary || "";
  document.getElementById("totalKmHrs").value = booking.totalKmHrs || "";
 
-    document.getElementById(
-        "taxiFare"
-    ).value =
-        booking.taxiFare || 0;
+document.getElementById(
+    "taxiFare"
+).value =
+    booking.taxiFare || "";
 
 
     document.getElementById(
