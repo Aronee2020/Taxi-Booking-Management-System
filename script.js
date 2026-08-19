@@ -570,10 +570,7 @@ document.querySelectorAll(".guest-row")
                 document.getElementById("days").value
             ) || 1,
 
-        specialInstructions:
-            document.getElementById(
-                "specialInstructions"
-            ).value.trim(),
+        itinerary: document.getElementById("itinerary").value,
 
         taxiFare:
             Number(
@@ -930,9 +927,7 @@ function clearForm() {
         "days"
     ).value = "1";
 
-    document.getElementById(
-        "specialInstructions"
-    ).value = "";
+itinerary: document.getElementById("itinerary").value
 
     document.getElementById(
         "taxiFare"
@@ -1272,10 +1267,8 @@ function selectBooking(bookingId) {
         booking.days || 1;
 
 
-    document.getElementById(
-        "specialInstructions"
-    ).value =
-        booking.specialInstructions || "";
+    document.getElementById("itinerary").value =
+    booking.itinerary || "";
 
 
     document.getElementById(
