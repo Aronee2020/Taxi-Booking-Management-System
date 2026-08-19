@@ -1271,40 +1271,30 @@ function selectBooking(bookingId) {
         "tripType"
     ).value =
         booking.tripType || "One Way";
-
-
-    document.getElementById(
-        "vehicle"
-    ).value =
-        booking.vehicle || "";
-
-
-    document.getElementById(
-        "driver"
-    ).value =
-        booking.driver || "";
-
-
-    document.getElementById(
-        "days"
-    ).value =
-        booking.days || 1;
-
-
-    document.getElementById("itinerary").value =
+document.getElementById(
+    "package"
+).value =
+    booking.package || "";
+document.getElementById(
+    "itinerary"
+).value =
     booking.itinerary || "";
- document.getElementById("totalKmHrs").value = booking.totalKmHrs || "";
+
+
+document.getElementById(
+    "totalKmHrs"
+).value =
+    booking.totalKmHrs || "";
 
 document.getElementById(
     "taxiFare"
 ).value =
     booking.taxiFare || "";
 
-
-    document.getElementById(
-        "extraCharges"
-    ).value =
-        booking.extraCharges || 0;
+document.getElementById(
+    "toll"
+).value =
+    booking.toll || "";
 
 
     document.getElementById(
