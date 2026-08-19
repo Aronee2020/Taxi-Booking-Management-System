@@ -1257,33 +1257,64 @@ function selectBooking(bookingId) {
 
 
     document.getElementById(
-        "pickupDate"
-    ).value =
-        booking.pickupDate || "";
+    "pickupDate"
+).value =
+    booking.pickupDate || "";
 
 
-    document.getElementById(
-        "pickupTime"
-    ).value =
-        booking.pickupTime || "";
+document.getElementById(
+    "pickupTime"
+).value =
+    booking.pickupTime || "";
 
 
-    document.getElementById(
-        "pickupLocation"
-    ).value =
-        booking.pickupLocation || "";
+document.getElementById(
+    "dropDate"
+).value =
+    booking.dropDate || "";
 
 
-    document.getElementById(
-        "dropLocation"
-    ).value =
-        booking.dropLocation || "";
+document.getElementById(
+    "dropTime"
+).value =
+    booking.dropTime || "";
 
 
-    document.getElementById(
-        "tripType"
-    ).value =
-        booking.tripType || "One Way";
+document.getElementById(
+    "pickupLocation"
+).value =
+    booking.pickupLocation || "";
+
+
+document.getElementById(
+    "dropLocation"
+).value =
+    booking.dropLocation || "";
+
+
+document.getElementById(
+    "tripType"
+).value =
+    booking.tripType || "One Way";
+
+
+document.getElementById(
+    "vehicle"
+).value =
+    booking.vehicle || "";
+
+
+document.getElementById(
+    "driver"
+).value =
+    booking.driver || "";
+
+
+document.getElementById(
+    "noOfDays"
+).value =
+    booking.noOfDays || "";   
+   
 document.getElementById(
     "package"
 ).value =
