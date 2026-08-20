@@ -493,22 +493,22 @@ function getFormData() {
 
             const name =
                 row.querySelector(".guest-name")
-                    .value
-                    .trim();
+                    ?.value
+                    .trim() || "";
 
             const age =
                 row.querySelector(".guest-age")
-                    .value;
+                    ?.value || "";
 
             const idProofName =
                 row.querySelector(".guest-id-proof")
-                    .value
-                    .trim();
+                    ?.value
+                    .trim() || "";
 
             const idNumber =
                 row.querySelector(".guest-id-number")
-                    .value
-                    .trim();
+                    ?.value
+                    .trim() || "";
 
             if (name !== "" && age !== "") {
 
@@ -530,10 +530,14 @@ function getFormData() {
 
 
     /* =====================================================
-       RETURN BOOKING DATA
+       RETURN COMPLETE BOOKING DATA
     ===================================================== */
 
     return {
+
+        /* =================================================
+           BASIC DETAILS
+        ================================================= */
 
         bookingId:
             document.getElementById("bookingId").value.trim(),
@@ -552,6 +556,11 @@ function getFormData() {
 
         address:
             document.getElementById("address").value.trim(),
+
+
+        /* =================================================
+           GUEST DETAILS
+        ================================================= */
 
         totalMembers:
             totalMembers,
@@ -602,7 +611,22 @@ function getFormData() {
 
 
         /* =================================================
-           PAYMENT
+           TRANSPORTATION DETAILS
+           THIS WAS MISSING FROM YOUR CODE
+        ================================================= */
+
+        vehicle:
+            document.getElementById("vehicle").value.trim(),
+
+        driver:
+            document.getElementById("driver").value.trim(),
+
+        noOfDays:
+            document.getElementById("noOfDays").value.trim(),
+
+
+        /* =================================================
+           PAYMENT DETAILS
         ================================================= */
 
         taxiFare:
@@ -643,6 +667,11 @@ function getFormData() {
 
         bookingNotes:
             document.getElementById("bookingNotes").value.trim(),
+
+
+        /* =================================================
+           CREATED / UPDATED
+        ================================================= */
 
         createdAt:
             new Date().toISOString()
