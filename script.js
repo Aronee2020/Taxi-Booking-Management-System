@@ -1902,7 +1902,10 @@ function openVoucher() {
         "selectedTaxiBooking",
         JSON.stringify(booking)
     );
-
+localStorage.setItem(
+    "selectedTaxiBookingId",
+    booking.bookingId
+);
 
     /*
        taxiVoucher.html will be created
