@@ -778,3 +778,9 @@ body {
     }
 
 }
+.company-logo {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin-bottom: 8px;
+}
