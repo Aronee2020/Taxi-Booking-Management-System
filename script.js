@@ -1136,17 +1136,24 @@ function displayBookings(
             </td>
 
             <td>
-                ${formatDate(booking.pickupDate)}
-            </td>
+    ${formatDate(booking.pickupDate)}
+</td>
 
-            <td>
-                ${formatTime(booking.pickupTime)}
-            </td>
+<td>
+    ${formatTime(booking.pickupTime)}
+</td>
 
-            <td>
-                ${escapeHTML(booking.pickupLocation)}
-            </td>
+<td>
+    ${formatDate(booking.dropDate)}
+</td>
 
+<td>
+    ${formatTime(booking.dropTime)}
+</td>
+
+<td>
+    ${escapeHTML(booking.pickupLocation)}
+</td>
             <td>
                 ${escapeHTML(booking.dropLocation)}
             </td>
@@ -1156,12 +1163,16 @@ function displayBookings(
             </td>
 
             <td>
-                ${escapeHTML(booking.driver || "-")}
-            </td>
+    ${escapeHTML(booking.driver || "-")}
+</td>
 
-            <td>
-                ${totalPax}
-            </td>
+<td>
+    ${escapeHTML(booking.noOfDays || "-")}
+</td>
+
+<td>
+    ${totalPax}
+</td>
 
             <td>
                 ₹${formatNumber(booking.totalAmount)}
