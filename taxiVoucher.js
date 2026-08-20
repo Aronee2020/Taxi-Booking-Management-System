@@ -25,13 +25,92 @@ document.addEventListener(
 
 function loadVoucher() {
 
+    let booking = null;
+
+    /* =====================================================
+       FIRST: TRY SELECTED TAXI BOOKING
+    ===================================================== */
+
     const savedBooking =
-        localStorage.getItem(
-            "selectedTaxiBooking"
-        );
+        localStorage.getItem("selectedTaxiBooking");
+
+    if (savedBooking) {
+
+        try {
+
+            booking = JSON.parse(savedBooking);
+
+        } catch (error) {
+
+            console.error(
+                "Unable to read selected taxi booking:",
+                error
+            );
+
+        }
+
+    }
 
 
-    if (!savedBooking) {
+    /* =====================================================
+       SECOND: IF NEEDED, FIND IT FROM ALL TAXI BOOKINGS
+    ===================================================== */
+
+    if (!booking) {
+
+        const savedBookings =
+            localStorage.getItem("taxiBookings");
+
+        if (savedBookings) {
+
+            try {
+
+                const allBookings =
+                    JSON.parse(savedBookings);
+
+                const bookingId =
+                    localStorage.getItem(
+                        "selectedTaxiBookingId"
+                    );
+
+                if (
+                    bookingId &&
+                    Array.isArray(allBookings)
+                ) {
+
+                    booking =
+                        allBookings.find(
+                            function (item) {
+
+                                return (
+                                    item.bookingId ===
+                                    bookingId
+                                );
+
+                            }
+                        );
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Unable to read taxi bookings:",
+                    error
+                );
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       NO BOOKING FOUND
+    ===================================================== */
+
+    if (!booking) {
 
         alert(
             "No taxi booking was selected."
@@ -42,36 +121,15 @@ function loadVoucher() {
     }
 
 
-    let booking;
-
-
-    try {
-
-        booking =
-            JSON.parse(savedBooking);
-
-    } catch (error) {
-
-        console.error(
-            "Unable to read taxi booking:",
-            error
-        );
-
-        alert(
-            "Unable to load the taxi booking."
-        );
-
-        return;
-
-    }
+    console.log(
+        "Taxi voucher booking:",
+        booking
+    );
 
 
     populateVoucher(booking);
 
-}
-
-
-/* =========================================================
+}/* =========================================================
    POPULATE VOUCHER
 ========================================================= */
 
