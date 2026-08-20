@@ -537,6 +537,8 @@ function getFormData() {
 
         mobile:
             document.getElementById("mobile").value.trim(),
+       address:
+    document.getElementById("address").value.trim(),
 
         email:
             document.getElementById("email").value.trim(),
