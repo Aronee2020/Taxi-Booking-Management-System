@@ -1,0 +1,780 @@
+/* =========================================================
+   ARONEE TOURS & TRAVELS
+   TAXI CONFIRMATION VOUCHER
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #eef2f7;
+
+    color: #1f2937;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.voucher-actions {
+
+    width: 210mm;
+
+    margin: 20px auto;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+}
+
+.voucher-actions button {
+
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+.print-btn {
+
+    background: #166534;
+
+    color: white;
+
+}
+
+.print-btn:hover {
+
+    background: #14532d;
+
+}
+
+.close-btn {
+
+    background: #dc2626;
+
+    color: white;
+
+}
+
+.close-btn:hover {
+
+    background: #b91c1c;
+
+}
+
+
+/* =========================================================
+   A4 PAGE
+========================================================= */
+
+.voucher-container {
+
+    width: 210mm;
+
+    min-height: 297mm;
+
+    margin: 0 auto 30px;
+
+    background: white;
+
+    padding: 15mm;
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.voucher-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+}
+
+.company-details {
+
+    flex: 1;
+
+}
+
+.company-details h1 {
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    color: #123b6d;
+
+    margin-bottom: 4px;
+
+}
+
+.company-subtitle {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #374151;
+
+    margin-bottom: 8px;
+
+}
+
+.company-details p {
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    color: #4b5563;
+
+}
+
+
+.voucher-title {
+
+    width: 220px;
+
+    text-align: right;
+
+}
+
+.voucher-title h2 {
+
+    font-size: 18px;
+
+    color: #123b6d;
+
+    margin-bottom: 12px;
+
+}
+
+.voucher-id-box,
+.voucher-date-box {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 5px 8px;
+
+    border-bottom: 1px solid #d1d5db;
+
+    font-size: 11px;
+
+}
+
+.voucher-id-box strong,
+.voucher-date-box strong {
+
+    color: #111827;
+
+}
+
+
+.header-line {
+
+    height: 3px;
+
+    background: #123b6d;
+
+    margin: 12px 0 18px;
+
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.voucher-section {
+
+    margin-bottom: 17px;
+
+}
+
+.section-title {
+
+    background: #123b6d;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: .5px;
+
+    padding: 7px 10px;
+
+    margin-bottom: 10px;
+
+    border-radius: 3px;
+
+}
+
+
+/* =========================================================
+   DETAILS GRID
+========================================================= */
+
+.details-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    border-top: 1px solid #e5e7eb;
+
+    border-left: 1px solid #e5e7eb;
+
+}
+
+.detail-item {
+
+    min-height: 45px;
+
+    padding: 7px 10px;
+
+    border-right: 1px solid #e5e7eb;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+.detail-item.full-width {
+
+    grid-column: 1 / -1;
+
+}
+
+.label {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .4px;
+
+    color: #6b7280;
+
+    margin-bottom: 3px;
+
+}
+
+.value {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #111827;
+
+    word-break: break-word;
+
+}
+
+.itinerary-value {
+
+    white-space: pre-line;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   GUEST DETAILS
+========================================================= */
+
+.guest-details-container {
+
+    border: 1px solid #e5e7eb;
+
+}
+
+.guest-row-voucher {
+
+    display: grid;
+
+    grid-template-columns:
+        35px 1fr 100px 1fr 130px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    min-height: 38px;
+
+    align-items: center;
+
+}
+
+.guest-row-voucher:last-child {
+
+    border-bottom: none;
+
+}
+
+.guest-cell {
+
+    padding: 7px 9px;
+
+    border-right: 1px solid #e5e7eb;
+
+    font-size: 12px;
+
+}
+
+.guest-cell:last-child {
+
+    border-right: none;
+
+}
+
+.guest-header-row {
+
+    background: #f3f4f6;
+
+    font-weight: 700;
+
+    color: #374151;
+
+}
+
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+.payment-box {
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 4px;
+
+    overflow: hidden;
+
+}
+
+.payment-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 8px 12px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    font-size: 13px;
+
+}
+
+.payment-row:last-child {
+
+    border-bottom: none;
+
+}
+
+.payment-row strong {
+
+    font-size: 13px;
+
+}
+
+.total-row {
+
+    background: #f3f4f6;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+}
+
+.total-row strong {
+
+    font-size: 15px;
+
+}
+
+.balance-row {
+
+    background: #f8fafc;
+
+    font-weight: 700;
+
+}
+
+.balance-row strong {
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status-box {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 5px;
+
+    padding: 10px 14px;
+
+}
+
+.status-label {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    color: #4b5563;
+
+}
+
+.booking-status {
+
+    padding: 5px 14px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+}
+
+
+/* Status colours */
+
+.status-confirmed {
+
+    background: #dcfce7;
+
+    color: #166534;
+
+}
+
+.status-pending {
+
+    background: #fef3c7;
+
+    color: #92400e;
+
+}
+
+.status-completed {
+
+    background: #dbeafe;
+
+    color: #1e40af;
+
+}
+
+.status-cancelled {
+
+    background: #fee2e2;
+
+    color: #991b1b;
+
+}
+
+.status-postponed {
+
+    background: #f3e8ff;
+
+    color: #6b21a8;
+
+}
+
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+.notes-box {
+
+    border: 1px solid #d1d5db;
+
+    padding: 10px;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    white-space: pre-line;
+
+}
+
+
+/* =========================================================
+   TERMS
+========================================================= */
+
+.terms-section ul {
+
+    margin-left: 20px;
+
+}
+
+.terms-section li {
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    margin-bottom: 4px;
+
+    color: #4b5563;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.voucher-footer {
+
+    border-top: 1px solid #d1d5db;
+
+    margin-top: 25px;
+
+    padding-top: 12px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+.footer-left {
+
+    font-size: 11px;
+
+    color: #4b5563;
+
+}
+
+.footer-left strong {
+
+    color: #123b6d;
+
+}
+
+.footer-left p {
+
+    margin-top: 4px;
+
+}
+
+.footer-right {
+
+    text-align: right;
+
+    font-size: 10px;
+
+    color: #4b5563;
+
+}
+
+.footer-right strong {
+
+    color: #123b6d;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 900px) {
+
+    .voucher-actions {
+
+        width: 95%;
+
+    }
+
+    .voucher-container {
+
+        width: 95%;
+
+        min-height: auto;
+
+        padding: 20px;
+
+    }
+
+    .voucher-header {
+
+        flex-direction: column;
+
+    }
+
+    .voucher-title {
+
+        width: 100%;
+
+        text-align: left;
+
+    }
+
+    .details-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .detail-item.full-width {
+
+        grid-column: auto;
+
+    }
+
+    .guest-row-voucher {
+
+        grid-template-columns:
+            30px 1fr 70px;
+
+    }
+
+    .guest-row-voucher
+    .id-proof-cell {
+
+        display: none;
+
+    }
+
+    .voucher-footer {
+
+        flex-direction: column;
+
+    }
+
+    .footer-right {
+
+        text-align: left;
+
+    }
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+
+    @page {
+
+        size: A4;
+
+        margin: 0;
+
+    }
+
+    body {
+
+        background: white;
+
+    }
+
+    .voucher-actions {
+
+        display: none !important;
+
+    }
+
+    .voucher-container {
+
+        width: 210mm;
+
+        min-height: 297mm;
+
+        margin: 0;
+
+        padding: 12mm;
+
+        box-shadow: none;
+
+    }
+
+    .voucher-section {
+
+        break-inside: avoid;
+
+    }
+
+    .guest-details-container {
+
+        break-inside: avoid;
+
+    }
+
+}
