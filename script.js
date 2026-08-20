@@ -1257,180 +1257,244 @@ function displayBookings(
 }
 
 
-/* =========================================================
-   SELECT BOOKING
-========================================================= */
-
 function selectBooking(bookingId) {
 
     const booking =
         bookings.find(function (item) {
-
-            return item.bookingId ===
-                bookingId;
-
+            return item.bookingId === bookingId;
         });
-
 
     if (!booking) {
         return;
     }
 
-
-    selectedBookingId =
-        booking.bookingId;
+    selectedBookingId = booking.bookingId;
 
 
-    document.getElementById(
-        "bookingId"
-    ).value =
+    /* =====================================================
+       BASIC DETAILS
+    ===================================================== */
+
+    document.getElementById("bookingId").value =
         booking.bookingId || "";
 
-
-    document.getElementById(
-        "customerId"
-    ).value =
+    document.getElementById("customerId").value =
         booking.customerId || "";
 
-
-    document.getElementById(
-        "bookingDate"
-    ).value =
+    document.getElementById("bookingDate").value =
         booking.bookingDate || "";
 
-
-    document.getElementById(
-        "customerName"
-    ).value =
+    document.getElementById("customerName").value =
         booking.customerName || "";
 
-
-    document.getElementById(
-        "mobile"
-    ).value =
+    document.getElementById("mobile").value =
         booking.mobile || "";
 
-    document.getElementById(
-        "adults"
-    ).value =
+    document.getElementById("address").value =
+        booking.address || "";
+
+
+    /* =====================================================
+       GUEST COUNTS
+    ===================================================== */
+
+    document.getElementById("totalMembers").value =
+        booking.totalMembers ?? 1;
+
+    document.getElementById("adultCount").value =
         booking.adults ?? 1;
 
-
-    document.getElementById(
-        "children"
-    ).value =
+    document.getElementById("childCount").value =
         booking.children ?? 0;
 
 
-    document.getElementById(
-    "pickupDate"
-).value =
-    booking.pickupDate || "";
+    /* =====================================================
+       GUEST DETAILS
+    ===================================================== */
+
+    const guestList =
+        document.getElementById("guestList");
+
+    guestList.innerHTML = "";
 
 
-document.getElementById(
-    "pickupTime"
-).value =
-    booking.pickupTime || "";
+    if (
+        booking.guestDetails &&
+        booking.guestDetails.length > 0
+    ) {
+
+        booking.guestDetails.forEach(function (guest) {
+
+            const guestRow =
+                document.createElement("div");
+
+            guestRow.className = "guest-row";
+
+            guestRow.innerHTML = `
+
+                <input
+                    type="text"
+                    class="guest-name"
+                    placeholder="Guest Name"
+                    value="${escapeHTML(guest.name || "")}">
+
+                <input
+                    type="number"
+                    class="guest-age"
+                    placeholder="Age"
+                    min="0"
+                    max="120"
+                    value="${guest.age ?? ""}">
+
+                <input
+                    type="text"
+                    class="guest-id-proof"
+                    placeholder="ID Proof Name"
+                    value="${escapeHTML(guest.idProofName || "")}">
+
+                <input
+                    type="text"
+                    class="guest-id-number"
+                    placeholder="ID Number"
+                    value="${escapeHTML(guest.idNumber || "")}">
+
+                <button
+                    type="button"
+                    class="remove-guest-btn"
+                    onclick="removeGuest(this)">
+                    ✕
+                </button>
+
+            `;
+
+            guestList.appendChild(guestRow);
+
+        });
+
+    } else {
+
+        /* Show one empty guest row */
+
+        guestList.innerHTML = `
+
+            <div class="guest-row">
+
+                <input
+                    type="text"
+                    class="guest-name"
+                    placeholder="Guest Name">
+
+                <input
+                    type="number"
+                    class="guest-age"
+                    placeholder="Age"
+                    min="0"
+                    max="120">
+
+                <input
+                    type="text"
+                    class="guest-id-proof"
+                    placeholder="ID Proof Name">
+
+                <input
+                    type="text"
+                    class="guest-id-number"
+                    placeholder="ID Number">
+
+                <button
+                    type="button"
+                    class="remove-guest-btn"
+                    onclick="removeGuest(this)">
+                    ✕
+                </button>
+
+            </div>
+        `;
+    }
+
+    addGuestInputListeners();
 
 
-document.getElementById(
-    "dropDate"
-).value =
-    booking.dropDate || "";
+    /* =====================================================
+       TRIP DETAILS
+    ===================================================== */
+
+    document.getElementById("pickupDate").value =
+        booking.pickupDate || "";
+
+    document.getElementById("pickupTime").value =
+        booking.pickupTime || "";
+
+    document.getElementById("dropDate").value =
+        booking.dropDate || "";
+
+    document.getElementById("dropTime").value =
+        booking.dropTime || "";
+
+    document.getElementById("pickupLocation").value =
+        booking.pickupLocation || "";
+
+    document.getElementById("dropLocation").value =
+        booking.dropLocation || "";
+
+    document.getElementById("tripType").value =
+        booking.tripType || "";
+
+    document.getElementById("package").value =
+        booking.package || "";
+
+    document.getElementById("itinerary").value =
+        booking.itinerary || "";
+
+    document.getElementById("totalKmHrs").value =
+        booking.totalKmHrs || "";
 
 
-document.getElementById(
-    "dropTime"
-).value =
-    booking.dropTime || "";
+    /* =====================================================
+       PAYMENT DETAILS
+    ===================================================== */
 
+    document.getElementById("taxiFare").value =
+        booking.taxiFare ?? "";
 
-document.getElementById(
-    "pickupLocation"
-).value =
-    booking.pickupLocation || "";
+    document.getElementById("toll").value =
+        booking.toll ?? "";
 
+    document.getElementById("totalAmount").value =
+        booking.totalAmount ?? 0;
 
-document.getElementById(
-    "dropLocation"
-).value =
-    booking.dropLocation || "";
+    document.getElementById("advanceReceived").value =
+        booking.advanceReceived ?? 0;
 
-
-document.getElementById(
-    "tripType"
-).value =
-    booking.tripType || "One Way";
- 
-document.getElementById(
-    "package"
-).value =
-    booking.package || "";
-document.getElementById(
-    "itinerary"
-).value =
-    booking.itinerary || "";
-
-
-document.getElementById(
-    "totalKmHrs"
-).value =
-    booking.totalKmHrs || "";
-
-document.getElementById(
-    "taxiFare"
-).value =
-    booking.taxiFare || "";
-
-document.getElementById(
-    "toll"
-).value =
-    booking.toll || "";
-
-
-    document.getElementById(
-        "totalAmount"
-    ).value =
-        booking.totalAmount || 0;
-
-
-    document.getElementById(
-        "advanceReceived"
-    ).value =
-        booking.advanceReceived || 0;
-
-
-    document.getElementById(
-        "paymentMode"
-    ).value =
+    document.getElementById("paymentMode").value =
         booking.paymentMode || "";
 
-
-    document.getElementById(
-        "balanceAmount"
-    ).value =
-        booking.balanceAmount || 0;
+    document.getElementById("balanceAmount").value =
+        booking.balanceAmount ?? 0;
 
 
-    document.getElementById(
-        "bookingStatus"
-    ).value =
+    /* =====================================================
+       BOOKING STATUS
+    ===================================================== */
+
+    document.getElementById("bookingStatus").value =
         booking.bookingStatus || "Pending";
 
-
-    document.getElementById(
-        "bookingNotes"
-    ).value =
+    document.getElementById("bookingNotes").value =
         booking.bookingNotes || "";
 
 
+    /* =====================================================
+       UPDATE DISPLAY
+    ===================================================== */
+
+    updateGuestCounts();
+
+    calculateAmounts();
+
     displayBookings();
 
-}
-
-
-/* =========================================================
+}/* =========================================================
    SEARCH BOOKINGS
 ========================================================= */
 
