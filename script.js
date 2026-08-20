@@ -1071,7 +1071,7 @@ function displayBookings(
 
 
         row.innerHTML = `
-            <td colspan="15"
+            <td colspan="18"
                 style="
                     text-align:center;
                     padding:30px;
