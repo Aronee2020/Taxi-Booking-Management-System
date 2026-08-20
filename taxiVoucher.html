@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Taxi Confirmation Voucher</title>
+
+    <link rel="stylesheet"
+          href="taxiVoucher.css">
+
+</head>
+
+<body>
+
+<div class="voucher-page">
+
+    <!-- =====================================================
+         TOP ACTION BUTTONS
+    ====================================================== -->
+
+    <div class="voucher-actions">
+
+        <button
+            type="button"
+            class="print-btn"
+            onclick="printVoucher()">
+            🖨 Print Voucher
+        </button>
+
+        <button
+            type="button"
+            class="close-btn"
+            onclick="window.close()">
+            ✕ Close
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         VOUCHER
+    ====================================================== -->
+
+    <div class="voucher-container">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="voucher-header">
+
+            <div class="company-details">
+
+                <h1>ARONEE TOURS &amp; TRAVELS PVT. LTD.</h1>
+
+                <p class="company-subtitle">
+                    TAXI SERVICES
+                </p>
+
+                <p>
+                    Kerala, India
+                </p>
+
+                <p>
+                    Phone / WhatsApp:
+                    <span id="companyPhone">
+                        +91 XXXXX XXXXX
+                    </span>
+                </p>
+
+                <p>
+                    Email:
+                    <span id="companyEmail">
+                        info@aronee.com
+                    </span>
+                </p>
+
+            </div>
+
+            <div class="voucher-title">
+
+                <h2>CONFIRMATION VOUCHER</h2>
+
+                <div class="voucher-id-box">
+
+                    <span>Booking ID</span>
+
+                    <strong id="bookingId">
+                        -
+                    </strong>
+
+                </div>
+
+                <div class="voucher-date-box">
+
+                    <span>Booking Date</span>
+
+                    <strong id="bookingDate">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="header-line"></div>
+
+
+        <!-- =================================================
+             CUSTOMER DETAILS
+        ================================================== -->
+
+        <section class="voucher-section">
+
+            <div class="section-title">
+                CUSTOMER DETAILS
+            </div>
+
+            <div class="details-grid">
+
+                <div class="detail-item">
+
+                    <span class="label">
+                        Customer Name
+                    </span>
+
+                    <span class="value"
+                          id="customerName">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="label">
+                        Customer ID
+                    </span>
+
+                    <span class="value"
+                          id="customerId">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="label">
+                        Mobile / WhatsApp
+                    </span>
+
+                    <span class="value"
+                          id="mobile">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item full-width"
+                     id="addressRow">
+
+                    <span class="label">
+                        Address
+                    </span>
+
+                    <span class="value"
+                          id="address">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             GUEST DETAILS
+             Hidden automatically when there are no guests
+        ================================================== -->
+
+        <section
+            class="voucher-section conditional-section"
+            id="guestSection"
+            style="display:none;">
+
+            <div class="section-title">
+                GUEST DETAILS
+            </div>
+
+            <div id="guestDetailsContainer"
+                 class="guest-details-container">
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TRIP DETAILS
+        ================================================== -->
+
+        <section class="voucher-section">
+
+            <div class="section-title">
+                TRIP DETAILS
+            </div>
+
+            <div class="details-grid">
+
+                <!-- Pickup Date -->
+
+                <div class="detail-item">
+
+                    <span class="label">
+                        Pickup Date
+                    </span>
+
+                    <span class="value"
+                          id="pickupDate">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- Pickup Time -->
+
+                <div class="detail-item">
+
+                    <span class="label">
+                        Pickup Time
+                    </span>
+
+                    <span class="value"
+                          id="pickupTime">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- Drop Date -->
+
+                <div class="detail-item">
+
+                    <span class="label">
+                        Drop Date
+                    </span>
+
+                    <span class="value"
+                          id="dropDate">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- Drop Time -->
+
+                <div class="detail-item">
+
+                    <span class="label">
+                        Drop Time
+                    </span>
+
+                    <span class="value"
+                          id="dropTime">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- Pickup Location -->
+
+                <div class="detail-item full-width">
+
+                    <span class="label">
+                        Pickup Location
+                    </span>
+
+                    <span class="value"
+                          id="pickupLocation">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- Drop Location -->
+
+                <div class="detail-item full-width">
+
+                    <span class="label">
+                        Drop Location
+                    </span>
+
+                    <span class="value"
+                          id="dropLocation">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- Trip Type -->
+
+                <div class="detail-item">
+
+                    <span class="label">
+                        Trip Type
+                    </span>
+
+                    <span class="value"
+                          id="tripType">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- Package
+                     Hidden if blank -->
+
+                <div class="detail-item"
+                     id="packageRow"
+                     style="display:none;">
+
+                    <span class="label">
+                        Package
+                    </span>
+
+                    <span class="value"
+                          id="package">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- Total KM / Hrs
+                     Hidden if blank -->
+
+                <div class="detail-item"
+                     id="totalKmHrsRow"
+                     style="display:none;">
+
+                    <span class="label">
+                        Total KM / Hrs
+                    </span>
+
+                    <span class="value"
+                          id="totalKmHrs">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- Itinerary
+                     Hidden if blank -->
+
+                <div class="detail-item full-width"
+                     id="itineraryRow"
+                     style="display:none;">
+
+                    <span class="label">
+                        Itinerary
+                    </span>
+
+                    <span class="value itinerary-value"
+                          id="itinerary">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             VEHICLE / DRIVER
+             These will only show if the data exists
+        ================================================== -->
+
+        <section
+            class="voucher-section conditional-section"
+            id="vehicleSection"
+            style="display:none;">
+
+            <div class="section-title">
+                TRANSPORTATION DETAILS
+            </div>
+
+            <div class="details-grid">
+
+                <div class="detail-item"
+                     id="vehicleRow"
+                     style="display:none;">
+
+                    <span class="label">
+                        Vehicle
+                    </span>
+
+                    <span class="value"
+                          id="vehicle">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item"
+                     id="driverRow"
+                     style="display:none;">
+
+                    <span class="label">
+                        Driver
+                    </span>
+
+                    <span class="value"
+                          id="driver">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item"
+                     id="noOfDaysRow"
+                     style="display:none;">
+
+                    <span class="label">
+                        No. of Days
+                    </span>
+
+                    <span class="value"
+                          id="noOfDays">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAYMENT DETAILS
+        ================================================== -->
+
+        <section class="voucher-section">
+
+            <div class="section-title">
+                PAYMENT DETAILS
+            </div>
+
+            <div class="payment-box">
+
+                <!-- Taxi Fare -->
+
+                <div class="payment-row"
+                     id="taxiFareRow"
+                     style="display:none;">
+
+                    <span>
+                        Taxi Fare
+                    </span>
+
+                    <strong id="taxiFare">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <!-- Toll
+                     Hidden if 0 / blank -->
+
+                <div class="payment-row"
+                     id="tollRow"
+                     style="display:none;">
+
+                    <span>
+                        Toll
+                    </span>
+
+                    <strong id="toll">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <!-- Total -->
+
+                <div class="payment-row total-row">
+
+                    <span>
+                        Total Amount
+                    </span>
+
+                    <strong id="totalAmount">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <!-- Advance -->
+
+                <div class="payment-row"
+                     id="advanceRow"
+                     style="display:none;">
+
+                    <span>
+                        Advance Received
+                    </span>
+
+                    <strong id="advanceReceived">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <!-- Payment Mode -->
+
+                <div class="payment-row"
+                     id="paymentModeRow"
+                     style="display:none;">
+
+                    <span>
+                        Payment Mode
+                    </span>
+
+                    <strong id="paymentMode">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <!-- Balance -->
+
+                <div class="payment-row balance-row">
+
+                    <span>
+                        Balance Amount
+                    </span>
+
+                    <strong id="balanceAmount">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BOOKING STATUS
+        ================================================== -->
+
+        <section class="voucher-section">
+
+            <div class="status-box">
+
+                <span class="status-label">
+                    Booking Status
+                </span>
+
+                <strong
+                    id="bookingStatus"
+                    class="booking-status">
+                    -
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BOOKING NOTES
+             Hidden when blank
+        ================================================== -->
+
+        <section
+            class="voucher-section conditional-section"
+            id="notesSection"
+            style="display:none;">
+
+            <div class="section-title">
+                SPECIAL INSTRUCTIONS / NOTES
+            </div>
+
+            <div class="notes-box"
+                 id="bookingNotes">
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TERMS
+        ================================================== -->
+
+        <section class="voucher-section terms-section">
+
+            <div class="section-title">
+                IMPORTANT INFORMATION
+            </div>
+
+            <ul>
+
+                <li>
+                    Please be ready at the pickup location
+                    at the confirmed pickup time.
+                </li>
+
+                <li>
+                    Any additional charges not included in
+                    the confirmed fare will be payable separately.
+                </li>
+
+                <li>
+                    Please verify the booking details and
+                    inform us immediately if any correction is required.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="voucher-footer">
+
+            <div class="footer-left">
+
+                <strong>
+                    Thank you for choosing
+                    Aronee Tours &amp; Travels.
+                </strong>
+
+                <p>
+                    We wish you a safe and pleasant journey.
+                </p>
+
+            </div>
+
+
+            <div class="footer-right">
+
+                <p>
+                    Authorized by
+                </p>
+
+                <strong>
+                    ARONEE TOURS &amp; TRAVELS PVT. LTD.
+                </strong>
+
+            </div>
+
+        </footer>
+
+
+    </div>
+
+</div>
+
+
+<script src="taxiVoucher.js"></script>
+
+</body>
+
+</html>
