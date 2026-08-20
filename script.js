@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDashboard();
 
     displayCurrentDate();
+       addGuestInputListeners();
+    updateGuestCounts();
 
     document.getElementById("footerYear").textContent =
         new Date().getFullYear();
@@ -460,16 +462,23 @@ function getFormData() {
 
     calculateAmounts();
 
+    /* =====================================================
+       GUEST COUNTS
+    ===================================================== */
 
     const adults =
         Number(
-            document.getElementById("adults").value
+            document.getElementById("adultCount").value
         ) || 0;
-
 
     const children =
         Number(
-            document.getElementById("children").value
+            document.getElementById("childCount").value
+        ) || 0;
+
+    const totalMembers =
+        Number(
+            document.getElementById("totalMembers").value
         ) || 0;
 
 
@@ -501,7 +510,6 @@ function getFormData() {
                     .value
                     .trim();
 
-
             if (name !== "" && age !== "") {
 
                 guestDetails.push({
@@ -521,6 +529,10 @@ function getFormData() {
         });
 
 
+    /* =====================================================
+       RETURN BOOKING DATA
+    ===================================================== */
+
     return {
 
         bookingId:
@@ -537,47 +549,50 @@ function getFormData() {
 
         mobile:
             document.getElementById("mobile").value.trim(),
-       address:
-    document.getElementById("address").value.trim(),
 
-        email:
-            document.getElementById("email").value.trim(),
+        address:
+            document.getElementById("address").value.trim(),
 
-        adults: adults,
+        totalMembers:
+            totalMembers,
 
-        children: children,
+        adults:
+            adults,
 
-        guestDetails: guestDetails,
+        children:
+            children,
 
+        guestDetails:
+            guestDetails,
+
+
+        /* =================================================
+           TRIP DETAILS
+        ================================================= */
 
         pickupDate:
-    document.getElementById("pickupDate").value,
+            document.getElementById("pickupDate").value,
 
-pickupTime:
-    document.getElementById("pickupTime").value,
+        pickupTime:
+            document.getElementById("pickupTime").value.trim(),
 
-dropDate:
-    document.getElementById("dropDate").value,
+        dropDate:
+            document.getElementById("dropDate").value,
 
-dropTime:
-    document.getElementById("dropTime").value,
+        dropTime:
+            document.getElementById("dropTime").value.trim(),
 
-pickupLocation:
-    document.getElementById("pickupLocation").value.trim(),
-dropDate:
-    document.getElementById("dropDate").value,
+        pickupLocation:
+            document.getElementById("pickupLocation").value.trim(),
 
-dropTime:
-    document.getElementById("dropTime").value,
-dropLocation:
-    document.getElementById("dropLocation").value.trim(),
+        dropLocation:
+            document.getElementById("dropLocation").value.trim(),
 
-tripType:
-    document.getElementById("tripType").value,
+        tripType:
+            document.getElementById("tripType").value,
 
         package:
             document.getElementById("package").value.trim(),
-
 
         itinerary:
             document.getElementById("itinerary").value.trim(),
@@ -585,6 +600,10 @@ tripType:
         totalKmHrs:
             document.getElementById("totalKmHrs").value.trim(),
 
+
+        /* =================================================
+           PAYMENT
+        ================================================= */
 
         taxiFare:
             Number(
@@ -595,7 +614,6 @@ tripType:
             Number(
                 document.getElementById("toll").value
             ) || 0,
-
 
         totalAmount:
             Number(
@@ -616,22 +634,22 @@ tripType:
             ) || 0,
 
 
+        /* =================================================
+           STATUS
+        ================================================= */
+
         bookingStatus:
             document.getElementById("bookingStatus").value,
 
         bookingNotes:
-            document.getElementById(
-                "bookingNotes"
-            ).value.trim(),
-
+            document.getElementById("bookingNotes").value.trim(),
 
         createdAt:
             new Date().toISOString()
 
     };
 
-}
-/* =========================================================
+}/* =========================================================
    VALIDATE BOOKING
 ========================================================= */
 
@@ -928,21 +946,11 @@ function clearForm() {
         "mobile"
     ).value = "";
 
+    document.getElementById("address").value = "";
 
-    document.getElementById(
-        "email"
-    ).value = "";
-
-
-    document.getElementById(
-        "adults"
-    ).value = "1";
-
-
-    document.getElementById(
-        "children"
-    ).value = "0";
-
+document.getElementById("totalMembers").value = "1";
+document.getElementById("adultCount").value = "1";
+document.getElementById("childCount").value = "0";
 
     document.getElementById(
         "pickupLocation"
@@ -1020,6 +1028,48 @@ document.getElementById(
 
 
     setDefaultDates();
+   /* Clear guest details */
+
+const guestList =
+    document.getElementById("guestList");
+
+guestList.innerHTML = `
+    <div class="guest-row">
+
+        <input
+            type="text"
+            class="guest-name"
+            placeholder="Guest Name">
+
+        <input
+            type="number"
+            class="guest-age"
+            placeholder="Age"
+            min="0"
+            max="120">
+
+        <input
+            type="text"
+            class="guest-id-proof"
+            placeholder="ID Proof Name">
+
+        <input
+            type="text"
+            class="guest-id-number"
+            placeholder="ID Number">
+
+        <button
+            type="button"
+            class="remove-guest-btn"
+            onclick="removeGuest(this)">
+            ✕
+        </button>
+
+    </div>
+`;
+
+addGuestInputListeners();
+updateGuestCounts();
 
     generateBookingId();
 
