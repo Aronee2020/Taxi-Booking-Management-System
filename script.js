@@ -1310,13 +1310,6 @@ function selectBooking(bookingId) {
     ).value =
         booking.mobile || "";
 
-
-    document.getElementById(
-        "email"
-    ).value =
-        booking.email || "";
-
-
     document.getElementById(
         "adults"
     ).value =
@@ -1622,7 +1615,6 @@ function exportBookings() {
         "Booking Date",
         "Customer Name",
         "Mobile",
-        "Email",
         "Adults",
         "Children",
         "Pickup Date",
@@ -1661,7 +1653,6 @@ function exportBookings() {
                 booking.bookingDate,
                 booking.customerName,
                 booking.mobile,
-                booking.email,
                 booking.adults,
                 booking.children,
                 booking.pickupDate,
