@@ -1229,8 +1229,54 @@ function escapeHTML(
    PRINT VOUCHER
 ========================================================= */
 
-function printVoucher() {
+function downloadVoucher() {
 
-    window.print();
+    const voucher =
+        document.querySelector(".voucher-container");
+
+    if (!voucher) {
+        alert("Voucher not found.");
+        return;
+    }
+
+    const bookingId =
+        document.getElementById("bookingId")
+            ?.textContent
+            .trim() || "Taxi_Booking";
+
+    const options = {
+
+        margin: 0,
+
+        filename:
+            "Taxi_Confirmation_Voucher_" +
+            bookingId +
+            ".pdf",
+
+        image: {
+            type: "jpeg",
+            quality: 0.98
+        },
+
+        html2canvas: {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        },
+
+        jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait"
+        }
+
+    };
+
+    html2pdf()
+        .set(options)
+        .from(voucher)
+        .save();
+
+}
 
 }
