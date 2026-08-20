@@ -562,7 +562,11 @@ dropTime:
 
 pickupLocation:
     document.getElementById("pickupLocation").value.trim(),
+dropDate:
+    document.getElementById("dropDate").value,
 
+dropTime:
+    document.getElementById("dropTime").value,
 dropLocation:
     document.getElementById("dropLocation").value.trim(),
 
