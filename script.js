@@ -1071,7 +1071,7 @@ function displayBookings(
 
 
         row.innerHTML = `
-            <td colspan="18"
+            <td colspan="15"
                 style="
                     text-align:center;
                     padding:30px;
@@ -1158,22 +1158,9 @@ function displayBookings(
                 ${escapeHTML(booking.dropLocation)}
             </td>
 
-            <td>
-                ${escapeHTML(booking.vehicle || "-")}
-            </td>
-
-            <td>
-    ${escapeHTML(booking.driver || "-")}
-</td>
-
-<td>
-    ${escapeHTML(booking.noOfDays || "-")}
-</td>
-
-<td>
+           <td>
     ${totalPax}
 </td>
-
             <td>
                 ₹${formatNumber(booking.totalAmount)}
             </td>
