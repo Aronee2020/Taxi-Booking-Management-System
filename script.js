@@ -677,7 +677,28 @@ function validateBooking(booking) {
 
         return false;
     }
+if (!booking.dropDate) {
 
+    alert("Please enter drop date.");
+
+    document.getElementById(
+        "dropDate"
+    ).focus();
+
+    return false;
+}
+
+
+if (!booking.dropTime) {
+
+    alert("Please enter drop time.");
+
+    document.getElementById(
+        "dropTime"
+    ).focus();
+
+    return false;
+}
 
     if (!booking.pickupLocation) {
 
