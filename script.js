@@ -938,6 +938,25 @@ function clearForm() {
     document.getElementById(
         "pickupTime"
     ).value = "";
+   document.getElementById(
+    "dropDate"
+).value = "";
+
+document.getElementById(
+    "dropTime"
+).value = "";
+
+document.getElementById(
+    "vehicle"
+).value = "";
+
+document.getElementById(
+    "driver"
+).value = "";
+
+document.getElementById(
+    "noOfDays"
+).value = "";
 
 
     document.getElementById(
