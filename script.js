@@ -569,14 +569,6 @@ dropLocation:
 tripType:
     document.getElementById("tripType").value,
 
-vehicle:
-    document.getElementById("vehicle").value.trim(),
-
-driver:
-    document.getElementById("driver").value.trim(),
-
-noOfDays:
-    document.getElementById("noOfDays").value.trim(),
         package:
             document.getElementById("package").value.trim(),
 
@@ -967,19 +959,6 @@ document.getElementById(
     "dropTime"
 ).value = "";
 
-document.getElementById(
-    "vehicle"
-).value = "";
-
-document.getElementById(
-    "driver"
-).value = "";
-
-document.getElementById(
-    "noOfDays"
-).value = "";
-
-
     document.getElementById(
         "tripType"
     ).value = "";
@@ -1347,25 +1326,7 @@ document.getElementById(
     "tripType"
 ).value =
     booking.tripType || "One Way";
-
-
-document.getElementById(
-    "vehicle"
-).value =
-    booking.vehicle || "";
-
-
-document.getElementById(
-    "driver"
-).value =
-    booking.driver || "";
-
-
-document.getElementById(
-    "noOfDays"
-).value =
-    booking.noOfDays || "";   
-   
+ 
 document.getElementById(
     "package"
 ).value =
