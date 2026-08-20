@@ -1337,4 +1337,4 @@ function downloadVoucher() {
 
 }
 
-}
+
