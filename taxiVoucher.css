@@ -1,112 +1,87 @@
 /* =========================================================
    ARONEE TOURS & TRAVELS
    TAXI CONFIRMATION VOUCHER
+   PROFESSIONAL AI-STYLE DESIGN
 ========================================================= */
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
+html,
 body {
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background: #eef2f7;
-
-    color: #1f2937;
-
-    font-size: 14px;
-
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background: #eef1f5;
+    color: #172033;
 }
 
 
 /* =========================================================
-   ACTION BUTTONS
+   PAGE
+========================================================= */
+
+.voucher-page {
+    width: 100%;
+    padding: 25px 0 40px;
+}
+
+
+/* =========================================================
+   TOP BUTTONS
 ========================================================= */
 
 .voucher-actions {
-
     width: 210mm;
-
-    margin: 20px auto;
-
+    max-width: calc(100% - 30px);
+    margin: 0 auto 18px;
     display: flex;
-
     justify-content: flex-end;
-
     gap: 10px;
-
 }
 
 .voucher-actions button {
-
     border: none;
-
-    padding: 10px 18px;
-
-    border-radius: 6px;
-
+    padding: 11px 18px;
+    border-radius: 7px;
     font-size: 14px;
-
     font-weight: 600;
-
     cursor: pointer;
-
+    transition: 0.2s ease;
 }
 
 .print-btn {
-
-    background: #166534;
-
+    background: #c99b3b;
     color: white;
-
 }
 
 .print-btn:hover {
-
-    background: #14532d;
-
+    background: #ad812d;
 }
 
 .close-btn {
-
-    background: #dc2626;
-
+    background: #24344d;
     color: white;
-
 }
 
 .close-btn:hover {
-
-    background: #b91c1c;
-
+    background: #17243a;
 }
 
 
 /* =========================================================
-   A4 PAGE
+   MAIN A4 VOUCHER
 ========================================================= */
 
 .voucher-container {
-
     width: 210mm;
-
     min-height: 297mm;
-
-    margin: 0 auto 30px;
-
-    background: white;
-
-    padding: 15mm;
-
-    box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.12);
-
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 15mm 14mm 12mm;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.12);
+    position: relative;
 }
 
 
@@ -115,111 +90,120 @@ body {
 ========================================================= */
 
 .voucher-header {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: flex-start;
-
-    gap: 20px;
-
+    gap: 30px;
 }
 
+
+/* =========================================================
+   COMPANY DETAILS
+========================================================= */
+
 .company-details {
-
     flex: 1;
+    min-width: 0;
+}
 
+.company-logo {
+    width: 105px;
+    height: auto;
+    max-height: 80px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 9px;
 }
 
 .company-details h1 {
-
+    margin: 0;
+    color: #172d4f;
     font-size: 21px;
-
     font-weight: 800;
-
-    color: #123b6d;
-
-    margin-bottom: 4px;
-
+    letter-spacing: 0.3px;
 }
 
 .company-subtitle {
-
+    margin: 4px 0 6px;
+    color: #c59635;
     font-size: 13px;
-
-    font-weight: 700;
-
-    letter-spacing: 1.5px;
-
-    color: #374151;
-
-    margin-bottom: 8px;
-
+    font-weight: 800;
+    letter-spacing: 2px;
 }
 
 .company-details p {
-
-    font-size: 12px;
-
-    line-height: 1.5;
-
-    color: #4b5563;
-
+    margin: 3px 0;
+    font-size: 10.5px;
+    color: #5b6677;
+    line-height: 1.4;
 }
 
 
+/* =========================================================
+   VOUCHER TITLE
+========================================================= */
+
 .voucher-title {
-
-    width: 220px;
-
+    width: 255px;
     text-align: right;
-
 }
 
 .voucher-title h2 {
-
-    font-size: 18px;
-
-    color: #123b6d;
-
-    margin-bottom: 12px;
-
+    margin: 3px 0 14px;
+    color: #172d4f;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
+
+
+/* =========================================================
+   BOOKING ID / DATE BOXES
+========================================================= */
 
 .voucher-id-box,
 .voucher-date-box {
-
     display: flex;
-
     justify-content: space-between;
+    align-items: center;
+    padding: 9px 12px;
+    margin-bottom: 7px;
+    border: 1px solid #dce2e9;
+    background: #f7f9fb;
+    border-radius: 5px;
+}
 
-    gap: 10px;
-
-    padding: 5px 8px;
-
-    border-bottom: 1px solid #d1d5db;
-
-    font-size: 11px;
-
+.voucher-id-box span,
+.voucher-date-box span {
+    font-size: 9px;
+    color: #697586;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 700;
 }
 
 .voucher-id-box strong,
 .voucher-date-box strong {
-
-    color: #111827;
-
+    font-size: 12px;
+    color: #172d4f;
 }
 
 
+/* =========================================================
+   HEADER LINE
+========================================================= */
+
 .header-line {
-
     height: 3px;
-
-    background: #123b6d;
-
-    margin: 12px 0 18px;
-
+    width: 100%;
+    margin: 15px 0 17px;
+    background: linear-gradient(
+        90deg,
+        #172d4f 0%,
+        #172d4f 72%,
+        #c59635 72%,
+        #c59635 100%
+    );
 }
 
 
@@ -228,29 +212,26 @@ body {
 ========================================================= */
 
 .voucher-section {
-
-    margin-bottom: 17px;
-
+    margin-bottom: 14px;
+    page-break-inside: avoid;
 }
 
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
 .section-title {
-
-    background: #123b6d;
-
-    color: white;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: .5px;
-
-    padding: 7px 10px;
-
-    margin-bottom: 10px;
-
-    border-radius: 3px;
-
+    position: relative;
+    padding: 8px 11px;
+    margin-bottom: 8px;
+    background: #172d4f;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    border-left: 5px solid #c59635;
+    text-transform: uppercase;
 }
 
 
@@ -259,74 +240,76 @@ body {
 ========================================================= */
 
 .details-grid {
-
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    border-top: 1px solid #e5e7eb;
-
-    border-left: 1px solid #e5e7eb;
-
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid #dce2e9;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
+
+/* =========================================================
+   DETAIL ITEM
+========================================================= */
+
 .detail-item {
-
-    min-height: 45px;
-
-    padding: 7px 10px;
-
-    border-right: 1px solid #e5e7eb;
-
-    border-bottom: 1px solid #e5e7eb;
-
+    min-height: 48px;
+    padding: 8px 11px;
+    background: #ffffff;
+    border-right: 1px solid #e1e5ea;
+    border-bottom: 1px solid #e1e5ea;
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
+}
 
+.detail-item:nth-child(even) {
+    border-right: none;
 }
 
 .detail-item.full-width {
-
     grid-column: 1 / -1;
-
+    border-right: none;
 }
 
-.label {
 
-    font-size: 10px;
+/* =========================================================
+   LABEL
+========================================================= */
 
+.detail-item .label {
+    display: block;
+    margin-bottom: 4px;
+    color: #788394;
+    font-size: 8.5px;
+    font-weight: 700;
     text-transform: uppercase;
-
-    letter-spacing: .4px;
-
-    color: #6b7280;
-
-    margin-bottom: 3px;
-
+    letter-spacing: 0.65px;
 }
 
-.value {
 
-    font-size: 13px;
+/* =========================================================
+   VALUE
+========================================================= */
 
+.detail-item .value {
+    display: block;
+    color: #172033;
+    font-size: 11.5px;
     font-weight: 600;
-
-    color: #111827;
-
+    line-height: 1.4;
     word-break: break-word;
-
 }
+
+
+/* =========================================================
+   ITINERARY
+========================================================= */
 
 .itinerary-value {
-
     white-space: pre-line;
-
-    line-height: 1.5;
-
+    line-height: 1.5 !important;
 }
 
 
@@ -335,215 +318,209 @@ body {
 ========================================================= */
 
 .guest-details-container {
-
-    border: 1px solid #e5e7eb;
-
+    width: 100%;
+    border: 1px solid #dce2e9;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .guest-row-voucher {
-
     display: grid;
-
-    grid-template-columns:
-        35px 1fr 100px 1fr 130px;
-
-    border-bottom: 1px solid #e5e7eb;
-
-    min-height: 38px;
-
-    align-items: center;
-
-}
-
-.guest-row-voucher:last-child {
-
-    border-bottom: none;
-
-}
-
-.guest-cell {
-
-    padding: 7px 9px;
-
-    border-right: 1px solid #e5e7eb;
-
-    font-size: 12px;
-
-}
-
-.guest-cell:last-child {
-
-    border-right: none;
-
+    grid-template-columns: 45px 1fr 80px 1fr 1.2fr;
+    min-height: 35px;
 }
 
 .guest-header-row {
+    background: #f0f3f7;
+    color: #172d4f;
+    font-weight: 800;
+}
 
-    background: #f3f4f6;
+.guest-cell {
+    padding: 7px 9px;
+    border-right: 1px solid #dce2e9;
+    border-bottom: 1px solid #e2e6eb;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}
 
-    font-weight: 700;
+.guest-header-row .guest-cell {
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
-    color: #374151;
+.guest-cell:last-child {
+    border-right: none;
+}
 
+.id-proof-cell {
+    min-width: 0;
+}
+
+.guest-row-voucher:not(.guest-header-row):nth-child(odd) {
+    background: #fafbfc;
 }
 
 
 /* =========================================================
-   PAYMENT
+   TRANSPORTATION SECTION
+   HIDE COMPLETELY
+   Vehicle / Driver / No. of Days are not required
+========================================================= */
+
+#vehicleSection {
+    display: none !important;
+}
+
+
+/* =========================================================
+   PAYMENT BOX
 ========================================================= */
 
 .payment-box {
-
-    border: 1px solid #d1d5db;
-
-    border-radius: 4px;
-
+    border: 1px solid #dce2e9;
+    border-radius: 6px;
     overflow: hidden;
-
+    background: #ffffff;
 }
 
 .payment-row {
-
+    min-height: 38px;
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
-    padding: 8px 12px;
-
-    border-bottom: 1px solid #e5e7eb;
-
-    font-size: 13px;
-
+    padding: 7px 13px;
+    border-bottom: 1px solid #e4e7eb;
+    font-size: 10.5px;
 }
 
 .payment-row:last-child {
-
     border-bottom: none;
+}
 
+.payment-row span {
+    color: #5f6b7a;
+    font-weight: 600;
 }
 
 .payment-row strong {
-
-    font-size: 13px;
-
-}
-
-.total-row {
-
-    background: #f3f4f6;
-
-    font-weight: 700;
-
-    font-size: 14px;
-
-}
-
-.total-row strong {
-
-    font-size: 15px;
-
-}
-
-.balance-row {
-
-    background: #f8fafc;
-
-    font-weight: 700;
-
-}
-
-.balance-row strong {
-
-    font-size: 15px;
-
+    color: #172033;
+    font-size: 11.5px;
 }
 
 
 /* =========================================================
-   STATUS
+   TOTAL AMOUNT
+========================================================= */
+
+.total-row {
+    background: #172d4f;
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+.total-row span {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.total-row strong {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BALANCE
+========================================================= */
+
+.balance-row {
+    background: #fffaf0;
+}
+
+.balance-row span {
+    color: #9a7025;
+    font-weight: 800;
+}
+
+.balance-row strong {
+    color: #a6751e;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BOOKING STATUS
 ========================================================= */
 
 .status-box {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
-    border: 1px solid #d1d5db;
-
-    border-radius: 5px;
-
-    padding: 10px 14px;
-
+    padding: 11px 14px;
+    border: 1px solid #dce2e9;
+    border-radius: 6px;
+    background: #f8fafc;
 }
 
 .status-label {
-
-    font-size: 12px;
-
-    font-weight: 700;
-
+    color: #5f6b7a;
+    font-size: 9px;
+    font-weight: 800;
     text-transform: uppercase;
-
-    color: #4b5563;
-
+    letter-spacing: 0.8px;
 }
 
 .booking-status {
-
-    padding: 5px 14px;
-
-    border-radius: 20px;
-
-    font-size: 12px;
-
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 95px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 
-/* Status colours */
+/* =========================================================
+   STATUS COLORS
+========================================================= */
 
 .status-confirmed {
-
-    background: #dcfce7;
-
-    color: #166534;
-
+    background: #e5f6ec;
+    color: #178044;
+    border: 1px solid #bce7cc;
 }
 
 .status-pending {
-
-    background: #fef3c7;
-
-    color: #92400e;
-
-}
-
-.status-completed {
-
-    background: #dbeafe;
-
-    color: #1e40af;
-
+    background: #fff5d9;
+    color: #9a6d13;
+    border: 1px solid #eed899;
 }
 
 .status-cancelled {
-
-    background: #fee2e2;
-
-    color: #991b1b;
-
+    background: #fde8e8;
+    color: #c0392b;
+    border: 1px solid #f3c0bc;
 }
 
 .status-postponed {
+    background: #e9eefb;
+    color: #3d5ea8;
+    border: 1px solid #c8d3f0;
+}
 
-    background: #f3e8ff;
-
-    color: #6b21a8;
-
+.status-completed {
+    background: #e4f4f6;
+    color: #147481;
+    border: 1px solid #b8dfe4;
 }
 
 
@@ -552,42 +529,44 @@ body {
 ========================================================= */
 
 .notes-box {
-
-    border: 1px solid #d1d5db;
-
-    padding: 10px;
-
-    border-radius: 4px;
-
-    font-size: 12px;
-
-    line-height: 1.6;
-
+    padding: 11px 13px;
+    min-height: 45px;
+    border: 1px solid #dce2e9;
+    border-left: 4px solid #c59635;
+    border-radius: 5px;
+    background: #fffdf8;
+    color: #4d5868;
+    font-size: 10.5px;
+    line-height: 1.55;
     white-space: pre-line;
-
 }
 
 
 /* =========================================================
-   TERMS
+   IMPORTANT INFORMATION
 ========================================================= */
 
+.terms-section {
+    margin-top: 4px;
+}
+
 .terms-section ul {
-
-    margin-left: 20px;
-
+    margin: 0;
+    padding: 10px 14px 10px 27px;
+    border: 1px solid #dce2e9;
+    border-radius: 5px;
+    background: #f8fafc;
 }
 
 .terms-section li {
+    margin-bottom: 5px;
+    color: #596575;
+    font-size: 9.5px;
+    line-height: 1.45;
+}
 
-    font-size: 11px;
-
-    line-height: 1.6;
-
-    margin-bottom: 4px;
-
-    color: #4b5563;
-
+.terms-section li:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -596,55 +575,54 @@ body {
 ========================================================= */
 
 .voucher-footer {
-
-    border-top: 1px solid #d1d5db;
-
-    margin-top: 25px;
-
-    padding-top: 12px;
-
     display: flex;
-
     justify-content: space-between;
-
-    gap: 20px;
-
+    align-items: flex-end;
+    gap: 30px;
+    margin-top: 17px;
+    padding-top: 13px;
+    border-top: 2px solid #172d4f;
 }
 
 .footer-left {
-
-    font-size: 11px;
-
-    color: #4b5563;
-
+    flex: 1;
 }
 
 .footer-left strong {
-
-    color: #123b6d;
-
+    color: #172d4f;
+    font-size: 10.5px;
 }
 
 .footer-left p {
-
-    margin-top: 4px;
-
+    margin: 4px 0 0;
+    color: #7a8492;
+    font-size: 9px;
 }
 
 .footer-right {
-
     text-align: right;
+}
 
-    font-size: 10px;
-
-    color: #4b5563;
-
+.footer-right p {
+    margin: 0 0 4px;
+    color: #7a8492;
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .footer-right strong {
+    color: #172d4f;
+    font-size: 9px;
+}
 
-    color: #123b6d;
 
+/* =========================================================
+   HIDDEN CONDITIONAL ELEMENTS
+========================================================= */
+
+.conditional-section[style*="display:none"] {
+    display: none !important;
 }
 
 
@@ -652,135 +630,126 @@ body {
    MOBILE
 ========================================================= */
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
+
+    .voucher-page {
+        padding: 10px;
+    }
 
     .voucher-actions {
-
-        width: 95%;
-
+        width: 100%;
+        max-width: none;
     }
 
     .voucher-container {
-
-        width: 95%;
-
+        width: 100%;
         min-height: auto;
-
-        padding: 20px;
-
+        padding: 25px 18px;
     }
 
     .voucher-header {
-
         flex-direction: column;
-
     }
 
     .voucher-title {
-
         width: 100%;
-
         text-align: left;
+    }
 
+    .voucher-title h2 {
+        font-size: 20px;
     }
 
     .details-grid {
-
         grid-template-columns: 1fr;
+    }
 
+    .detail-item {
+        border-right: none;
     }
 
     .detail-item.full-width {
-
         grid-column: auto;
+    }
 
+    .guest-details-container {
+        overflow-x: auto;
     }
 
     .guest-row-voucher {
-
-        grid-template-columns:
-            30px 1fr 70px;
-
-    }
-
-    .guest-row-voucher
-    .id-proof-cell {
-
-        display: none;
-
+        min-width: 600px;
     }
 
     .voucher-footer {
-
         flex-direction: column;
-
+        align-items: flex-start;
     }
 
     .footer-right {
-
         text-align: left;
-
     }
-
 }
 
 
 /* =========================================================
-   PRINT
+   PRINT / PDF
 ========================================================= */
 
 @media print {
 
     @page {
-
-        size: A4;
-
+        size: A4 portrait;
         margin: 0;
-
     }
 
+    html,
     body {
+        background: #ffffff;
+        margin: 0;
+        padding: 0;
+    }
 
-        background: white;
-
+    .voucher-page {
+        padding: 0;
     }
 
     .voucher-actions {
-
         display: none !important;
-
     }
 
     .voucher-container {
-
         width: 210mm;
-
         min-height: 297mm;
-
         margin: 0;
-
-        padding: 12mm;
-
+        padding: 13mm 14mm 11mm;
         box-shadow: none;
-
     }
 
     .voucher-section {
-
-        break-inside: avoid;
-
+        page-break-inside: avoid;
     }
 
-    .guest-details-container {
-
-        break-inside: avoid;
-
+    .guest-details-container,
+    .payment-box,
+    .details-grid,
+    .status-box,
+    .notes-box {
+        page-break-inside: avoid;
     }
-
 }
-.company-logo {
-    width: 120px;
-    height: auto;
-    display: block;
-    margin-bottom: 8px;
+
+
+/* =========================================================
+   PDF QUALITY
+========================================================= */
+
+.voucher-container,
+.voucher-header,
+.voucher-section,
+.details-grid,
+.payment-box,
+.guest-details-container,
+.voucher-footer {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
 }
