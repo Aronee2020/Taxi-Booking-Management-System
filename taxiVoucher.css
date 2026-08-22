@@ -1,6 +1,6 @@
 /* =========================================================
    ARONEE TAXI CONFIRMATION VOUCHER
-   A4 DESIGN - TIMES NEW ROMAN
+   PROFESSIONAL A4 DESIGN
    ========================================================= */
 
 * {
@@ -11,286 +11,383 @@
 }
 
 body {
-    background: #f3f5f8;
-    color: #101d3b;
-    font-family: "Times New Roman", Times, serif;
+    background: #eef1f5;
+    color: #101f40;
 }
 
-/* =========================
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.voucher-page {
+    width: 100%;
+    padding: 20px;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.voucher-actions {
+    width: 210mm;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.voucher-actions button {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.print-btn {
+    background: #102f68;
+    color: #fff;
+}
+
+.close-btn {
+    background: #777;
+    color: #fff;
+}
+
+/* =========================================================
    MAIN VOUCHER
-   ========================= */
+   ========================================================= */
 
 .voucher-container {
     width: 210mm;
     min-height: 297mm;
-    margin: 20px auto;
-    padding: 9mm;
-    background: #ffffff;
+    margin: auto;
+    padding: 8mm;
 
-    border: 2px solid #102d63;
-    border-radius: 20px;
+    background: #fff;
 
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+    border: 2px solid #102f68;
+    border-radius: 18px;
 
-    font-family: "Times New Roman", Times, serif;
+    box-shadow: 0 8px 30px rgba(0,0,0,.12);
+
+    overflow: hidden;
 }
 
-/* =========================
+/* =========================================================
    HEADER
-   ========================= */
+   ========================================================= */
 
 .voucher-header {
     display: grid;
     grid-template-columns: 56% 44%;
-    min-height: 68mm;
-    border-bottom: 1px dashed #183b73;
-    padding-bottom: 7px;
+    min-height: 64mm;
 }
 
-.company-section {
-    padding: 5px 15px 5px 20px;
-    border-right: 1px solid #b5bfd0;
+.company-details {
+    padding: 5px 18px 5px 8px;
+    border-right: 1px solid #aab6c8;
+}
+
+.company-brand {
+    display: flex;
+    align-items: center;
 }
 
 .company-logo {
-    width: 125px;
-    height: auto;
+    width: 115px;
+    height: 100px;
     object-fit: contain;
-    float: left;
-    margin-right: 18px;
+    margin-right: 12px;
 }
 
-.company-name {
-    color: #102d63;
-    font-size: 27px;
-    font-weight: bold;
+.company-heading h1 {
+    color: #102f68;
+    font-size: 25px;
     line-height: 1.05;
-    text-transform: uppercase;
-    padding-top: 4px;
+    font-weight: bold;
 }
 
 .company-subtitle {
-    color: #e4a51c;
-    font-size: 22px;
-    font-weight: bold;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.company-info {
-    clear: both;
-    margin-top: 18px;
-    font-size: 16px;
-    line-height: 2;
-    color: #111;
-}
-
-.company-info i,
-.company-info .icon {
-    color: #102d63;
-    margin-right: 8px;
-}
-
-/* =========================
-   VOUCHER TITLE
-   ========================= */
-
-.voucher-title-section {
-    text-align: center;
-    padding: 5px 10px;
-}
-
-.voucher-title {
-    color: #102d63;
-    font-size: 30px;
-    font-weight: bold;
-    line-height: 1.15;
-    text-transform: uppercase;
-}
-
-.title-decoration {
-    margin: 14px auto;
-    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 9px;
+
+    color: #d99b13;
+
+    font-size: 19px;
+    font-weight: bold;
+
+    margin-top: 9px;
 }
 
-.title-decoration::before,
-.title-decoration::after {
-    content: "";
+.company-subtitle span {
+    width: 42px;
     height: 2px;
-    background: #e4a51c;
+    background: #d99b13;
+}
+
+.company-contact {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.contact-icon {
+    color: #102f68;
+    font-size: 15px;
+    min-width: 17px;
+}
+
+.company-contact strong {
+    color: #111;
+}
+
+/* =========================================================
+   VOUCHER TITLE
+   ========================================================= */
+
+.voucher-heading {
+    padding: 3px 8px;
+    text-align: center;
+}
+
+.voucher-heading h2 {
+    color: #102f68;
+    font-size: 27px;
+    line-height: 1.08;
+    font-weight: bold;
+}
+
+.gold-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    color: #d99b13;
+    margin: 9px 0 10px;
+}
+
+.gold-decoration span {
+    height: 2px;
+    background: #d99b13;
     flex: 1;
 }
 
-.title-decoration span {
-    color: #e4a51c;
-    font-size: 20px;
-}
-
-/* =========================
-   BOOKING ID / DATE
-   ========================= */
-
 .booking-summary {
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
 
-.booking-row {
+.booking-summary-row {
     display: grid;
-    grid-template-columns: 48% 52%;
+    grid-template-columns: 47% 53%;
+
     height: 39px;
-    margin-bottom: 7px;
-    border: 1px solid #102d63;
+
+    border: 1px solid #102f68;
     border-radius: 7px;
+
     overflow: hidden;
 }
 
-.booking-label {
-    background: #102d63;
-    color: #fff;
+.booking-summary-label {
     display: flex;
     align-items: center;
-    padding: 0 12px;
-    font-size: 16px;
+    gap: 7px;
+
+    background: #102f68;
+    color: #fff;
+
+    padding-left: 10px;
+
+    font-size: 14px;
     font-weight: bold;
 }
 
-.booking-value {
+.summary-icon {
+    font-size: 17px;
+}
+
+.booking-summary-row > strong {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #111;
-    font-size: 18px;
-    font-weight: bold;
+
+    color: #101010;
+    font-size: 17px;
 }
 
-/* =========================
-   SECTION
-   ========================= */
+/* =========================================================
+   HEADER LINE
+   ========================================================= */
+
+.header-line {
+    border-top: 1px dashed #102f68;
+    margin: 3px 0 13px;
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 
 .voucher-section {
-    position: relative;
-    margin-top: 14px;
-    border: 1px solid #8fa1bd;
+    margin-top: 13px;
+
+    border: 1px solid #94a4bc;
     border-radius: 9px;
+
     overflow: visible;
 }
 
 .section-title {
-    position: relative;
     display: inline-block;
 
     margin-top: -1px;
     margin-left: -1px;
-    padding: 5px 16px;
 
-    background: #102d63;
-    color: #ffffff;
+    padding: 5px 15px;
+
+    background: #102f68;
+    color: #fff;
 
     border-radius: 9px 9px 0 0;
 
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    text-transform: uppercase;
+
+    letter-spacing: .2px;
 }
 
-/* =========================
-   CUSTOMER DETAILS
-   ========================= */
+/* =========================================================
+   CUSTOMER
+   ========================================================= */
 
 .customer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.customer-item {
-    min-height: 53px;
-    padding: 8px 14px;
-    border-right: 1px solid #aab6ca;
-    border-top: 1px solid #aab6ca;
+.detail-item {
+    display: flex;
+    align-items: center;
+
+    min-height: 55px;
+
+    padding: 8px 12px;
+
+    border-top: 1px solid #c2cad6;
+    border-right: 1px solid #c2cad6;
 }
 
-.customer-item:last-child {
+.customer-grid .detail-item:nth-child(3) {
     border-right: none;
 }
 
-.customer-item.full-width {
+.address-item {
     grid-column: 1 / -1;
     border-right: none;
 }
 
-.field-label {
-    display: block;
-    color: #102d63;
-    font-size: 15px;
-    margin-bottom: 4px;
+.detail-icon {
+    flex: 0 0 29px;
+
+    color: #102f68;
+
+    font-size: 23px;
+
+    margin-right: 7px;
+
+    text-align: center;
 }
 
-.field-value {
+.detail-content {
+    min-width: 0;
+}
+
+.label {
     display: block;
+
+    color: #102f68;
+
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.value {
+    display: block;
+
     color: #111;
-    font-size: 17px;
+
+    font-size: 16px;
     font-weight: bold;
+
+    word-break: break-word;
 }
 
-/* =========================
-   GUEST DETAILS TABLE
-   ========================= */
+/* =========================================================
+   GUEST TABLE
+   ========================================================= */
 
+.guest-details-container {
+    padding: 0;
+}
+
+.guest-details-container table,
 .guest-table {
     width: 100%;
+
     border-collapse: separate;
     border-spacing: 0;
+
+    border-radius: 7px;
     overflow: hidden;
 
-    border: 1px solid #8fa1bd;
-    border-radius: 7px;
-
-    margin-top: 0;
+    font-size: 14px;
 }
 
-.guest-table th {
-    background: #102d63;
-    color: white;
+.guest-details-container th {
+    background: #102f68;
+    color: #fff;
 
-    font-size: 16px;
+    padding: 8px 5px;
+
+    font-size: 14px;
     font-weight: bold;
 
-    padding: 9px 6px;
-    text-align: center;
-
-    border-right: 1px solid #ffffff;
+    border-right: 1px solid rgba(255,255,255,.5);
 }
 
-.guest-table th:last-child {
+.guest-details-container td {
+    padding: 7px 5px;
+
+    text-align: center;
+
+    color: #111;
+
+    border-top: 1px solid #b8c3d2;
+    border-right: 1px dotted #aab6c8;
+
+    font-size: 14px;
+}
+
+.guest-details-container td:last-child {
     border-right: none;
 }
 
-.guest-table td {
-    padding: 8px 7px;
-    text-align: center;
-
-    font-size: 16px;
-    color: #101d3b;
-
-    border-right: 1px dotted #9ba8bc;
-    border-top: 1px solid #9ba8bc;
-}
-
-.guest-table td:last-child {
-    border-right: none;
-}
-
-.guest-table td strong {
-    font-size: 17px;
-}
-
-/* =========================
+/* =========================================================
    TRIP DETAILS
-   ========================= */
+   ========================================================= */
 
 .trip-grid {
     display: grid;
@@ -298,19 +395,18 @@ body {
 }
 
 .trip-item {
-    min-height: 57px;
-    padding: 8px 12px;
+    display: flex;
+    align-items: center;
 
-    border-top: 1px solid #aab6ca;
-    border-right: 1px solid #aab6ca;
+    min-height: 55px;
+
+    padding: 8px 9px;
+
+    border-top: 1px solid #c2cad6;
+    border-right: 1px solid #c2cad6;
 }
 
 .trip-item:nth-child(4n) {
-    border-right: none;
-}
-
-.trip-item.full-width {
-    grid-column: 1 / -1;
     border-right: none;
 }
 
@@ -318,343 +414,358 @@ body {
     grid-column: span 2;
 }
 
-.trip-label {
-    display: block;
-    color: #102d63;
-    font-size: 15px;
-    margin-bottom: 4px;
+.trip-item.full-width {
+    grid-column: 1 / -1;
+    border-right: none;
 }
 
-.trip-value {
-    display: block;
-    color: #111;
-    font-size: 16px;
-    font-weight: bold;
+.itinerary-value {
+    line-height: 1.3;
 }
 
-/* =========================
-   ICONS
-   ========================= */
+/* =========================================================
+   TRANSPORTATION
+   ========================================================= */
 
-.detail-icon {
-    float: left;
-    width: 28px;
-    margin-right: 8px;
-
-    color: #102d63;
-    font-size: 25px;
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
-.detail-content {
-    overflow: hidden;
+.details-grid .detail-item {
+    border-top: 1px solid #c2cad6;
 }
 
-/* =========================
-   PAYMENT DETAILS
-   ========================= */
-
-.payment-section {
-    margin-top: 14px;
+.details-grid .detail-item:last-child {
+    border-right: none;
 }
 
-.payment-content {
+/* =========================================================
+   PAYMENT
+   ========================================================= */
+
+.payment-layout {
     display: grid;
     grid-template-columns: 57% 43%;
 }
 
 .payment-list {
-    padding: 5px 15px;
+    padding: 4px 12px 5px;
 }
 
 .payment-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
-    min-height: 38px;
-    padding: 6px 8px;
+    min-height: 36px;
 
-    border-bottom: 1px solid #d2d9e3;
+    padding: 5px 8px;
+
+    border-bottom: 1px solid #d4dae3;
+
+    font-size: 15px;
 }
 
-.payment-label {
-    color: #17233f;
-    font-size: 16px;
+.payment-row:last-child {
+    border-bottom: none;
 }
 
-.payment-value {
+.payment-row strong {
     color: #111;
-    font-size: 18px;
+    font-size: 17px;
+}
+
+.payment-icon {
+    display: inline-flex;
+
+    width: 23px;
+
+    color: #102f68;
+
+    font-weight: bold;
+
+    margin-right: 5px;
+}
+
+.balance-row {
+    color: #102f68;
     font-weight: bold;
 }
 
-.balance-row .payment-label,
-.balance-row .payment-value {
-    color: #102d63;
+.balance-row strong {
+    color: #102f68;
 }
 
-/* =========================
-   TOTAL AMOUNT BOX
-   ========================= */
+/* =========================================================
+   TOTAL PAYMENT BOX
+   ========================================================= */
 
-.total-box {
-    margin: 10px;
-    padding: 18px;
+.total-payment-box {
+    margin: 9px;
 
-    background: #102d63;
-    color: white;
+    padding: 13px 18px;
+
+    min-height: 105px;
+
+    background: #102f68;
 
     border-radius: 9px;
 
-    min-height: 115px;
+    color: #fff;
+}
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.total-icon {
+    font-size: 25px;
+    margin-bottom: 2px;
 }
 
 .total-label {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.total-amount {
-    color: #f0b323;
-    font-size: 30px;
+    font-size: 17px;
     font-weight: bold;
 }
 
 .total-divider {
-    border: none;
-    border-top: 2px dashed #ffffff;
-    margin: 8px 0;
+    border-top: 2px dashed rgba(255,255,255,.8);
+    margin: 7px 0;
 }
 
-/* =========================
-   BOOKING STATUS
-   ========================= */
+.total-amount {
+    display: block;
+
+    color: #f0b323;
+
+    font-size: 29px;
+    line-height: 1;
+
+    font-weight: bold;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
 
 .status-section {
-    margin-top: 12px;
+    overflow: hidden;
 }
 
-.status-content {
-    min-height: 53px;
+.status-box {
+    min-height: 52px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 18px;
+    gap: 13px;
 
-    padding: 8px 15px;
+    padding: 7px 12px;
+}
+
+.status-symbol {
+    width: 32px;
+    height: 32px;
+
+    border: 2px solid #102f68;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #102f68;
+
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .status-label {
-    color: #102d63;
-    font-size: 17px;
+    color: #102f68;
+    font-size: 16px;
     font-weight: bold;
 }
 
-.status-value {
-    min-width: 220px;
+.status-separator {
+    width: 1px;
+    height: 28px;
+    background: #102f68;
+}
+
+.booking-status {
+    min-width: 210px;
 
     text-align: center;
 
-    padding: 6px 25px;
+    padding: 6px 20px;
 
-    border-radius: 25px;
+    background: #19852c;
+    color: #fff;
 
-    color: white;
-    background: #16852b;
+    border-radius: 22px;
 
-    font-size: 19px;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-size: 18px;
 }
 
-.status-value.cancelled {
+.booking-status.cancelled {
     background: #c62828;
 }
 
-.status-value.postponed {
-    background: #e09a00;
+.booking-status.postponed {
+    background: #d98b00;
 }
 
-/* =========================
+/* =========================================================
+   NOTES
+   ========================================================= */
+
+.notes-box {
+    padding: 12px 15px;
+
+    font-size: 15px;
+    line-height: 1.5;
+
+    color: #17233f;
+}
+
+/* =========================================================
    IMPORTANT INFORMATION
-   ========================= */
+   ========================================================= */
 
-.important-section {
-    position: relative;
-    overflow: hidden;
+.important-information {
+    padding: 9px 14px 10px;
 }
 
-.important-content {
-    position: relative;
-    padding: 10px 15px 12px;
-    min-height: 74px;
-}
+.information-row {
+    display: flex;
+    align-items: flex-start;
 
-.important-list {
-    list-style: none;
-}
+    gap: 8px;
 
-.important-list li {
-    position: relative;
+    margin-bottom: 6px;
 
-    padding-left: 25px;
-    margin-bottom: 7px;
-
-    font-size: 14px;
-    line-height: 1.35;
     color: #18294b;
+
+    font-size: 13px;
+    line-height: 1.35;
 }
 
-.important-list li::before {
-    content: "✓";
+.information-row:last-child {
+    margin-bottom: 0;
+}
 
-    position: absolute;
-    left: 0;
-    top: 0;
+.check-circle {
+    flex: 0 0 18px;
 
     width: 18px;
     height: 18px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border-radius: 50%;
 
-    background: #102d63;
+    background: #102f68;
     color: #fff;
 
     font-size: 11px;
     font-weight: bold;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.voucher-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    margin-top: 17px;
+
+    padding-top: 11px;
+
+    border-top: 2px solid #102f68;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 4px 20px;
+
+    border-right: 1px solid #102f68;
+}
+
+.footer-handshake {
+    width: 45px;
+    height: 45px;
+
+    flex: 0 0 45px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    border-radius: 50%;
+
+    background: #102f68;
+
+    color: #fff;
+
+    font-size: 23px;
 }
 
-/* =========================
-   CAR IMAGE / BACKGROUND
-   ========================= */
-
-.important-image {
-    position: absolute;
-    right: 10px;
-    bottom: 0;
-
-    width: 190px;
-    max-height: 70px;
-
-    object-fit: contain;
-    opacity: 0.18;
-}
-
-/* =========================
-   FOOTER
-   ========================= */
-
-.voucher-footer {
-    margin-top: 17px;
-    padding-top: 12px;
-
-    border-top: 2px solid #102d63;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.footer-left {
-    padding: 7px 25px;
-    border-right: 1px solid #102d63;
-}
-
-.footer-right {
-    padding: 7px 25px;
-    text-align: center;
-}
-
-.footer-thankyou {
-    font-size: 17px;
-    color: #102d63;
-    margin-bottom: 3px;
+.thank-you {
+    color: #102f68;
+    font-size: 15px;
 }
 
 .footer-company {
-    font-size: 19px;
-    font-weight: bold;
-    color: #102d63;
+    color: #102f68;
+    font-size: 17px;
 }
 
-.footer-message {
-    font-size: 15px;
-    color: #17233f;
-    margin-top: 4px;
+.footer-left p {
+    margin-top: 3px;
+    font-size: 13px;
 }
 
-.authorized-title {
-    font-size: 15px;
-    color: #102d63;
+.footer-right {
+    text-align: center;
+    padding: 3px 15px;
 }
 
-.authorized-company {
-    font-size: 19px;
-    font-weight: bold;
-    color: #102d63;
-    line-height: 1.15;
+.authorized-label {
+    color: #102f68;
+    font-size: 14px;
+    margin-bottom: 1px;
 }
 
-.signature {
-    width: 120px;
-    height: 40px;
-    object-fit: contain;
+.signature-line {
+    color: #102f68;
+    font-size: 14px;
     margin-bottom: 2px;
 }
 
-/* =========================
-   HIDE EMPTY FIELDS
-   ========================= */
-
-.hidden {
-    display: none !important;
+.footer-right strong {
+    color: #102f68;
+    font-size: 17px;
+    line-height: 1.1;
 }
 
+/* =========================================================
+   HIDDEN
+   ========================================================= */
+
+.hidden,
 .hide {
     display: none !important;
 }
 
-/* =========================
-   BUTTONS
-   ========================= */
-
-.download-btn,
-.print-btn,
-.voucher-btn {
-    border: none;
-    border-radius: 7px;
-
-    padding: 10px 20px;
-
-    background: #102d63;
-    color: #ffffff;
-
-    font-family: "Times New Roman", Times, serif !important;
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.download-btn:hover,
-.print-btn:hover,
-.voucher-btn:hover {
-    background: #173d7a;
-}
-
-/* =========================
-   PRINT
-   ========================= */
+/* =========================================================
+   PRINT / PDF
+   ========================================================= */
 
 @media print {
 
@@ -663,30 +774,31 @@ body {
         margin: 5mm;
     }
 
+    html,
     body {
-        background: #ffffff !important;
-        margin: 0;
+        width: 210mm;
+        background: #fff !important;
+    }
+
+    .voucher-page {
         padding: 0;
+    }
+
+    .voucher-actions {
+        display: none !important;
     }
 
     .voucher-container {
         width: 100%;
-        min-height: auto;
+        min-height: 0;
 
         margin: 0;
-        padding: 5mm;
+        padding: 6mm;
 
-        border: 2px solid #102d63;
+        border: 2px solid #102f68;
         border-radius: 15px;
 
         box-shadow: none;
-    }
-
-    .download-btn,
-    .print-btn,
-    .voucher-btn,
-    .no-print {
-        display: none !important;
     }
 
     * {
@@ -695,15 +807,23 @@ body {
     }
 }
 
-/* =========================
+/* =========================================================
    MOBILE
-   ========================= */
+   ========================================================= */
 
 @media screen and (max-width: 800px) {
 
+    .voucher-page {
+        padding: 8px;
+    }
+
+    .voucher-actions {
+        width: 100%;
+    }
+
     .voucher-container {
-        width: 96%;
-        margin: 10px auto;
+        width: 100%;
+        min-height: auto;
         padding: 12px;
     }
 
@@ -711,49 +831,52 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .company-section {
+    .company-details {
         border-right: none;
-        border-bottom: 1px solid #b5bfd0;
+        border-bottom: 1px solid #aab6c8;
         padding-bottom: 12px;
     }
 
-    .voucher-title-section {
+    .voucher-heading {
         padding-top: 15px;
     }
 
     .customer-grid,
+    .details-grid,
     .trip-grid,
-    .payment-content,
+    .payment-layout,
     .voucher-footer {
         grid-template-columns: 1fr;
     }
 
-    .customer-item,
+    .detail-item,
     .trip-item {
-        border-right: none;
+        border-right: none !important;
     }
 
     .trip-item.half-width {
         grid-column: span 1;
     }
 
-    .guest-table {
-        font-size: 12px;
+    .trip-item.full-width {
+        grid-column: span 1;
     }
 
-    .guest-table th,
-    .guest-table td {
-        padding: 6px 3px;
-        font-size: 12px;
+    .status-box {
+        flex-wrap: wrap;
     }
 
-    .payment-list {
-        padding-bottom: 0;
+    .status-separator {
+        display: none;
+    }
+
+    .voucher-footer {
+        gap: 10px;
     }
 
     .footer-left {
         border-right: none;
-        border-bottom: 1px solid #102d63;
-        text-align: center;
+        border-bottom: 1px solid #102f68;
+        padding-bottom: 10px;
     }
 }
