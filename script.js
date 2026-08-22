@@ -610,22 +610,7 @@ function getFormData() {
             document.getElementById("totalKmHrs").value.trim(),
 
 
-        /* =================================================
-           TRANSPORTATION DETAILS
-           THIS WAS MISSING FROM YOUR CODE
-        ================================================= */
-
-        vehicle:
-            document.getElementById("vehicle").value.trim(),
-
-        driver:
-            document.getElementById("driver").value.trim(),
-
-        noOfDays:
-            document.getElementById("noOfDays").value.trim(),
-
-
-        /* =================================================
+           /* =================================================
            PAYMENT DETAILS
         ================================================= */
 
