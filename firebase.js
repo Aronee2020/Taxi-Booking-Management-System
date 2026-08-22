@@ -1,28 +1,99 @@
 /* =========================================================
    FIREBASE CONFIGURATION
-   Taxi Booking Management System
+   ARONEE TAXI BOOKING MANAGEMENT SYSTEM
 ========================================================= */
 
-/*
-   Firebase will be connected after we confirm
-   that the booking form and booking list are working.
+import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
-   DO NOT DELETE THIS FILE.
-*/
+import {
+    getFirestore,
+    collection,
+    doc,
+    setDoc,
+    getDocs,
+    updateDoc,
+    deleteDoc,
+    onSnapshot
+} from
+    "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
+
+/* =========================================================
+   FIREBASE PROJECT
+========================================================= */
 
 const firebaseConfig = {
-    /*
-        Your Firebase configuration will be
-        added here in the next stage.
 
-        Example:
+    apiKey:
+        "AIzaSyCin9CQwcuwCDNaMwDi2DDqi2ABUn21IkI",
 
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT.firebaseapp.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT.firebasestorage.app",
-        messagingSenderId: "YOUR_SENDER_ID",
-        appId: "YOUR_APP_ID"
-    */
+    authDomain:
+        "aronee-taxi-booking-system.firebaseapp.com",
+
+    projectId:
+        "aronee-taxi-booking-system",
+
+    storageBucket:
+        "aronee-taxi-booking-system.firebasestorage.app",
+
+    messagingSenderId:
+        "350411103175",
+
+    appId:
+        "1:350411103175:web:a4bb00691017ede7c417e2"
+
 };
+
+
+/* =========================================================
+   INITIALIZE FIREBASE
+========================================================= */
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+/* =========================================================
+   FIRESTORE DATABASE
+========================================================= */
+
+const db =
+    getFirestore(app);
+
+
+/* =========================================================
+   TAXI BOOKINGS COLLECTION
+========================================================= */
+
+const taxiBookingsCollection =
+    collection(db, "taxiBookings");
+
+
+/* =========================================================
+   MAKE AVAILABLE TO script.js
+========================================================= */
+
+window.firebaseTaxi = {
+
+    db: db,
+
+    collection: taxiBookingsCollection,
+
+    doc: doc,
+
+    setDoc: setDoc,
+
+    getDocs: getDocs,
+
+    updateDoc: updateDoc,
+
+    deleteDoc: deleteDoc,
+
+    onSnapshot: onSnapshot
+
+};
+
+console.log(
+    "Firebase Taxi Booking System connected successfully."
+);
