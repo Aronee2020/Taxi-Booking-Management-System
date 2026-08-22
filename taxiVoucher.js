@@ -383,209 +383,158 @@ function populateVoucher(booking) {
     }
 
 }
-
-
 /* =========================================================
    GUEST DETAILS
+   LOAD ALL GUESTS INTO VOUCHER TABLE
 ========================================================= */
 
-function loadGuestDetails(
-    guestDetails
-) {
+function loadGuestDetails(guestDetails) {
 
     const section =
-        document.getElementById(
-            "guestSection"
-        );
-
+        document.getElementById("guestSection");
 
     const container =
-        document.getElementById(
-            "guestDetailsContainer"
-        );
+        document.getElementById("guestDetailsContainer");
 
+
+    if (!section || !container) {
+        console.error("Guest details container not found.");
+        return;
+    }
+
+
+    /* Clear previous guest details */
 
     container.innerHTML = "";
 
 
-    /*
-       No guests entered
-    */
+    /* =====================================================
+       CHECK GUEST DATA
+    ===================================================== */
 
     if (
         !Array.isArray(guestDetails) ||
         guestDetails.length === 0
     ) {
 
-        section.style.display =
-            "none";
+        section.style.display = "none";
 
         return;
-
     }
 
 
-    /*
-       Check whether at least one guest
-       has ID proof
-    */
-
-    const hasAnyIdProof =
-        guestDetails.some(
-            function (guest) {
-
-                return (
-                    hasValue(
-                        guest.idProofName
-                    ) ||
-                    hasValue(
-                        guest.idNumber
-                    )
-                );
-
-            }
-        );
-
-
     /* =====================================================
-       HEADER
+       CREATE TABLE
     ===================================================== */
 
     let html = `
 
-        <div class="guest-row-voucher guest-header-row">
+        <table class="guest-table">
 
-            <div class="guest-cell">
-                #
-            </div>
+            <thead>
 
-            <div class="guest-cell">
-                Guest Name
-            </div>
+                <tr>
 
-            <div class="guest-cell">
-                Age
-            </div>
-    `;
+                    <th>#</th>
 
+                    <th>Guest Name</th>
 
-    if (hasAnyIdProof) {
+                    <th>Age</th>
 
-        html += `
+                    <th>ID Proof</th>
 
-            <div class="guest-cell id-proof-cell">
-                ID Proof
-            </div>
+                    <th>ID Number</th>
 
-            <div class="guest-cell id-proof-cell">
-                ID Number
-            </div>
+                </tr>
 
-        `;
+            </thead>
 
-    }
-
-
-    html += `
-
-        </div>
+            <tbody>
 
     `;
 
 
     /* =====================================================
-       GUEST ROWS
+       ADD ALL GUESTS
     ===================================================== */
 
     guestDetails.forEach(
         function (guest, index) {
 
-
-            html += `
-
-                <div class="guest-row-voucher">
-
-                    <div class="guest-cell">
-                        ${index + 1}
-                    </div>
-
-                    <div class="guest-cell">
-                        ${escapeHTML(
-                            guest.name || ""
-                        )}
-                    </div>
-
-                    <div class="guest-cell">
-                        ${
-                            guest.age !== undefined &&
-                            guest.age !== null &&
-                            guest.age !== ""
-                                ? escapeHTML(
-                                    String(guest.age)
-                                  ) + " Years"
-                                : ""
-                        }
-                    </div>
-            `;
+            if (!guest) {
+                return;
+            }
 
 
-            if (hasAnyIdProof) {
+            /* Guest Name */
+
+            const guestName =
+                guest.name ||
+                guest.guestName ||
+                "";
 
 
-                let idProof = "";
+            /* Age */
+
+            let age =
+                guest.age !== undefined &&
+                guest.age !== null
+                    ? String(guest.age).trim()
+                    : "";
 
 
-                if (
-                    hasValue(
-                        guest.idProofName
-                    )
-                ) {
+            if (
+                age &&
+                !/years?$/i.test(age)
+            ) {
 
-                    idProof =
-                        guest.idProofName;
-
-                }
-
-
-                html += `
-
-                    <div class="guest-cell id-proof-cell">
-
-                        ${
-                            hasValue(idProof)
-                                ? escapeHTML(idProof)
-                                : ""
-                        }
-
-                    </div>
-
-                `;
-
-
-                html += `
-
-                    <div class="guest-cell id-proof-cell">
-
-                        ${
-                            hasValue(
-                                guest.idNumber
-                            )
-                                ? escapeHTML(
-                                    guest.idNumber
-                                  )
-                                : ""
-                        }
-
-                    </div>
-
-                `;
+                age += " Years";
 
             }
 
 
+            /* ID Proof */
+
+            const idProof =
+                guest.idProofName ||
+                guest.idProof ||
+                guest.idProofType ||
+                "";
+
+
+            /* ID Number */
+
+            const idNumber =
+                guest.idNumber ||
+                guest.idProofNumber ||
+                "";
+
+
             html += `
 
-                </div>
+                <tr>
+
+                    <td>
+                        ${index + 1}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(guestName)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(age)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(idProof)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(idNumber)}
+                    </td>
+
+                </tr>
 
             `;
 
@@ -593,17 +542,32 @@ function loadGuestDetails(
     );
 
 
-    container.innerHTML =
-        html;
+    /* Close table */
+
+    html += `
+
+            </tbody>
+
+        </table>
+
+    `;
 
 
-    section.style.display =
-        "block";
+    /* =====================================================
+       SHOW TABLE
+    ===================================================== */
 
-}
+    container.innerHTML = html;
+
+    section.style.display = "block";
 
 
-/* =========================================================
+    console.log(
+        "Guest details loaded:",
+        guestDetails
+    );
+
+}/* =========================================================
    VEHICLE / DRIVER DETAILS
 ========================================================= */
 
