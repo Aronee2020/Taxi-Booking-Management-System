@@ -336,55 +336,166 @@ body {
 }
 
 /* =========================================================
-   GUEST TABLE
+   GUEST DETAILS - PROFESSIONAL TABLE
    ========================================================= */
 
 .guest-details-container {
+    width: 100%;
     padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
+/* Main guest table */
 .guest-details-container table,
 .guest-table {
-    width: 100%;
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
 
-    border-collapse: separate;
-    border-spacing: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 
-    border-radius: 7px;
+    border: 1px solid #102f68 !important;
+    border-radius: 0 0 8px 8px;
     overflow: hidden;
 
-    font-size: 14px;
+    font-family: "Times New Roman", Times, serif !important;
 }
 
-.guest-details-container th {
-    background: #102f68;
-    color: #fff;
+/* Header */
+.guest-details-container table thead th,
+.guest-details-container table th,
+.guest-table th {
+    height: 38px;
 
-    padding: 8px 5px;
+    background: #102f68 !important;
+    color: #ffffff !important;
 
-    font-size: 14px;
-    font-weight: bold;
+    text-align: center !important;
+    vertical-align: middle !important;
 
-    border-right: 1px solid rgba(255,255,255,.5);
+    padding: 7px 5px !important;
+
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+
+    border: 1px solid rgba(255,255,255,.55) !important;
 }
 
-.guest-details-container td {
-    padding: 7px 5px;
+/* Body cells */
+.guest-details-container table tbody td,
+.guest-details-container table td,
+.guest-table td {
+    height: 38px;
 
-    text-align: center;
+    background: #ffffff !important;
+    color: #111827 !important;
 
-    color: #111;
+    text-align: center !important;
+    vertical-align: middle !important;
 
-    border-top: 1px solid #b8c3d2;
-    border-right: 1px dotted #aab6c8;
+    padding: 7px 5px !important;
 
-    font-size: 14px;
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 15px !important;
+    font-weight: normal !important;
+
+    border: 1px solid #aeb9ca !important;
 }
 
-.guest-details-container td:last-child {
-    border-right: none;
+/* Guest name slightly stronger */
+.guest-details-container table td:nth-child(2),
+.guest-table td:nth-child(2) {
+    font-weight: bold !important;
 }
 
+/* ID number */
+.guest-details-container table td:last-child,
+.guest-table td:last-child {
+    font-weight: bold !important;
+    letter-spacing: .2px;
+}
+
+/* =========================================================
+   FIX COLUMN WIDTHS
+   ========================================================= */
+
+/* # */
+.guest-details-container table th:nth-child(1),
+.guest-details-container table td:nth-child(1),
+.guest-table th:nth-child(1),
+.guest-table td:nth-child(1) {
+    width: 7% !important;
+}
+
+/* Guest Name */
+.guest-details-container table th:nth-child(2),
+.guest-details-container table td:nth-child(2),
+.guest-table th:nth-child(2),
+.guest-table td:nth-child(2) {
+    width: 29% !important;
+}
+
+/* Age */
+.guest-details-container table th:nth-child(3),
+.guest-details-container table td:nth-child(3),
+.guest-table th:nth-child(3),
+.guest-table td:nth-child(3) {
+    width: 19% !important;
+}
+
+/* ID Proof */
+.guest-details-container table th:nth-child(4),
+.guest-details-container table td:nth-child(4),
+.guest-table th:nth-child(4),
+.guest-table td:nth-child(4) {
+    width: 21% !important;
+}
+
+/* ID Number */
+.guest-details-container table th:nth-child(5),
+.guest-details-container table td:nth-child(5),
+.guest-table th:nth-child(5),
+.guest-table td:nth-child(5) {
+    width: 24% !important;
+}
+
+
+/* =========================================================
+   PREVENT TEXT FROM BREAKING THE TABLE
+   ========================================================= */
+
+.guest-details-container table th,
+.guest-details-container table td {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+
+/* =========================================================
+   GUEST SECTION TITLE
+   ========================================================= */
+
+#guestSection .section-title {
+    margin-bottom: 0 !important;
+}
+
+
+/* =========================================================
+   MULTIPLE GUEST ROWS
+   ========================================================= */
+
+.guest-details-container table tr {
+    page-break-inside: avoid !important;
+}
+
+.guest-details-container table tbody tr:nth-child(even) td {
+    background: #f8fafc !important;
+}
 /* =========================================================
    TRIP DETAILS
    ========================================================= */
