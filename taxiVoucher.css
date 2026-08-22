@@ -1,686 +1,692 @@
-body {
-    font-family: "Times New Roman", Times, serif;
-}
-
-.voucher-container,
-.voucher-container * {
-    font-family: "Times New Roman", Times, serif !important;
-}
-
 /* =========================================================
    ARONEE TAXI CONFIRMATION VOUCHER
-   PROFESSIONAL A4 DESIGN
-========================================================= */
+   A4 DESIGN - TIMES NEW ROMAN
+   ========================================================= */
 
 * {
     box-sizing: border-box;
-}
-
-html,
-body {
     margin: 0;
     padding: 0;
-    background: #eef2f6;
-    color: #1d2939;
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family: "Times New Roman", Times, serif !important;
 }
 
-
-/* =========================================================
-   PAGE
-========================================================= */
-
-.voucher-page {
-    width: 100%;
-    padding: 25px 0 40px;
+body {
+    background: #f3f5f8;
+    color: #101d3b;
+    font-family: "Times New Roman", Times, serif;
 }
 
-
-/* =========================================================
-   ACTION BUTTONS
-========================================================= */
-
-.voucher-actions {
-    width: 210mm;
-    max-width: calc(100% - 30px);
-    margin: 0 auto 15px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-}
-
-.voucher-actions button {
-    border: 0;
-    border-radius: 6px;
-    padding: 10px 17px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.print-btn {
-    background: #c89b3c;
-    color: #fff;
-}
-
-.print-btn:hover {
-    background: #ae8129;
-}
-
-.close-btn {
-    background: #1d3557;
-    color: #fff;
-}
-
-.close-btn:hover {
-    background: #142842;
-}
-
-
-/* =========================================================
+/* =========================
    MAIN VOUCHER
-========================================================= */
+   ========================= */
 
 .voucher-container {
     width: 210mm;
     min-height: 297mm;
-    margin: 0 auto;
-    padding: 14mm 14mm 12mm;
-    background: #fff;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    margin: 20px auto;
+    padding: 9mm;
+    background: #ffffff;
+
+    border: 2px solid #102d63;
+    border-radius: 20px;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+
+    font-family: "Times New Roman", Times, serif;
 }
 
-
-/* =========================================================
+/* =========================
    HEADER
-========================================================= */
+   ========================= */
 
 .voucher-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 25px;
+    display: grid;
+    grid-template-columns: 56% 44%;
+    min-height: 68mm;
+    border-bottom: 1px dashed #183b73;
+    padding-bottom: 7px;
 }
 
-.company-details {
-    flex: 1;
+.company-section {
+    padding: 5px 15px 5px 20px;
+    border-right: 1px solid #b5bfd0;
 }
 
 .company-logo {
-    width: 95px;
-    max-height: 75px;
+    width: 125px;
+    height: auto;
     object-fit: contain;
-    margin-bottom: 7px;
+    float: left;
+    margin-right: 18px;
 }
 
-.company-details h1 {
-    margin: 0;
-    color: #1d3557;
-    font-size: 21px;
-    font-weight: 800;
-    letter-spacing: .2px;
+.company-name {
+    color: #102d63;
+    font-size: 27px;
+    font-weight: bold;
+    line-height: 1.05;
+    text-transform: uppercase;
+    padding-top: 4px;
 }
 
 .company-subtitle {
-    margin: 4px 0 5px;
-    color: #c89b3c;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
+    color: #e4a51c;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
 }
 
-.company-details p {
-    margin: 3px 0;
-    color: #667085;
-    font-size: 10px;
+.company-info {
+    clear: both;
+    margin-top: 18px;
+    font-size: 16px;
+    line-height: 2;
+    color: #111;
 }
 
+.company-info i,
+.company-info .icon {
+    color: #102d63;
+    margin-right: 8px;
+}
 
-/* =========================================================
+/* =========================
    VOUCHER TITLE
-========================================================= */
+   ========================= */
+
+.voucher-title-section {
+    text-align: center;
+    padding: 5px 10px;
+}
 
 .voucher-title {
-    width: 245px;
-    text-align: right;
+    color: #102d63;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1.15;
+    text-transform: uppercase;
 }
 
-.voucher-title h2 {
-    margin: 5px 0 12px;
-    color: #1d3557;
-    font-size: 21px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-
-/* =========================================================
-   BOOKING ID / DATE
-========================================================= */
-
-.voucher-id-box,
-.voucher-date-box {
+.title-decoration {
+    margin: 14px auto;
+    width: 80%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 8px 11px;
-    margin-bottom: 6px;
-    background: #f7f9fb;
-    border: 1px solid #dfe4ea;
-    border-radius: 5px;
+    justify-content: center;
+    gap: 10px;
 }
 
-.voucher-id-box span,
-.voucher-date-box span {
-    color: #7b8794;
-    font-size: 8px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .6px;
+.title-decoration::before,
+.title-decoration::after {
+    content: "";
+    height: 2px;
+    background: #e4a51c;
+    flex: 1;
 }
 
-.voucher-id-box strong,
-.voucher-date-box strong {
-    color: #1d3557;
-    font-size: 11px;
+.title-decoration span {
+    color: #e4a51c;
+    font-size: 20px;
 }
 
+/* =========================
+   BOOKING ID / DATE
+   ========================= */
 
-/* =========================================================
-   HEADER LINE
-========================================================= */
-
-.header-line {
-    height: 3px;
-    margin: 14px 0 17px;
-    background: linear-gradient(
-        to right,
-        #1d3557 0%,
-        #1d3557 75%,
-        #c89b3c 75%,
-        #c89b3c 100%
-    );
+.booking-summary {
+    margin-top: 10px;
 }
 
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-.voucher-section {
-    margin-bottom: 13px;
-    page-break-inside: avoid;
-}
-
-
-/* =========================================================
-   SECTION TITLE
-========================================================= */
-
-.section-title {
-    padding: 8px 11px;
-    margin-bottom: 7px;
-    background: #1d3557;
-    border-left: 5px solid #c89b3c;
-    color: #fff;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-
-/* =========================================================
-   DETAILS GRID
-========================================================= */
-
-.details-grid {
+.booking-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    border: 1px solid #dfe4ea;
-    border-radius: 5px;
+    grid-template-columns: 48% 52%;
+    height: 39px;
+    margin-bottom: 7px;
+    border: 1px solid #102d63;
+    border-radius: 7px;
     overflow: hidden;
 }
 
-.detail-item {
-    min-height: 45px;
-    padding: 8px 11px;
-    border-right: 1px solid #e3e7ec;
-    border-bottom: 1px solid #e3e7ec;
+.booking-label {
+    background: #102d63;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.booking-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =========================
+   SECTION
+   ========================= */
+
+.voucher-section {
+    position: relative;
+    margin-top: 14px;
+    border: 1px solid #8fa1bd;
+    border-radius: 9px;
+    overflow: visible;
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+
+    margin-top: -1px;
+    margin-left: -1px;
+    padding: 5px 16px;
+
+    background: #102d63;
+    color: #ffffff;
+
+    border-radius: 9px 9px 0 0;
+
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* =========================
+   CUSTOMER DETAILS
+   ========================= */
+
+.customer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.customer-item {
+    min-height: 53px;
+    padding: 8px 14px;
+    border-right: 1px solid #aab6ca;
+    border-top: 1px solid #aab6ca;
+}
+
+.customer-item:last-child {
+    border-right: none;
+}
+
+.customer-item.full-width {
+    grid-column: 1 / -1;
+    border-right: none;
+}
+
+.field-label {
+    display: block;
+    color: #102d63;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.field-value {
+    display: block;
+    color: #111;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* =========================
+   GUEST DETAILS TABLE
+   ========================= */
+
+.guest-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+
+    border: 1px solid #8fa1bd;
+    border-radius: 7px;
+
+    margin-top: 0;
+}
+
+.guest-table th {
+    background: #102d63;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    padding: 9px 6px;
+    text-align: center;
+
+    border-right: 1px solid #ffffff;
+}
+
+.guest-table th:last-child {
+    border-right: none;
+}
+
+.guest-table td {
+    padding: 8px 7px;
+    text-align: center;
+
+    font-size: 16px;
+    color: #101d3b;
+
+    border-right: 1px dotted #9ba8bc;
+    border-top: 1px solid #9ba8bc;
+}
+
+.guest-table td:last-child {
+    border-right: none;
+}
+
+.guest-table td strong {
+    font-size: 17px;
+}
+
+/* =========================
+   TRIP DETAILS
+   ========================= */
+
+.trip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.trip-item {
+    min-height: 57px;
+    padding: 8px 12px;
+
+    border-top: 1px solid #aab6ca;
+    border-right: 1px solid #aab6ca;
+}
+
+.trip-item:nth-child(4n) {
+    border-right: none;
+}
+
+.trip-item.full-width {
+    grid-column: 1 / -1;
+    border-right: none;
+}
+
+.trip-item.half-width {
+    grid-column: span 2;
+}
+
+.trip-label {
+    display: block;
+    color: #102d63;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.trip-value {
+    display: block;
+    color: #111;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* =========================
+   ICONS
+   ========================= */
+
+.detail-icon {
+    float: left;
+    width: 28px;
+    margin-right: 8px;
+
+    color: #102d63;
+    font-size: 25px;
+}
+
+.detail-content {
+    overflow: hidden;
+}
+
+/* =========================
+   PAYMENT DETAILS
+   ========================= */
+
+.payment-section {
+    margin-top: 14px;
+}
+
+.payment-content {
+    display: grid;
+    grid-template-columns: 57% 43%;
+}
+
+.payment-list {
+    padding: 5px 15px;
+}
+
+.payment-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    min-height: 38px;
+    padding: 6px 8px;
+
+    border-bottom: 1px solid #d2d9e3;
+}
+
+.payment-label {
+    color: #17233f;
+    font-size: 16px;
+}
+
+.payment-value {
+    color: #111;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.balance-row .payment-label,
+.balance-row .payment-value {
+    color: #102d63;
+}
+
+/* =========================
+   TOTAL AMOUNT BOX
+   ========================= */
+
+.total-box {
+    margin: 10px;
+    padding: 18px;
+
+    background: #102d63;
+    color: white;
+
+    border-radius: 9px;
+
+    min-height: 115px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.detail-item:nth-child(even) {
-    border-right: 0;
+.total-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-.detail-item.full-width {
-    grid-column: 1 / -1;
-    border-right: 0;
+.total-amount {
+    color: #f0b323;
+    font-size: 30px;
+    font-weight: bold;
 }
 
-.detail-item .label {
-    margin-bottom: 4px;
-    color: #7a8695;
-    font-size: 8px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .55px;
+.total-divider {
+    border: none;
+    border-top: 2px dashed #ffffff;
+    margin: 8px 0;
 }
 
-.detail-item .value {
-    color: #1d2939;
-    font-size: 10.5px;
-    font-weight: 600;
-    line-height: 1.4;
-    word-break: break-word;
+/* =========================
+   BOOKING STATUS
+   ========================= */
+
+.status-section {
+    margin-top: 12px;
 }
 
-.itinerary-value {
-    white-space: pre-line;
-}
+.status-content {
+    min-height: 53px;
 
-
-/* =========================================================
-   GUEST TABLE
-========================================================= */
-
-.guest-details-container {
-    border: 1px solid #dfe4ea;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.guest-row-voucher {
-    display: grid;
-    grid-template-columns: 40px 1.5fr 70px 1.2fr 1.3fr;
-    min-height: 34px;
-}
-
-.guest-header-row {
-    background: #f0f3f7;
-}
-
-.guest-cell {
-    padding: 7px 8px;
-    border-right: 1px solid #dfe4ea;
-    border-bottom: 1px solid #e5e8ec;
     display: flex;
     align-items: center;
-    font-size: 9px;
-}
+    justify-content: center;
 
-.guest-header-row .guest-cell {
-    color: #1d3557;
-    font-size: 8px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
+    gap: 18px;
 
-.guest-row-voucher:not(.guest-header-row):nth-child(even) {
-    background: #fafbfc;
-}
-
-.guest-cell:last-child {
-    border-right: 0;
-}
-
-
-/* =========================================================
-   VEHICLE / DRIVER / DAYS
-   NOT REQUIRED
-========================================================= */
-
-#vehicleSection {
-    display: none !important;
-}
-
-
-/* =========================================================
-   PAYMENT
-========================================================= */
-
-.payment-box {
-    border: 1px solid #dfe4ea;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.payment-row {
-    min-height: 36px;
-    padding: 7px 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #e4e7eb;
-    font-size: 10px;
-}
-
-.payment-row:last-child {
-    border-bottom: 0;
-}
-
-.payment-row span {
-    color: #667085;
-    font-weight: 600;
-}
-
-.payment-row strong {
-    color: #1d2939;
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   TOTAL AMOUNT
-========================================================= */
-
-.total-row {
-    background: #1d3557;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.total-row span {
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.total-row strong {
-    color: #fff;
-    font-size: 16px;
-    font-weight: 800;
-}
-
-
-/* =========================================================
-   BALANCE
-========================================================= */
-
-.balance-row {
-    background: #fffaf0;
-}
-
-.balance-row span {
-    color: #956f20;
-    font-weight: 800;
-}
-
-.balance-row strong {
-    color: #956f20;
-    font-size: 13px;
-    font-weight: 800;
-}
-
-
-/* =========================================================
-   STATUS
-========================================================= */
-
-.status-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 13px;
-    background: #f8fafc;
-    border: 1px solid #dfe4ea;
-    border-radius: 5px;
+    padding: 8px 15px;
 }
 
 .status-label {
-    color: #667085;
-    font-size: 8px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: .7px;
+    color: #102d63;
+    font-size: 17px;
+    font-weight: bold;
 }
 
-.booking-status {
-    min-width: 90px;
-    padding: 6px 13px;
+.status-value {
+    min-width: 220px;
+
     text-align: center;
-    border-radius: 20px;
-    font-size: 9px;
-    font-weight: 800;
+
+    padding: 6px 25px;
+
+    border-radius: 25px;
+
+    color: white;
+    background: #16852b;
+
+    font-size: 19px;
+    font-weight: bold;
     text-transform: uppercase;
 }
 
-
-/* =========================================================
-   STATUS COLORS
-========================================================= */
-
-.status-confirmed {
-    background: #e7f6ed;
-    color: #16753c;
-    border: 1px solid #bde5ca;
+.status-value.cancelled {
+    background: #c62828;
 }
 
-.status-pending {
-    background: #fff5dc;
-    color: #986d15;
-    border: 1px solid #eedca7;
+.status-value.postponed {
+    background: #e09a00;
 }
 
-.status-cancelled {
-    background: #fdeaea;
-    color: #bd3028;
-    border: 1px solid #f2c2be;
-}
-
-.status-postponed {
-    background: #eaf0fc;
-    color: #3e5e9e;
-    border: 1px solid #cbd7ef;
-}
-
-.status-completed {
-    background: #e5f4f6;
-    color: #177481;
-    border: 1px solid #b9dfe4;
-}
-
-
-/* =========================================================
-   NOTES
-========================================================= */
-
-.notes-box {
-    padding: 10px 12px;
-    border: 1px solid #dfe4ea;
-    border-left: 4px solid #c89b3c;
-    border-radius: 5px;
-    background: #fffdf8;
-    color: #5f6b7a;
-    font-size: 9.5px;
-    line-height: 1.5;
-    white-space: pre-line;
-}
-
-
-/* =========================================================
+/* =========================
    IMPORTANT INFORMATION
-========================================================= */
+   ========================= */
 
-.terms-section ul {
-    margin: 0;
-    padding: 10px 14px 10px 25px;
-    background: #f8fafc;
-    border: 1px solid #dfe4ea;
-    border-radius: 5px;
+.important-section {
+    position: relative;
+    overflow: hidden;
 }
 
-.terms-section li {
-    margin-bottom: 4px;
-    color: #667085;
-    font-size: 8.8px;
-    line-height: 1.45;
+.important-content {
+    position: relative;
+    padding: 10px 15px 12px;
+    min-height: 74px;
 }
 
-.terms-section li:last-child {
-    margin-bottom: 0;
+.important-list {
+    list-style: none;
 }
 
+.important-list li {
+    position: relative;
 
-/* =========================================================
+    padding-left: 25px;
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    line-height: 1.35;
+    color: #18294b;
+}
+
+.important-list li::before {
+    content: "✓";
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #102d63;
+    color: #fff;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================
+   CAR IMAGE / BACKGROUND
+   ========================= */
+
+.important-image {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+
+    width: 190px;
+    max-height: 70px;
+
+    object-fit: contain;
+    opacity: 0.18;
+}
+
+/* =========================
    FOOTER
-========================================================= */
+   ========================= */
 
 .voucher-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 25px;
-    margin-top: 15px;
+    margin-top: 17px;
     padding-top: 12px;
-    border-top: 2px solid #1d3557;
+
+    border-top: 2px solid #102d63;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .footer-left {
-    flex: 1;
-}
-
-.footer-left strong {
-    color: #1d3557;
-    font-size: 10px;
-}
-
-.footer-left p {
-    margin: 3px 0 0;
-    color: #7b8794;
-    font-size: 8.5px;
+    padding: 7px 25px;
+    border-right: 1px solid #102d63;
 }
 
 .footer-right {
-    text-align: right;
+    padding: 7px 25px;
+    text-align: center;
 }
 
-.footer-right p {
-    margin: 0 0 3px;
-    color: #7b8794;
-    font-size: 8px;
-    text-transform: uppercase;
+.footer-thankyou {
+    font-size: 17px;
+    color: #102d63;
+    margin-bottom: 3px;
 }
 
-.footer-right strong {
-    color: #1d3557;
-    font-size: 8.5px;
+.footer-company {
+    font-size: 19px;
+    font-weight: bold;
+    color: #102d63;
 }
 
+.footer-message {
+    font-size: 15px;
+    color: #17233f;
+    margin-top: 4px;
+}
 
-/* =========================================================
-   CONDITIONAL SECTIONS
-========================================================= */
+.authorized-title {
+    font-size: 15px;
+    color: #102d63;
+}
 
-.conditional-section[style*="display:none"] {
+.authorized-company {
+    font-size: 19px;
+    font-weight: bold;
+    color: #102d63;
+    line-height: 1.15;
+}
+
+.signature {
+    width: 120px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 2px;
+}
+
+/* =========================
+   HIDE EMPTY FIELDS
+   ========================= */
+
+.hidden {
     display: none !important;
 }
 
+.hide {
+    display: none !important;
+}
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* =========================
+   BUTTONS
+   ========================= */
 
-@media screen and (max-width: 800px) {
+.download-btn,
+.print-btn,
+.voucher-btn {
+    border: none;
+    border-radius: 7px;
 
-    .voucher-page {
-        padding: 10px;
+    padding: 10px 20px;
+
+    background: #102d63;
+    color: #ffffff;
+
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.download-btn:hover,
+.print-btn:hover,
+.voucher-btn:hover {
+    background: #173d7a;
+}
+
+/* =========================
+   PRINT
+   ========================= */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 5mm;
     }
 
-    .voucher-actions {
-        width: 100%;
-        max-width: none;
+    body {
+        background: #ffffff !important;
+        margin: 0;
+        padding: 0;
     }
 
     .voucher-container {
         width: 100%;
         min-height: auto;
-        padding: 20px 15px;
-    }
 
-    .voucher-header {
-        flex-direction: column;
-    }
-
-    .voucher-title {
-        width: 100%;
-        text-align: left;
-    }
-
-    .details-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .detail-item {
-        border-right: 0;
-    }
-
-    .detail-item.full-width {
-        grid-column: auto;
-    }
-
-    .guest-details-container {
-        overflow-x: auto;
-    }
-
-    .guest-row-voucher {
-        min-width: 600px;
-    }
-
-    .voucher-footer {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .footer-right {
-        text-align: left;
-    }
-}
-
-
-/* =========================================================
-   PRINT / PDF
-========================================================= */
-
-@media print {
-
-    @page {
-        size: A4 portrait;
         margin: 0;
-    }
+        padding: 5mm;
 
-    html,
-    body {
-        background: #fff;
-        margin: 0;
-        padding: 0;
-    }
+        border: 2px solid #102d63;
+        border-radius: 15px;
 
-    .voucher-page {
-        padding: 0;
-    }
-
-    .voucher-actions {
-        display: none !important;
-    }
-
-    .voucher-container {
-        width: 210mm;
-        min-height: 297mm;
-        margin: 0;
-        padding: 13mm 14mm 11mm;
         box-shadow: none;
     }
 
-    .voucher-section,
-    .details-grid,
-    .guest-details-container,
-    .payment-box,
-    .status-box,
-    .notes-box {
-        page-break-inside: avoid;
+    .download-btn,
+    .print-btn,
+    .voucher-btn,
+    .no-print {
+        display: none !important;
     }
 
     * {
@@ -689,12 +695,65 @@ body {
     }
 }
 
+/* =========================
+   MOBILE
+   ========================= */
 
-/* =========================================================
-   PDF COLOR QUALITY
-========================================================= */
+@media screen and (max-width: 800px) {
 
-.voucher-container {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    .voucher-container {
+        width: 96%;
+        margin: 10px auto;
+        padding: 12px;
+    }
+
+    .voucher-header {
+        grid-template-columns: 1fr;
+    }
+
+    .company-section {
+        border-right: none;
+        border-bottom: 1px solid #b5bfd0;
+        padding-bottom: 12px;
+    }
+
+    .voucher-title-section {
+        padding-top: 15px;
+    }
+
+    .customer-grid,
+    .trip-grid,
+    .payment-content,
+    .voucher-footer {
+        grid-template-columns: 1fr;
+    }
+
+    .customer-item,
+    .trip-item {
+        border-right: none;
+    }
+
+    .trip-item.half-width {
+        grid-column: span 1;
+    }
+
+    .guest-table {
+        font-size: 12px;
+    }
+
+    .guest-table th,
+    .guest-table td {
+        padding: 6px 3px;
+        font-size: 12px;
+    }
+
+    .payment-list {
+        padding-bottom: 0;
+    }
+
+    .footer-left {
+        border-right: none;
+        border-bottom: 1px solid #102d63;
+        text-align: center;
+    }
 }
