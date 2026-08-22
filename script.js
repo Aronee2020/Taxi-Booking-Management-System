@@ -52,57 +52,82 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
 /* =========================================================
-   LOAD BOOKINGS
+   LOAD BOOKINGS FROM FIRESTORE
 ========================================================= */
 
 function loadBookings() {
 
-    const savedBookings =
-        localStorage.getItem("taxiBookings");
+    if (!window.firebaseTaxi) {
 
-    if (savedBookings) {
+        console.error(
+            "Firebase is not ready."
+        );
 
-        try {
+        return;
+    }
 
-            bookings = JSON.parse(savedBookings);
 
-        } catch (error) {
+    const collectionRef =
+        window.firebaseTaxi.collection;
+
+
+    /*
+       Real-time listener.
+
+       Whenever any staff member adds,
+       updates or deletes a booking,
+       all computers receive the change.
+    */
+
+    window.firebaseTaxi.onSnapshot(
+        collectionRef,
+
+        function (snapshot) {
+
+            bookings = [];
+
+
+            snapshot.forEach(
+                function (docSnapshot) {
+
+                    bookings.push({
+                        ...docSnapshot.data()
+                    });
+
+                }
+            );
+
+
+            console.log(
+                "Bookings loaded from Firebase:",
+                bookings
+            );
+
+
+            displayBookings();
+
+            updateDashboard();
+
+        },
+
+        function (error) {
 
             console.error(
-                "Unable to load bookings:",
+                "Firebase loading error:",
                 error
             );
 
-            bookings = [];
+
+            alert(
+                "Unable to load bookings from Firebase.\n\n" +
+                error.message
+            );
+
         }
-
-    } else {
-
-        bookings = [];
-
-    }
-
-    displayBookings();
-}
-
-
-/* =========================================================
-   SAVE BOOKINGS TO LOCAL STORAGE
-========================================================= */
-
-function saveToStorage() {
-
-    localStorage.setItem(
-        "taxiBookings",
-        JSON.stringify(bookings)
     );
 
-}
-
-
-/* =========================================================
+}/* =========================================================
    DEFAULT DATES
 ========================================================= */
 
