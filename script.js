@@ -39,16 +39,31 @@ document.addEventListener("DOMContentLoaded", function () {
         new Date().getFullYear();
 
 
-    /* Payment calculation */
+  /* =====================================================
+   AUTOMATIC PAYMENT CALCULATION
+===================================================== */
 
-    document.getElementById("taxiFare")
-        .addEventListener("input", calculateAmounts);
+[
+    "minimumCharge",
+    "extraKm",
+    "extraKmRate",
+    "extraHours",
+    "extraHoursRate",
+    "toll",
+    "advanceReceived"
+].forEach(function (id) {
 
-    document.getElementById("toll")
-        .addEventListener("input", calculateAmounts);
+    const element =
+        document.getElementById(id);
 
-    document.getElementById("advanceReceived")
-        .addEventListener("input", calculateAmounts);
+    if (element) {
+
+        element.addEventListener(
+            "input",
+            calculateAmounts
+        );
+
+    }
 
 });
 
