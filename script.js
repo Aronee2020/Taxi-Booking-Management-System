@@ -266,40 +266,108 @@ function generateCustomerId() {
    CALCULATE TOTAL + BALANCE
 ========================================================= */
 
+/* =========================================================
+CALCULATE TAXI AMOUNT + TOTAL + BALANCE
+========================================================= */
+
 function calculateAmounts() {
 
-    const taxiFare =
-        Number(
-            document.getElementById("taxiFare").value
-        ) || 0;
+```
+/* =====================================================
+   TRIP SUMMARY
+===================================================== */
+
+const minimumCharge =
+    Number(
+        document.getElementById("minimumCharge")?.value
+    ) || 0;
+
+const extraKm =
+    Number(
+        document.getElementById("extraKm")?.value
+    ) || 0;
+
+const extraKmRate =
+    Number(
+        document.getElementById("extraKmRate")?.value
+    ) || 0;
+
+const extraHours =
+    Number(
+        document.getElementById("extraHours")?.value
+    ) || 0;
+
+const extraHoursRate =
+    Number(
+        document.getElementById("extraHoursRate")?.value
+    ) || 0;
 
 
-    const toll =
-        Number(
-            document.getElementById("toll").value
-        ) || 0;
+/* =====================================================
+   CALCULATE TAXI AMOUNT
+===================================================== */
+
+const extraKmAmount =
+    extraKm * extraKmRate;
+
+const extraHoursAmount =
+    extraHours * extraHoursRate;
+
+const taxiAmount =
+    minimumCharge +
+    extraKmAmount +
+    extraHoursAmount;
 
 
-    const advance =
-        Number(
-            document.getElementById("advanceReceived").value
-        ) || 0;
+/* =====================================================
+   TOLL
+===================================================== */
+
+const toll =
+    Number(
+        document.getElementById("toll")?.value
+    ) || 0;
 
 
-    const total =
-        taxiFare + toll;
+/* =====================================================
+   TOTAL AMOUNT
+===================================================== */
+
+const total =
+    taxiAmount + toll;
 
 
-    const balance =
-        Math.max(total - advance, 0);
+/* =====================================================
+   ADVANCE
+===================================================== */
+
+const advance =
+    Number(
+        document.getElementById("advanceReceived")?.value
+    ) || 0;
 
 
-    document.getElementById("totalAmount").value =
-        total;
+/* =====================================================
+   BALANCE
+===================================================== */
+
+const balance =
+    Math.max(total - advance, 0);
 
 
-    document.getElementById("balanceAmount").value =
-        balance;
+/* =====================================================
+   DISPLAY RESULTS
+===================================================== */
+
+document.getElementById("taxiFare").value =
+    taxiAmount;
+
+document.getElementById("totalAmount").value =
+    total;
+
+document.getElementById("balanceAmount").value =
+    balance;
+```
 
 }
 /* =========================================================
