@@ -805,3 +805,44 @@ footer {
     }
 
 }
+/* =========================================================
+TRIP SUMMARY - COMPACT SINGLE LINE
+========================================================= */
+
+.trip-summary {
+display: flex;
+align-items: flex-end;
+gap: 12px;
+width: 100%;
+flex-wrap: nowrap;
+}
+
+.trip-summary .trip-field {
+flex: 0 0 120px;
+}
+
+.trip-summary .trip-field label {
+display: block;
+margin-bottom: 6px;
+font-weight: 600;
+}
+
+.trip-summary .trip-field input {
+width: 100%;
+box-sizing: border-box;
+}
+
+/* Minimum Charge */
+.trip-summary .minimum-charge {
+flex: 0 0 120px;
+}
+
+/* Total KM - smaller than before */
+.trip-summary .total-km {
+flex: 0 0 135px;
+}
+
+/* Small fields */
+.trip-summary .small-field {
+flex: 0 0 100px;
+}
