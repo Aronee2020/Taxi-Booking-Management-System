@@ -753,15 +753,17 @@ footer {
 
 .trip-summary {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
     width: 100%;
     align-items: end;
+    box-sizing: border-box;
 }
 
 .trip-field {
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .trip-field label {
@@ -780,7 +782,6 @@ footer {
     font-size: 13px;
     box-sizing: border-box;
 }
-
 .trip-field input:focus {
     outline: none;
     border-color: #087b5e;
