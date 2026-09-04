@@ -306,47 +306,61 @@ function calculateAmounts() {
     const extraHoursRate =
         Number(document.getElementById("extraHoursRate")?.value) || 0;
 
-    /* Extra KM amount */
-    const extraKmAmount =
-        extraKm * extraKmRate;
+    const taxiFareElement =
+        document.getElementById("taxiFare");
 
-    /* Extra Hours amount */
-    const extraHoursAmount =
-        extraHours * extraHoursRate;
+    /*
+     * If Minimum Charge, Extra KM or Extra Hours
+     * is entered, Trip Summary calculation is used.
+     */
+    const tripSummaryUsed =
+        minimumCharge > 0 ||
+        extraKm > 0 ||
+        extraHours > 0;
 
-    /* Taxi Amount */
-    const taxiAmount =
-        minimumCharge +
-        extraKmAmount +
-        extraHoursAmount;
+    let taxiAmount;
 
-    /* Toll */
+    if (tripSummaryUsed) {
+
+        // AUTOMATIC TAXI AMOUNT
+        taxiAmount =
+            minimumCharge +
+            (extraKm * extraKmRate) +
+            (extraHours * extraHoursRate);
+
+        taxiFareElement.value = taxiAmount;
+
+    } else {
+
+        // MANUAL TAXI AMOUNT
+        taxiAmount =
+            Number(taxiFareElement.value) || 0;
+    }
+
+    // TOLL
     const toll =
         Number(document.getElementById("toll")?.value) || 0;
 
-    /* Total Amount */
+    // TOTAL AMOUNT
     const totalAmount =
         taxiAmount + toll;
 
-    /* Advance */
+    // ADVANCE
     const advanceReceived =
-        Number(document.getElementById("advanceReceived")?.value) || 0;
+        Number(
+            document.getElementById("advanceReceived")?.value
+        ) || 0;
 
-    /* Balance */
+    // BALANCE
     const balanceAmount =
         Math.max(totalAmount - advanceReceived, 0);
-
-    /* Display */
-    document.getElementById("taxiFare").value =
-        taxiAmount;
 
     document.getElementById("totalAmount").value =
         totalAmount;
 
     document.getElementById("balanceAmount").value =
         balanceAmount;
-}
-   /* =========================================================
+}   /* =========================================================
    GUEST DETAILS
 ========================================================= */
 
