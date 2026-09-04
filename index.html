@@ -418,89 +418,107 @@
 
 </div>
 
-        <!-- =================================================
-             PAYMENT DETAILS
-        ================================================== -->
+      <!-- =================================================
+     PAYMENT DETAILS
+================================================== -->
 
-        <div class="form-section">
+<div class="form-section">
 
-            <div class="form-section-title">
-                <span>💳</span>
-                <h3>Payment Details</h3>
-            </div>
+```
+<div class="form-section-title">
+    <span>💳</span>
+    <h3>Payment Details</h3>
+</div>
 
-            <div class="form-grid">
+<!-- ================= FIRST ROW ================= -->
 
-                <div class="form-group">
-                    <label>Taxi Fare</label>
+<div class="payment-row payment-row-first">
 
-                    <input type="number" id="taxiFare" name="taxiFare" placeholder="Enter taxi fare">
-                </div>
+    <div class="form-group">
+        <label>Taxi Amount</label>
+        <input
+            type="number"
+            id="taxiFare"
+            name="taxiFare"
+            placeholder="Enter taxi amount">
+    </div>
 
+    <div class="form-group">
+        <label>Toll</label>
+        <input
+            type="number"
+            id="toll"
+            name="toll"
+            placeholder="Enter toll">
+    </div>
 
-                <div class="form-group">
-    <label for="toll">Toll</label>
-    <input type="number" id="toll" name="toll" placeholder="Enter toll">
+    <div class="form-group total-field">
+        <label>Total Amount</label>
+        <input
+            type="number"
+            id="totalAmount"
+            value="0"
+            readonly>
+    </div>
+
 </div>
 
 
-                <div class="form-group total-field">
-                    <label>Total Amount</label>
+<!-- ================= SECOND ROW ================= -->
 
-                    <input
-                        type="number"
-                        id="totalAmount"
-                        value="0"
-                        readonly>
-                </div>
+<div class="payment-row payment-row-second">
 
+    <div class="form-group">
+        <label>Advance Received</label>
+        <input
+            type="number"
+            id="advanceReceived"
+            value="0"
+            min="0">
+    </div>
 
-                <div class="form-group">
-                    <label>Advance Received</label>
+    <div class="form-group">
+        <label>Payment Mode</label>
+        <select id="paymentMode">
 
-                    <input
-                        type="number"
-                        id="advanceReceived"
-                        value="0"
-                        min="0">
-                </div>
+            <option value="">Select Mode</option>
+            <option value="Cash">Cash</option>
+            <option value="Google Pay">Google Pay</option>
+            <option value="PhonePe">PhonePe</option>
+            <option value="UPI">UPI</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="Card">Card</option>
 
+        </select>
+    </div>
 
-                <div class="form-group">
-                    <label>Payment Mode</label>
+    <div class="form-group balance-field">
+        <label>Balance Amount</label>
+        <input
+            type="number"
+            id="balanceAmount"
+            value="0"
+            readonly>
+    </div>
 
-                    <select id="paymentMode">
+    <div class="form-group">
+        <label>Mode</label>
+        <select id="balanceMode">
 
-                        <option value="">Select Mode</option>
-                        <option value="Cash">Cash</option>
-                        <option value="Google Pay">Google Pay</option>
-                        <option value="PhonePe">PhonePe</option>
-                        <option value="UPI">UPI</option>
-                        <option value="Bank Transfer">
-                            Bank Transfer
-                        </option>
-                        <option value="Card">Card</option>
+            <option value="">Select Mode</option>
+            <option value="Cash">Cash</option>
+            <option value="Google Pay">Google Pay</option>
+            <option value="UPI">HDFC QR Code</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="Card">Card</option>
 
-                    </select>
+        </select>
+    </div>
 
-                </div>
+</div>
+```
 
-
-                <div class="form-group balance-field">
-                    <label>Balance Amount</label>
-
-                    <input
-                        type="number"
-                        id="balanceAmount"
-                        value="0"
-                        readonly>
-                </div>
-
-            </div>
-
-        </div>
-
-
+</div>
 
         <!-- =================================================
              BOOKING STATUS
