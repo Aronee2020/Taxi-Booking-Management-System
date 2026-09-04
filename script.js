@@ -1569,33 +1569,56 @@ function selectBooking(bookingId) {
     document.getElementById("itinerary").value =
         booking.itinerary || "";
 
-    document.getElementById("totalKmHrs").value =
-        booking.totalKmHrs || "";
-
-
     /* =====================================================
-       PAYMENT DETAILS
-    ===================================================== */
+   TRIP SUMMARY
+===================================================== */
 
-    document.getElementById("taxiFare").value =
-        booking.taxiFare ?? "";
+document.getElementById("totalKmHrs").value =
+    booking.totalKmHrs || "";
 
-    document.getElementById("toll").value =
-        booking.toll ?? "";
+document.getElementById("minimumCharge").value =
+    booking.minimumCharge ?? "";
 
-    document.getElementById("totalAmount").value =
-        booking.totalAmount ?? 0;
+document.getElementById("extraKm").value =
+    booking.extraKm ?? "";
 
-    document.getElementById("advanceReceived").value =
-        booking.advanceReceived ?? 0;
+document.getElementById("extraKmRate").value =
+    booking.extraKmRate ?? "";
 
-    document.getElementById("paymentMode").value =
-        booking.paymentMode || "";
+document.getElementById("totalHours").value =
+    booking.totalHours ?? "";
 
-    document.getElementById("balanceAmount").value =
-        booking.balanceAmount ?? 0;
+document.getElementById("extraHours").value =
+    booking.extraHours ?? "";
+
+document.getElementById("extraHoursRate").value =
+    booking.extraHoursRate ?? "";
 
 
+/* =====================================================
+   PAYMENT DETAILS
+===================================================== */
+
+document.getElementById("taxiFare").value =
+    booking.taxiFare ?? 0;
+
+document.getElementById("toll").value =
+    booking.toll ?? 0;
+
+document.getElementById("totalAmount").value =
+    booking.totalAmount ?? 0;
+
+document.getElementById("advanceReceived").value =
+    booking.advanceReceived ?? 0;
+
+document.getElementById("paymentMode").value =
+    booking.paymentMode || "";
+
+document.getElementById("balanceAmount").value =
+    booking.balanceAmount ?? 0;
+
+document.getElementById("balanceMode").value =
+    booking.balanceMode || "";
     /* =====================================================
        BOOKING STATUS
     ===================================================== */
