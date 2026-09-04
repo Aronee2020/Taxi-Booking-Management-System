@@ -287,7 +287,6 @@ CALCULATE TAXI AMOUNT + TOTAL + BALANCE
 
 function calculateAmounts() {
 
-```
 /* =====================================================
    TRIP SUMMARY
 ===================================================== */
@@ -382,7 +381,7 @@ document.getElementById("totalAmount").value =
 
 document.getElementById("balanceAmount").value =
     balance;
-```
+
 
 }
 /* =========================================================
