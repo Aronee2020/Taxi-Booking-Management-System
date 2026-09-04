@@ -32,41 +32,45 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDashboard();
 
     displayCurrentDate();
-       addGuestInputListeners();
+
+    addGuestInputListeners();
+
     updateGuestCounts();
 
     document.getElementById("footerYear").textContent =
         new Date().getFullYear();
 
 
-  /* =====================================================
-   AUTOMATIC PAYMENT CALCULATION
-===================================================== */
+    /* =====================================================
+       AUTOMATIC PAYMENT CALCULATION
+    ===================================================== */
 
-[
-    "minimumCharge",
-    "extraKm",
-    "extraKmRate",
-    "extraHours",
-    "extraHoursRate",
-    "toll",
-    "advanceReceived"
-].forEach(function (id) {
+    [
+        "minimumCharge",
+        "extraKm",
+        "extraKmRate",
+        "totalHours",
+        "extraHours",
+        "extraHoursRate",
+        "toll",
+        "advanceReceived"
+    ].forEach(function (id) {
 
-    const element =
-        document.getElementById(id);
+        const element =
+            document.getElementById(id);
 
-    if (element) {
+        if (element) {
 
-        element.addEventListener(
-            "input",
-            calculateAmounts
-        );
+            element.addEventListener(
+                "input",
+                calculateAmounts
+            );
 
-    }
+        }
+
+    });
 
 });
-
 /* =========================================================
    LOAD BOOKINGS FROM FIRESTORE
 ========================================================= */
