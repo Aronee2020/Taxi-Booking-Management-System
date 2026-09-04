@@ -846,3 +846,42 @@ flex: 0 0 135px;
 .trip-summary .small-field {
 flex: 0 0 100px;
 }
+/* =========================================================
+PAYMENT DETAILS - 2 ROW LAYOUT
+========================================================= */
+
+.payment-row {
+display: flex;
+gap: 15px;
+width: 100%;
+margin-bottom: 15px;
+}
+
+/* First row - 3 boxes */
+.payment-row-first .form-group {
+flex: 0 0 180px;
+}
+
+/* Second row - 4 boxes */
+.payment-row-second .form-group {
+flex: 0 0 180px;
+}
+
+/* Inputs and selects */
+.payment-row .form-group input,
+.payment-row .form-group select {
+width: 100%;
+box-sizing: border-box;
+}
+
+/* Keep labels aligned */
+.payment-row .form-group label {
+display: block;
+margin-bottom: 6px;
+font-weight: 600;
+}
+
+/* Remove extra bottom spacing */
+.payment-row .form-group {
+margin-bottom: 0;
+}
