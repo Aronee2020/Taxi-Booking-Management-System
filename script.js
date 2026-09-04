@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "totalHours",
         "extraHours",
         "extraHoursRate",
+       "taxiFare",
         "toll",
         "advanceReceived"
     ].forEach(function (id) {
