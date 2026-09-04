@@ -529,7 +529,9 @@ function addGuestInputListeners() {
 
 function getFormData() {
 
+    /* Make sure all amounts are calculated before saving */
     calculateAmounts();
+
 
     /* =====================================================
        GUEST COUNTS
@@ -675,11 +677,46 @@ function getFormData() {
         itinerary:
             document.getElementById("itinerary").value.trim(),
 
+
+        /* =================================================
+           TRIP SUMMARY
+        ================================================= */
+
+        minimumCharge:
+            Number(
+                document.getElementById("minimumCharge").value
+            ) || 0,
+
         totalKmHrs:
             document.getElementById("totalKmHrs").value.trim(),
 
+        extraKm:
+            Number(
+                document.getElementById("extraKm").value
+            ) || 0,
 
-           /* =================================================
+        extraKmRate:
+            Number(
+                document.getElementById("extraKmRate").value
+            ) || 0,
+
+        totalHours:
+            Number(
+                document.getElementById("totalHours").value
+            ) || 0,
+
+        extraHours:
+            Number(
+                document.getElementById("extraHours").value
+            ) || 0,
+
+        extraHoursRate:
+            Number(
+                document.getElementById("extraHoursRate").value
+            ) || 0,
+
+
+        /* =================================================
            PAYMENT DETAILS
         ================================================= */
 
@@ -710,6 +747,9 @@ function getFormData() {
             Number(
                 document.getElementById("balanceAmount").value
             ) || 0,
+
+        balanceMode:
+            document.getElementById("balanceMode").value,
 
 
         /* =================================================
