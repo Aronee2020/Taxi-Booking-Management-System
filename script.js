@@ -282,109 +282,67 @@ function generateCustomerId() {
 ========================================================= */
 
 /* =========================================================
-CALCULATE TAXI AMOUNT + TOTAL + BALANCE
+   CALCULATE TAXI AMOUNT + TOTAL + BALANCE
 ========================================================= */
 
 function calculateAmounts() {
 
-/* =====================================================
-   TRIP SUMMARY
-===================================================== */
+    const minimumCharge =
+        Number(document.getElementById("minimumCharge")?.value) || 0;
 
-const minimumCharge =
-    Number(
-        document.getElementById("minimumCharge")?.value
-    ) || 0;
+    const extraKm =
+        Number(document.getElementById("extraKm")?.value) || 0;
 
-const extraKm =
-    Number(
-        document.getElementById("extraKm")?.value
-    ) || 0;
+    const extraKmRate =
+        Number(document.getElementById("extraKmRate")?.value) || 0;
 
-const extraKmRate =
-    Number(
-        document.getElementById("extraKmRate")?.value
-    ) || 0;
+    const extraHours =
+        Number(document.getElementById("extraHours")?.value) || 0;
 
-const extraHours =
-    Number(
-        document.getElementById("extraHours")?.value
-    ) || 0;
+    const extraHoursRate =
+        Number(document.getElementById("extraHoursRate")?.value) || 0;
 
-const extraHoursRate =
-    Number(
-        document.getElementById("extraHoursRate")?.value
-    ) || 0;
+    /* Extra KM amount */
+    const extraKmAmount =
+        extraKm * extraKmRate;
 
+    /* Extra Hours amount */
+    const extraHoursAmount =
+        extraHours * extraHoursRate;
 
-/* =====================================================
-   CALCULATE TAXI AMOUNT
-===================================================== */
+    /* Taxi Amount */
+    const taxiAmount =
+        minimumCharge +
+        extraKmAmount +
+        extraHoursAmount;
 
-const extraKmAmount =
-    extraKm * extraKmRate;
+    /* Toll */
+    const toll =
+        Number(document.getElementById("toll")?.value) || 0;
 
-const extraHoursAmount =
-    extraHours * extraHoursRate;
+    /* Total Amount */
+    const totalAmount =
+        taxiAmount + toll;
 
-const taxiAmount =
-    minimumCharge +
-    extraKmAmount +
-    extraHoursAmount;
+    /* Advance */
+    const advanceReceived =
+        Number(document.getElementById("advanceReceived")?.value) || 0;
 
+    /* Balance */
+    const balanceAmount =
+        Math.max(totalAmount - advanceReceived, 0);
 
-/* =====================================================
-   TOLL
-===================================================== */
+    /* Display */
+    document.getElementById("taxiFare").value =
+        taxiAmount;
 
-const toll =
-    Number(
-        document.getElementById("toll")?.value
-    ) || 0;
+    document.getElementById("totalAmount").value =
+        totalAmount;
 
-
-/* =====================================================
-   TOTAL AMOUNT
-===================================================== */
-
-const total =
-    taxiAmount + toll;
-
-
-/* =====================================================
-   ADVANCE
-===================================================== */
-
-const advance =
-    Number(
-        document.getElementById("advanceReceived")?.value
-    ) || 0;
-
-
-/* =====================================================
-   BALANCE
-===================================================== */
-
-const balance =
-    Math.max(total - advance, 0);
-
-
-/* =====================================================
-   DISPLAY RESULTS
-===================================================== */
-
-document.getElementById("taxiFare").value =
-    taxiAmount;
-
-document.getElementById("totalAmount").value =
-    total;
-
-document.getElementById("balanceAmount").value =
-    balance;
-
-
+    document.getElementById("balanceAmount").value =
+        balanceAmount;
 }
-/* =========================================================
+   /* =========================================================
    GUEST DETAILS
 ========================================================= */
 
