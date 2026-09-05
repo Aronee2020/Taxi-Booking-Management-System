@@ -1067,11 +1067,12 @@ async function updateBooking() {
 
     }
 
-}/* =========================================================
+}
+/* =========================================================
    DELETE BOOKING
 ========================================================= */
 
-function deleteBooking() {
+async function deleteBooking() {
 
     if (!selectedBookingId) {
 
@@ -1082,7 +1083,6 @@ function deleteBooking() {
         return;
     }
 
-
     const booking =
         bookings.find(function (item) {
 
@@ -1091,7 +1091,6 @@ function deleteBooking() {
 
         });
 
-
     if (!booking) {
 
         alert("Booking not found.");
@@ -1099,6 +1098,9 @@ function deleteBooking() {
         return;
     }
 
+    /* ============================================
+       CONFIRM DELETE
+    ============================================ */
 
     const confirmation =
         confirm(
@@ -1107,40 +1109,66 @@ function deleteBooking() {
             "?"
         );
 
-
     if (!confirmation) {
+
         return;
     }
 
+    try {
 
-    bookings =
-        bookings.filter(function (item) {
+        /* ============================================
+           FIREBASE DOCUMENT REFERENCE
+        ============================================ */
 
-            return item.bookingId !==
-                selectedBookingId;
+        const bookingRef =
+            window.firebaseTaxi.doc(
+                window.firebaseTaxi.collection,
+                selectedBookingId
+            );
 
-        });
+        /* ============================================
+           DELETE FROM FIREBASE
+        ============================================ */
 
+        await window.firebaseTaxi.deleteDoc(
+            bookingRef
+        );
 
-    saveToStorage();
+        /* ============================================
+           SUCCESS MESSAGE
+        ============================================ */
 
-    alert(
-        "Booking deleted successfully."
-    );
+        alert(
+            "Booking deleted successfully."
+        );
 
+        /* ============================================
+           CLEAR SELECTION
+        ============================================ */
 
-    selectedBookingId = null;
+        selectedBookingId = null;
 
-    displayBookings();
+        clearForm();
 
-    updateDashboard();
+        /*
+         * Firebase onSnapshot() will automatically
+         * remove the booking from the displayed list.
+         */
 
-    clearForm();
+    } catch (error) {
 
-}
+        console.error(
+            "Firebase delete error:",
+            error
+        );
 
+        alert(
+            "Unable to delete booking from Firebase.\n\n" +
+            error.message
+        );
 
-/* =========================================================
+    }
+}/* =========================================================
    CLEAR FORM
 ========================================================= */
 
