@@ -946,11 +946,12 @@ async function saveBooking() {
         );
 
     }
-}/* =========================================================
+}
+/* =========================================================
    UPDATE BOOKING
 ========================================================= */
 
-function updateBooking() {
+async function updateBooking() {
 
     if (!selectedBookingId) {
 
@@ -988,31 +989,85 @@ function updateBooking() {
     }
 
 
-    updatedBooking.updatedAt =
-        new Date().toISOString();
+    try {
+
+        /* ============================================
+           KEEP ORIGINAL CREATED DATE
+        ============================================ */
+
+        updatedBooking.createdAt =
+            bookings[index].createdAt ||
+            updatedBooking.createdAt;
 
 
-    bookings[index] =
-        updatedBooking;
+        /* ============================================
+           UPDATE DATE / TIME
+        ============================================ */
+
+        updatedBooking.updatedAt =
+            new Date().toISOString();
 
 
-    saveToStorage();
+        /* ============================================
+           FIREBASE DOCUMENT REFERENCE
+        ============================================ */
 
-    alert(
-        "Booking updated successfully."
-    );
-
-
-    displayBookings();
-
-    updateDashboard();
-
-    selectedBookingId = null;
-
-}
+        const bookingRef =
+            window.firebaseTaxi.doc(
+                window.firebaseTaxi.collection,
+                selectedBookingId
+            );
 
 
-/* =========================================================
+        /* ============================================
+           UPDATE BOOKING IN FIREBASE
+        ============================================ */
+
+        await window.firebaseTaxi.setDoc(
+            bookingRef,
+            updatedBooking
+        );
+
+
+        /* ============================================
+           SUCCESS MESSAGE
+        ============================================ */
+
+        alert(
+            "Booking updated successfully."
+        );
+
+
+        /* ============================================
+           CLEAR SELECTION
+        ============================================ */
+
+        selectedBookingId = null;
+
+
+        /*
+         * Do NOT manually update bookings here.
+         * Firebase onSnapshot() will automatically
+         * refresh the booking list.
+         */
+
+
+    } catch (error) {
+
+        console.error(
+            "Firebase update error:",
+            error
+        );
+
+
+        alert(
+            "Unable to update booking in Firebase.\n\n" +
+            error.message
+        );
+
+    }
+
+}/* =========================================================
    DELETE BOOKING
 ========================================================= */
 
