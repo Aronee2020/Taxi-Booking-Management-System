@@ -879,58 +879,74 @@ if (!booking.dropTime) {
    SAVE BOOKING
 ========================================================= */
 
-function saveBooking() {
+async function saveBooking() {
 
     const booking = getFormData();
-
 
     if (!validateBooking(booking)) {
         return;
     }
 
-
     const duplicate =
         bookings.find(function (item) {
-
-            return item.bookingId ===
-                booking.bookingId;
-
+            return item.bookingId === booking.bookingId;
         });
 
-
     if (duplicate) {
-
-        alert(
-            "This Booking ID already exists."
-        );
-
+        alert("This Booking ID already exists.");
         generateBookingId();
-
         return;
     }
 
+    try {
 
-    bookings.push(booking);
+        /* ============================================
+           SAVE BOOKING TO FIREBASE
+        ============================================ */
 
-    saveToStorage();
+        const bookingRef =
+            window.firebaseTaxi.doc(
+                window.firebaseTaxi.collection,
+                booking.bookingId
+            );
 
-    alert(
-        "Booking saved successfully!\n\n" +
-        "Booking ID: " +
-        booking.bookingId
-    );
+        await window.firebaseTaxi.setDoc(
+            bookingRef,
+            booking
+        );
 
+        /* ============================================
+           SUCCESS
+        ============================================ */
 
-    displayBookings();
+        alert(
+            "Booking saved successfully!\n\n" +
+            "Booking ID: " +
+            booking.bookingId
+        );
 
-    updateDashboard();
+        /*
+         * Do NOT push into bookings manually.
+         * Firebase onSnapshot() will automatically
+         * update the booking list.
+         */
 
-    clearForm();
+        clearForm();
 
-}
+    } catch (error) {
 
+        console.error(
+            "Firebase save error:",
+            error
+        );
 
-/* =========================================================
+        alert(
+            "Unable to save booking to Firebase.\n\n" +
+            error.message
+        );
+
+    }
+}/* =========================================================
    UPDATE BOOKING
 ========================================================= */
 
