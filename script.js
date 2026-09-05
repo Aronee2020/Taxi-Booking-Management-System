@@ -2207,3 +2207,22 @@ function escapeHTML(value) {
         .replace(/'/g, "&#039;");
 
 }
+/* =========================================================
+   MAKE BUTTON FUNCTIONS AVAILABLE TO HTML
+========================================================= */
+
+window.saveBooking = saveBooking;
+window.updateBooking = updateBooking;
+window.deleteBooking = deleteBooking;
+window.clearForm = clearForm;
+
+window.addGuest = addGuest;
+window.removeGuest = removeGuest;
+
+window.searchBookings = searchBookings;
+window.exportBookings = exportBookings;
+window.openVoucher = openVoucher;
+
+window.selectBooking = selectBooking;
+
+console.log("Taxi Booking buttons connected successfully.");
