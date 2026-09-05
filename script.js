@@ -1076,19 +1076,14 @@ async function deleteBooking() {
 
     if (!selectedBookingId) {
 
-        alert(
-            "Please select a booking from the list first."
-        );
+        alert("Please select a booking from the list first.");
 
         return;
     }
 
     const booking =
         bookings.find(function (item) {
-
-            return item.bookingId ===
-                selectedBookingId;
-
+            return item.bookingId === selectedBookingId;
         });
 
     if (!booking) {
@@ -1102,32 +1097,29 @@ async function deleteBooking() {
        CONFIRM DELETE
     ============================================ */
 
-    const confirmation =
-        confirm(
-            "Are you sure you want to delete booking " +
-            booking.bookingId +
-            "?"
-        );
+    const confirmation = confirm(
+        "Are you sure you want to delete booking " +
+        booking.bookingId +
+        "?"
+    );
 
     if (!confirmation) {
-
         return;
     }
 
     try {
 
         /* ============================================
-           FIREBASE DOCUMENT REFERENCE
+           FIRESTORE DOCUMENT
         ============================================ */
 
-        const bookingRef =
-            window.firebaseTaxi.doc(
-                window.firebaseTaxi.collection,
-                selectedBookingId
-            );
+        const bookingRef = window.firebaseTaxi.doc(
+            window.firebaseTaxi.collection,
+            selectedBookingId
+        );
 
         /* ============================================
-           DELETE FROM FIREBASE
+           DELETE FROM FIRESTORE
         ============================================ */
 
         await window.firebaseTaxi.deleteDoc(
@@ -1135,12 +1127,12 @@ async function deleteBooking() {
         );
 
         /* ============================================
-           SUCCESS MESSAGE
+           REMOVE FROM CURRENT LIST
         ============================================ */
 
-        alert(
-            "Booking deleted successfully."
-        );
+        bookings = bookings.filter(function (item) {
+            return item.bookingId !== selectedBookingId;
+        });
 
         /* ============================================
            CLEAR SELECTION
@@ -1148,12 +1140,23 @@ async function deleteBooking() {
 
         selectedBookingId = null;
 
+        /* ============================================
+           REFRESH SCREEN
+        ============================================ */
+
+        displayBookings();
+        updateDashboard();
         clearForm();
 
-        /*
-         * Firebase onSnapshot() will automatically
-         * remove the booking from the displayed list.
-         */
+        /* ============================================
+           SUCCESS MESSAGE
+        ============================================ */
+
+        alert(
+            "Booking " +
+            booking.bookingId +
+            " deleted successfully."
+        );
 
     } catch (error) {
 
