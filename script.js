@@ -691,7 +691,18 @@ function getFormData() {
 
         itinerary:
             document.getElementById("itinerary").value.trim(),
+/* =================================================
+   VENDOR DETAILS
+================================================= */
 
+vendorDriver:
+    document.getElementById("vendorDriver").value.trim(),
+
+vendorContact:
+    document.getElementById("vendorContact").value.trim(),
+
+vehicleType:
+    document.getElementById("vehicleType").value.trim(),
 
         /* =================================================
            TRIP SUMMARY
