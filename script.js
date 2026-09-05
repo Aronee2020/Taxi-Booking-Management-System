@@ -9,7 +9,7 @@
 ========================================================= */
 
 let bookings = [];
-
+booking.itinerary || "";
 let selectedBookingId = null;
 
 
@@ -1696,7 +1696,18 @@ function selectBooking(bookingId) {
 
     document.getElementById("itinerary").value =
         booking.itinerary || "";
+/* =====================================================
+   VENDOR DETAILS
+===================================================== */
 
+document.getElementById("vendorDriver").value =
+    booking.vendorDriver || "";
+
+document.getElementById("vendorContact").value =
+    booking.vendorContact || "";
+
+document.getElementById("vehicleType").value =
+    booking.vehicleType || "";
     /* =====================================================
    TRIP SUMMARY
 ===================================================== */
