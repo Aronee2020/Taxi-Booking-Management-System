@@ -1237,7 +1237,19 @@ document.getElementById(
     document.getElementById(
         "itinerary"
     ).value = "";
+/* Clear Vendor Details */
 
+document.getElementById(
+    "vendorDriver"
+).value = "";
+
+document.getElementById(
+    "vendorContact"
+).value = "";
+
+document.getElementById(
+    "vehicleType"
+).value = "";
 
     document.getElementById(
         "totalKmHrs"
