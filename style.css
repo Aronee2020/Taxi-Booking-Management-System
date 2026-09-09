@@ -885,3 +885,18 @@ font-weight: 600;
 .payment-row .form-group {
 margin-bottom: 0;
 }
+/* ============================================
+   VENDOR DETAILS - ONE LINE
+============================================ */
+
+.form-section .form-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.form-section .form-row .form-group {
+    width: 100%;
+    margin: 0;
+}
