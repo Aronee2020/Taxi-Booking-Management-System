@@ -38,8 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("footerYear").textContent =
         new Date().getFullYear();
-
-[
 [
     "minimumCharge2",
     "extraKm2",
