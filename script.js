@@ -361,7 +361,69 @@ function calculateAmounts() {
 
     document.getElementById("balanceAmount").value =
         balanceAmount;
-}   /* =========================================================
+}  
+
+function calculateVendorAmounts() {
+
+    const minimumCharge =
+        Number(document.getElementById("minimumCharge2")?.value) || 0;
+
+    const extraKm =
+        Number(document.getElementById("extraKm2")?.value) || 0;
+
+    const extraKmRate =
+        Number(document.getElementById("extraKmRate2")?.value) || 0;
+
+    const extraHours =
+        Number(document.getElementById("extraHours2")?.value) || 0;
+
+    const extraHoursRate =
+        Number(document.getElementById("extraHoursRate2")?.value) || 0;
+
+    // Vendor Taxi Amount
+    const vendorTaxiAmount =
+        minimumCharge +
+        (extraKm * extraKmRate) +
+        (extraHours * extraHoursRate);
+
+    const taxiFare2 =
+        document.getElementById("taxiFare2");
+
+    if (taxiFare2) {
+        taxiFare2.value = vendorTaxiAmount;
+    }
+
+    // Vendor Toll
+    const toll2 =
+        Number(document.getElementById("toll2")?.value) || 0;
+
+    // Vendor Total Amount
+    const vendorTotalAmount =
+        vendorTaxiAmount + toll2;
+
+    const totalAmount2 =
+        document.getElementById("totalAmount2");
+
+    if (totalAmount2) {
+        totalAmount2.value = vendorTotalAmount;
+    }
+
+    // Vendor Advance Paid
+    const advanceReceived2 =
+        Number(document.getElementById("advanceReceived2")?.value) || 0;
+
+    // Vendor Balance
+    const vendorBalance =
+        Math.max(vendorTotalAmount - advanceReceived2, 0);
+
+    const balanceAmount2 =
+        document.getElementById("balanceAmount2");
+
+    if (balanceAmount2) {
+        balanceAmount2.value = vendorBalance;
+    }
+}
+/* =========================================================
    GUEST DETAILS
 ========================================================= */
 
