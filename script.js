@@ -9,7 +9,6 @@
 ========================================================= */
 
 let bookings = [];
-booking.itinerary || "";
 let selectedBookingId = null;
 
 
