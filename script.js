@@ -71,6 +71,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+[
+    "minimumCharge2",
+    "extraKm2",
+    "extraKmRate2",
+    "totalHours2",
+    "extraHours2",
+    "extraHoursRate2",
+    "taxiFare2",
+    "toll2",
+    "advanceReceived2"
+].forEach(function (id) {
+
+    const element = document.getElementById(id);
+
+    if (element) {
+        element.addEventListener("input", calculateVendorAmounts);
+    }
+
 });
 /* =========================================================
    LOAD BOOKINGS FROM FIRESTORE
