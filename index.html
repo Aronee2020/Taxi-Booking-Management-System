@@ -742,58 +742,63 @@
 
     <!-- ================= SECOND ROW ================= -->
 
-    <div class="payment-row payment-row-second">
+   <div class="payment-row payment-row-second">
 
-        <div class="form-group">
-            <label>Advance Paid</label>
-            <input
-                type="number"
-                id="advanceReceived2"
-                value="0"
-                min="0">
-        </div>
-
-        <div class="form-group">
-            <label>Payment Mode</label>
-            <select id="paymentMode2">
-
-                <option value="">Select Mode</option>
-                <option value="Cash">Cash</option>
-                <option value="Google Pay">Google Pay</option>
-                <option value="UPI">HDFC- UPI</option>
-                <option value="Bank Transfer">Bank Transfer</option>
-                <option value="Card">Card</option>
-
-            </select>
-        </div>
-
-        <div class="form-group balance-field">
-            <label>Balance Amount</label>
-            <input
-                type="number"
-                id="balanceAmount2"
-                value="0"
-                readonly>
-        </div>
-
-        <div class="form-group">
-            <label>Mode</label>
-            <select id="balanceMode2">
-
-                <option value="">Select Mode</option>
-                <option value="Cash">Cash</option>
-                <option value="Google Pay">Google Pay</option>
-                <option value="UPI">HDFC QR Code</option>
-                <option value="Bank Transfer">Bank Transfer</option>
-                <option value="Card">Card</option>
-
-            </select>
-        </div>
-
+    <div class="form-group">
+        <label>Advance Paid</label>
+        <input
+            type="number"
+            id="advanceReceived"
+            value="0"
+            min="0">
     </div>
 
-</div>
-        <!-- =================================================
+    <div class="form-group">
+        <label>Advance Date</label>
+        <input
+            type="date"
+            id="advanceDate">
+    </div>
+
+    <div class="form-group">
+        <label>Payment Mode</label>
+        <select id="paymentMode">
+
+            <option value="">Select Mode</option>
+            <option value="Cash">Cash</option>
+            <option value="Google Pay">Google Pay</option>
+            <option value="PhonePe">PhonePe</option>
+            <option value="UPI">UPI</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="Card">Card</option>
+
+        </select>
+    </div>
+
+    <div class="form-group balance-field">
+        <label>Balance Amount</label>
+        <input
+            type="number"
+            id="balanceAmount"
+            value="0"
+            readonly>
+    </div>
+
+    <div class="form-group">
+        <label>Mode</label>
+        <select id="balanceMode">
+
+            <option value="">Select Mode</option>
+            <option value="Cash">Cash</option>
+            <option value="Google Pay">Google Pay</option>
+            <option value="UPI">HDFC QR Code</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="Card">Card</option>
+
+        </select>
+    </div>
+
+</div>        <!-- =================================================
              BUTTONS
         ================================================== -->
 
