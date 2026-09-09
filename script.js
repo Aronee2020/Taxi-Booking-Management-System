@@ -39,64 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("footerYear").textContent =
         new Date().getFullYear();
 
-/* =====================================================
-   VENDOR AUTOMATIC CALCULATION LISTENERS
-===================================================== */
-
 [
-    "minimumCharge2",
-    "extraKm2",
-    "extraKmRate2",
-    "totalHours2",
-    "extraHours2",
-    "extraHoursRate2",
-    "toll2",
-    "advanceReceived2"
-].forEach(function (id) {
-
-    const element =
-        document.getElementById(id);
-
-    if (element) {
-
-        element.addEventListener(
-            "input",
-            calculateVendorAmounts
-        );
-
-    }
-
-});
-    /* =====================================================
-       AUTOMATIC PAYMENT CALCULATION
-    ===================================================== */
-
-    [
-        "minimumCharge",
-        "extraKm",
-        "extraKmRate",
-        "totalHours",
-        "extraHours",
-        "extraHoursRate",
-       "taxiFare",
-        "toll",
-        "advanceReceived"
-    ].forEach(function (id) {
-
-        const element =
-            document.getElementById(id);
-
-        if (element) {
-
-            element.addEventListener(
-                "input",
-                calculateAmounts
-            );
-
-        }
-
-    });
-
 [
     "minimumCharge2",
     "extraKm2",
@@ -112,10 +55,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const element = document.getElementById(id);
 
     if (element) {
-        element.addEventListener("input", calculateVendorAmounts);
+        element.addEventListener(
+            "input",
+            calculateVendorAmounts
+        );
     }
 
 });
+
+calculateVendorAmounts();
+   
 /* =========================================================
    LOAD BOOKINGS FROM FIRESTORE
 ========================================================= */
@@ -422,9 +371,6 @@ function calculateVendorAmounts() {
     const extraKmRate2 =
         Number(document.getElementById("extraKmRate2")?.value) || 0;
 
-    const totalHours2 =
-        Number(document.getElementById("totalHours2")?.value) || 0;
-
     const extraHours2 =
         Number(document.getElementById("extraHours2")?.value) || 0;
 
@@ -433,30 +379,68 @@ function calculateVendorAmounts() {
 
 
     /* =====================================================
-       VENDOR TRIP SUMMARY
-    ===================================================== */
-
-    const vendorTaxiAmount =
-        minimumCharge2 +
-        (extraKm2 * extraKmRate2) +
-        (extraHours2 * extraHoursRate2);
-
-
-    /* =====================================================
-       VENDOR PAYMENT DETAILS
+       VENDOR TAXI FARE
     ===================================================== */
 
     const taxiFare2 =
         document.getElementById("taxiFare2");
 
-    if (taxiFare2) {
-        taxiFare2.value = vendorTaxiAmount;
+
+    /*
+       Use automatic calculation when
+       Vendor Trip Summary has values.
+    */
+
+    const vendorTripSummaryUsed =
+        minimumCharge2 > 0 ||
+        extraKm2 > 0 ||
+        extraHours2 > 0;
+
+
+    let vendorTaxiAmount;
+
+
+    if (vendorTripSummaryUsed) {
+
+        vendorTaxiAmount =
+            minimumCharge2 +
+            (extraKm2 * extraKmRate2) +
+            (extraHours2 * extraHoursRate2);
+
+
+        if (taxiFare2) {
+
+            taxiFare2.value =
+                vendorTaxiAmount;
+
+        }
+
+    } else {
+
+        /*
+           If Vendor Trip Summary is empty,
+           allow manual Vendor Taxi Fare.
+        */
+
+        vendorTaxiAmount =
+            Number(taxiFare2?.value) || 0;
+
     }
 
 
-    const toll2 =
-        Number(document.getElementById("toll2")?.value) || 0;
+    /* =====================================================
+       VENDOR TOLL
+    ===================================================== */
 
+    const toll2 =
+        Number(
+            document.getElementById("toll2")?.value
+        ) || 0;
+
+
+    /* =====================================================
+       VENDOR TOTAL AMOUNT
+    ===================================================== */
 
     const vendorTotalAmount =
         vendorTaxiAmount + toll2;
@@ -465,10 +449,18 @@ function calculateVendorAmounts() {
     const totalAmount2 =
         document.getElementById("totalAmount2");
 
+
     if (totalAmount2) {
-        totalAmount2.value = vendorTotalAmount;
+
+        totalAmount2.value =
+            vendorTotalAmount;
+
     }
 
+
+    /* =====================================================
+       VENDOR ADVANCE
+    ===================================================== */
 
     const advanceReceived2 =
         Number(
@@ -476,9 +468,14 @@ function calculateVendorAmounts() {
         ) || 0;
 
 
+    /* =====================================================
+       VENDOR BALANCE
+    ===================================================== */
+
     const vendorBalanceAmount =
         Math.max(
-            vendorTotalAmount - advanceReceived2,
+            vendorTotalAmount -
+            advanceReceived2,
             0
         );
 
@@ -486,12 +483,16 @@ function calculateVendorAmounts() {
     const balanceAmount2 =
         document.getElementById("balanceAmount2");
 
+
     if (balanceAmount2) {
+
         balanceAmount2.value =
             vendorBalanceAmount;
+
     }
 
-}/* =========================================================
+}
+   /* =========================================================
    GUEST DETAILS
 ========================================================= */
 
