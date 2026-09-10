@@ -175,7 +175,11 @@ function loadBookings() {
 
             displayBookings();
 
-            updateDashboard();
+updateDashboard();
+
+generateBookingId();
+
+generateCustomerId();
 
         },
 
@@ -239,10 +243,8 @@ function displayCurrentDate() {
         );
 
 }
-
-
 /* =========================================================
-   GENERATE BOOKING ID
+   GENERATE NEXT BOOKING ID
 ========================================================= */
 
 function generateBookingId() {
@@ -259,8 +261,8 @@ function generateBookingId() {
         }
 
         const match =
-            booking.bookingId.match(
-                /TX\d{2}(\d+)/
+            String(booking.bookingId).match(
+                /^TX\d{2}(\d+)$/
             );
 
         if (match) {
@@ -271,23 +273,23 @@ function generateBookingId() {
             if (number > maxNumber) {
                 maxNumber = number;
             }
-
         }
-
     });
-
 
     const nextNumber =
         String(maxNumber + 1).padStart(4, "0");
 
-
-    document.getElementById("bookingId").value =
+    const nextBookingId =
         "TX" + year + nextNumber;
 
-}
+    document.getElementById("bookingId").value =
+        nextBookingId;
 
-
-/* =========================================================
+    console.log(
+        "Next Booking ID:",
+        nextBookingId
+    );
+}/* =========================================================
    GENERATE CUSTOMER ID
 ========================================================= */
 
@@ -1609,11 +1611,6 @@ guestList.innerHTML = `
 
 addGuestInputListeners();
 updateGuestCounts();
-
-    generateBookingId();
-
-    generateCustomerId();
-
     calculateAmounts();
    calculateVendorAmounts();
 
