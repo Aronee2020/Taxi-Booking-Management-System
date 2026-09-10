@@ -1532,35 +1532,30 @@ document.getElementById("paymentMode2").value = "";
 document.getElementById("balanceAmount2").value = "";
 document.getElementById("balanceMode2").value = "";
 
-    document.getElementById(
-        "totalKmHrs"
-    ).value = "";
+   /* =====================================================
+   CLEAR NORMAL TRIP SUMMARY
+===================================================== */
+
+document.getElementById("minimumCharge").value = "";
+document.getElementById("totalKmHrs").value = "";
+document.getElementById("extraKm").value = "";
+document.getElementById("extraKmRate").value = "";
+document.getElementById("totalHours").value = "";
+document.getElementById("extraHours").value = "";
+document.getElementById("extraHoursRate").value = "";
 
 
-    /* Taxi Fare blank */
+/* =====================================================
+   CLEAR NORMAL PAYMENT DETAILS
+===================================================== */
 
-    document.getElementById(
-        "taxiFare"
-    ).value = "";
-
-
-    /* Toll blank */
-
-    document.getElementById(
-        "toll"
-    ).value = "";
-
-
-    document.getElementById(
-        "advanceReceived"
-    ).value = "0";
-
-
-    document.getElementById(
-        "paymentMode"
-    ).value = "";
-
-
+document.getElementById("taxiFare").value = "";
+document.getElementById("toll").value = "";
+document.getElementById("totalAmount").value = "";
+document.getElementById("advanceReceived").value = "0";
+document.getElementById("paymentMode").value = "";
+document.getElementById("balanceAmount").value = "";
+document.getElementById("balanceMode").value = "";
     document.getElementById(
         "bookingStatus"
     ).value = "Pending";
