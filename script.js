@@ -2185,8 +2185,6 @@ function searchBookings() {
     displayBookings(filtered);
 
 }
-
-
 /* =========================================================
    DASHBOARD
 ========================================================= */
@@ -2200,14 +2198,26 @@ function updateDashboard() {
     tomorrow.setDate(tomorrow.getDate() + 1);
 
 
+    /* =====================================================
+       TODAY BOOKINGS
+       CANCELLED BOOKINGS ARE NOT INCLUDED
+    ===================================================== */
+
     const todayBookings = bookings.filter(function (booking) {
 
         if (!booking.pickupDate) {
             return false;
         }
 
+        /* Do not show Cancelled in Today */
+        if (booking.bookingStatus === "Cancelled") {
+            return false;
+        }
+
         const pickupDate =
-            new Date(booking.pickupDate + "T00:00:00");
+            new Date(
+                booking.pickupDate + "T00:00:00"
+            );
 
         pickupDate.setHours(0, 0, 0, 0);
 
@@ -2216,14 +2226,28 @@ function updateDashboard() {
     }).length;
 
 
+    /* =====================================================
+       TOMORROW BOOKINGS
+       CANCELLED BOOKINGS ARE NOT INCLUDED
+    ===================================================== */
+
     const tomorrowBookings = bookings.filter(function (booking) {
 
         if (!booking.pickupDate) {
             return false;
         }
 
+        /* IMPORTANT:
+           Cancelled bookings must NOT appear in Tomorrow
+        */
+        if (booking.bookingStatus === "Cancelled") {
+            return false;
+        }
+
         const pickupDate =
-            new Date(booking.pickupDate + "T00:00:00");
+            new Date(
+                booking.pickupDate + "T00:00:00"
+            );
 
         pickupDate.setHours(0, 0, 0, 0);
 
@@ -2232,9 +2256,18 @@ function updateDashboard() {
     }).length;
 
 
+    /* =====================================================
+       TOTAL BOOKINGS
+       CANCELLED BOOKINGS ARE INCLUDED
+    ===================================================== */
+
     const totalBookings =
         bookings.length;
 
+
+    /* =====================================================
+       POSTPONED
+    ===================================================== */
 
     const postponedBookings =
         bookings.filter(function (booking) {
@@ -2244,6 +2277,10 @@ function updateDashboard() {
         }).length;
 
 
+    /* =====================================================
+       CONFIRMED
+    ===================================================== */
+
     const confirmedBookings =
         bookings.filter(function (booking) {
 
@@ -2251,6 +2288,10 @@ function updateDashboard() {
 
         }).length;
 
+
+    /* =====================================================
+       CANCELLED
+    ===================================================== */
 
     const cancelledBookings =
         bookings.filter(function (booking) {
@@ -2260,31 +2301,29 @@ function updateDashboard() {
         }).length;
 
 
+    /* =====================================================
+       UPDATE DASHBOARD
+    ===================================================== */
+
     document.getElementById("todayBookings").textContent =
         todayBookings;
-
 
     document.getElementById("tomorrowBookings").textContent =
         tomorrowBookings;
 
-
     document.getElementById("totalBookings").textContent =
         totalBookings;
-
 
     document.getElementById("postponedBookings").textContent =
         postponedBookings;
 
-
     document.getElementById("confirmedBookings").textContent =
         confirmedBookings;
-
 
     document.getElementById("cancelledBookings").textContent =
         cancelledBookings;
 
 }
-
 /* =========================================================
    EXPORT CSV / EXCEL
 ========================================================= */
