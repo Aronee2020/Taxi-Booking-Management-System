@@ -26,8 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     generateCustomerId();
 
-    calculateAmounts();
-
     updateDashboard();
 
     displayCurrentDate();
@@ -38,32 +36,91 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("footerYear").textContent =
         new Date().getFullYear();
-[
-    "minimumCharge2",
-    "extraKm2",
-    "extraKmRate2",
-    "totalHours2",
-    "extraHours2",
-    "extraHoursRate2",
-    "taxiFare2",
-    "toll2",
-    "advanceReceived2"
-].forEach(function (id) {
 
-    const element = document.getElementById(id);
 
-    if (element) {
-        element.addEventListener(
-            "input",
-            calculateVendorAmounts
-        );
-    }
+    /* =====================================================
+       NORMAL TRIP SUMMARY + PAYMENT AUTO CALCULATION
+    ===================================================== */
 
-});
+    [
+        "minimumCharge",
+        "totalKmHrs",
+        "extraKm",
+        "extraKmRate",
+        "totalHours",
+        "extraHours",
+        "extraHoursRate",
+        "taxiFare",
+        "toll",
+        "advanceReceived"
+    ].forEach(function (id) {
 
-calculateVendorAmounts();
-   
-/* =========================================================
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+
+            element.addEventListener(
+                "input",
+                calculateAmounts
+            );
+
+            element.addEventListener(
+                "change",
+                calculateAmounts
+            );
+
+        }
+
+    });
+
+
+    /* =====================================================
+       VENDOR TRIP SUMMARY + PAYMENT AUTO CALCULATION
+    ===================================================== */
+
+    [
+        "minimumCharge2",
+        "totalKmHrs2",
+        "extraKm2",
+        "extraKmRate2",
+        "totalHours2",
+        "extraHours2",
+        "extraHoursRate2",
+        "taxiFare2",
+        "toll2",
+        "advanceReceived2"
+    ].forEach(function (id) {
+
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+
+            element.addEventListener(
+                "input",
+                calculateVendorAmounts
+            );
+
+            element.addEventListener(
+                "change",
+                calculateVendorAmounts
+            );
+
+        }
+
+    });
+
+
+    /* =====================================================
+       INITIAL CALCULATION
+    ===================================================== */
+
+    calculateAmounts();
+
+    calculateVendorAmounts();
+
+});/* =========================================================
    LOAD BOOKINGS FROM FIRESTORE
 ========================================================= */
 
