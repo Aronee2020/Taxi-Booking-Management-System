@@ -2124,6 +2124,7 @@ document.getElementById("balanceMode").value =
     updateGuestCounts();
 
     calculateAmounts();
+   calculateVendorAmounts();
 
     displayBookings();
 
