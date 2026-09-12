@@ -772,9 +772,9 @@ function addGuestInputListeners() {
 
 function getFormData() {
 
-/* Make sure all amounts are calculated before saving */
-calculateAmounts();
-calculateVendorAmounts();
+    /* Make sure all amounts are calculated before saving */
+    calculateAmounts();
+    calculateVendorAmounts();
 
 
     /* =====================================================
@@ -825,17 +825,23 @@ calculateVendorAmounts();
                     ?.value
                     .trim() || "";
 
-            if (name !== "" && age !== "") {
+
+            if (name !== "") {
 
                 guestDetails.push({
 
                     name: name,
 
-                    age: Number(age),
+                    age:
+                        age !== ""
+                            ? Number(age)
+                            : "",
 
-                    idProofName: idProofName,
+                    idProofName:
+                        idProofName,
 
-                    idNumber: idNumber
+                    idNumber:
+                        idNumber
 
                 });
 
@@ -920,93 +926,21 @@ calculateVendorAmounts();
 
         itinerary:
             document.getElementById("itinerary").value.trim(),
-/* =================================================
-   VENDOR DETAILS
-================================================= */
 
-vendorDriver:
-    document.getElementById("vendorDriver").value.trim(),
 
-vendorContact:
-    document.getElementById("vendorContact").value.trim(),
+        /* =================================================
+           VENDOR DETAILS
+        ================================================= */
 
-vehicleType:
-    document.getElementById("vehicleType").value.trim(),
-   /* =====================================================
-   VENDOR TRIP SUMMARY
-===================================================== */
+        vendorDriver:
+            document.getElementById("vendorDriver").value.trim(),
 
-document.getElementById("minimumCharge2").value =
-    booking.minimumCharge2 !== undefined
-        ? booking.minimumCharge2
-        : "";
+        vendorContact:
+            document.getElementById("vendorContact").value.trim(),
 
-document.getElementById("totalKmHrs2").value =
-    booking.totalKmHrs2 !== undefined
-        ? booking.totalKmHrs2
-        : "";
+        vehicleType:
+            document.getElementById("vehicleType").value.trim(),
 
-document.getElementById("extraKm2").value =
-    booking.extraKm2 !== undefined
-        ? booking.extraKm2
-        : "";
-
-document.getElementById("extraKmRate2").value =
-    booking.extraKmRate2 !== undefined
-        ? booking.extraKmRate2
-        : "";
-
-document.getElementById("totalHours2").value =
-    booking.totalHours2 !== undefined
-        ? booking.totalHours2
-        : "";
-
-document.getElementById("extraHours2").value =
-    booking.extraHours2 !== undefined
-        ? booking.extraHours2
-        : "";
-
-document.getElementById("extraHoursRate2").value =
-    booking.extraHoursRate2 !== undefined
-        ? booking.extraHoursRate2
-        : "";
-/* =================================================
-   VENDOR PAYMENT DETAILS
-================================================= */
-
-taxiFare2:
-    Number(
-        document.getElementById("taxiFare2").value
-    ) || 0,
-
-toll2:
-    Number(
-        document.getElementById("toll2").value
-    ) || 0,
-
-totalAmount2:
-    Number(
-        document.getElementById("totalAmount2").value
-    ) || 0,
-
-advanceReceived2:
-    Number(
-        document.getElementById("advanceReceived2").value
-    ) || 0,
-
-advanceDate2:
-    document.getElementById("advanceDate2").value,
-
-paymentMode2:
-    document.getElementById("paymentMode2").value,
-
-balanceAmount2:
-    Number(
-        document.getElementById("balanceAmount2").value
-    ) || 0,
-
-balanceMode2:
-    document.getElementById("balanceMode2").value,
 
         /* =================================================
            TRIP SUMMARY
@@ -1083,6 +1017,83 @@ balanceMode2:
 
 
         /* =================================================
+           VENDOR TRIP SUMMARY
+        ================================================= */
+
+        minimumCharge2:
+            Number(
+                document.getElementById("minimumCharge2").value
+            ) || 0,
+
+        totalKmHrs2:
+            document.getElementById("totalKmHrs2").value.trim(),
+
+        extraKm2:
+            Number(
+                document.getElementById("extraKm2").value
+            ) || 0,
+
+        extraKmRate2:
+            Number(
+                document.getElementById("extraKmRate2").value
+            ) || 0,
+
+        totalHours2:
+            Number(
+                document.getElementById("totalHours2").value
+            ) || 0,
+
+        extraHours2:
+            Number(
+                document.getElementById("extraHours2").value
+            ) || 0,
+
+        extraHoursRate2:
+            Number(
+                document.getElementById("extraHoursRate2").value
+            ) || 0,
+
+
+        /* =================================================
+           VENDOR PAYMENT DETAILS
+        ================================================= */
+
+        taxiFare2:
+            Number(
+                document.getElementById("taxiFare2").value
+            ) || 0,
+
+        toll2:
+            Number(
+                document.getElementById("toll2").value
+            ) || 0,
+
+        totalAmount2:
+            Number(
+                document.getElementById("totalAmount2").value
+            ) || 0,
+
+        advanceReceived2:
+            Number(
+                document.getElementById("advanceReceived2").value
+            ) || 0,
+
+        advanceDate2:
+            document.getElementById("advanceDate2").value,
+
+        paymentMode2:
+            document.getElementById("paymentMode2").value,
+
+        balanceAmount2:
+            Number(
+                document.getElementById("balanceAmount2").value
+            ) || 0,
+
+        balanceMode2:
+            document.getElementById("balanceMode2").value,
+
+
+        /* =================================================
            STATUS
         ================================================= */
 
@@ -1102,7 +1113,8 @@ balanceMode2:
 
     };
 
-}/* =========================================================
+}
+/* =========================================================
    VALIDATE BOOKING
 ========================================================= */
 
