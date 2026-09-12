@@ -925,30 +925,27 @@ margin-bottom: 0;
 }
 
 /* =========================================================
-   VENDOR AREA - LIGHT DIFFERENT BACKGROUND
+   VENDOR AREA - MORE VISIBLE BACKGROUND
 ========================================================= */
 
 .vendor-area {
-    background: #f0f7f5;
-    border: 1px solid #d7ebe5;
+    background: #e8f0f7;
+    border: 1px solid #c5d5e3;
     border-radius: 12px;
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-/* Vendor section boxes */
 .vendor-area .form-section {
-    background: #f8fcfb;
-    border-color: #d7ebe5;
+    background: #f4f8fb;
+    border-color: #c5d5e3;
 }
 
-/* Vendor headings */
 .vendor-area .form-section-title {
-    color: #245b50;
+    color: #29465b;
 }
 
-/* Vendor input boxes remain white */
 .vendor-area input,
 .vendor-area select,
 .vendor-area textarea {
