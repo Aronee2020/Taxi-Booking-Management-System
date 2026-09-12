@@ -889,14 +889,37 @@ margin-bottom: 0;
    VENDOR DETAILS - ONE LINE
 ============================================ */
 
-.form-section .form-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    width: 100%;
-}
-
 .form-section .form-row .form-group {
     width: 100%;
     margin: 0;
+}
+/* ==========================================
+   VENDOR DETAILS - 6 BOXES ONE LINE
+========================================== */
+
+.vendor-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+.vendor-row .form-group {
+    margin: 0;
+}
+
+.vendor-row input {
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .vendor-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .vendor-row {
+        grid-template-columns: 1fr;
+    }
 }
