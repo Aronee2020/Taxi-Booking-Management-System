@@ -2128,6 +2128,7 @@ calculateAmounts();
 calculateVendorAmounts();
 
 displayBookings();
+}
    /* =========================================================
    SEARCH BOOKINGS
 ========================================================= */
