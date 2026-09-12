@@ -158,7 +158,10 @@
 
 <div class="form-group full-width guest-details-box">
 
-    <label>Guest Details</label>
+   <label>Guest Details <small>(Optional)</small></label>
+    <small class="guest-help-text">
+    Enter individual guest details when required. For short trips, you can enter Total Members manually.
+</small>
 
     <div id="guestList">
 
@@ -213,8 +216,9 @@
     <input
         type="number"
         id="totalMembers"
-        value="0"
-        readonly>
+        value="1"
+        min="1"
+        placeholder="Total Members">
 </div>
 
 <div class="form-group">
@@ -222,8 +226,9 @@
     <input
         type="number"
         id="adultCount"
-        value="0"
-        readonly>
+        value="1"
+        min="0"
+        placeholder="Adults">
 </div>
 
 <div class="form-group">
@@ -232,12 +237,9 @@
         type="number"
         id="childCount"
         value="0"
-        readonly>
-</div>
-            </div>
-
-        </div>
-        <!-- =================================================
+        min="0"
+        placeholder="Children">
+</div>        <!-- =================================================
              TRIP DETAILS
         ================================================== -->
 
