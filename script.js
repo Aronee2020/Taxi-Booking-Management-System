@@ -932,43 +932,44 @@ vendorContact:
 
 vehicleType:
     document.getElementById("vehicleType").value.trim(),
-       /* =================================================
+   /* =====================================================
    VENDOR TRIP SUMMARY
-================================================= */
+===================================================== */
 
-minimumCharge2:
-    Number(
-        document.getElementById("minimumCharge2").value
-    ) || 0,
+document.getElementById("minimumCharge2").value =
+    booking.minimumCharge2 !== undefined
+        ? booking.minimumCharge2
+        : "";
 
-totalKmHrs2:
-    document.getElementById("totalKmHrs2").value.trim(),
+document.getElementById("totalKmHrs2").value =
+    booking.totalKmHrs2 !== undefined
+        ? booking.totalKmHrs2
+        : "";
 
-extraKm2:
-    Number(
-        document.getElementById("extraKm2").value
-    ) || 0,
+document.getElementById("extraKm2").value =
+    booking.extraKm2 !== undefined
+        ? booking.extraKm2
+        : "";
 
-extraKmRate2:
-    Number(
-        document.getElementById("extraKmRate2").value
-    ) || 0,
+document.getElementById("extraKmRate2").value =
+    booking.extraKmRate2 !== undefined
+        ? booking.extraKmRate2
+        : "";
 
-totalHours2:
-    Number(
-        document.getElementById("totalHours2").value
-    ) || 0,
+document.getElementById("totalHours2").value =
+    booking.totalHours2 !== undefined
+        ? booking.totalHours2
+        : "";
 
-extraHours2:
-    Number(
-        document.getElementById("extraHours2").value
-    ) || 0,
+document.getElementById("extraHours2").value =
+    booking.extraHours2 !== undefined
+        ? booking.extraHours2
+        : "";
 
-extraHoursRate2:
-    Number(
-        document.getElementById("extraHoursRate2").value
-    ) || 0,
-
+document.getElementById("extraHoursRate2").value =
+    booking.extraHoursRate2 !== undefined
+        ? booking.extraHoursRate2
+        : "";
 /* =================================================
    VENDOR PAYMENT DETAILS
 ================================================= */
@@ -2088,32 +2089,44 @@ document.getElementById("balanceAmount2").value =
 
 document.getElementById("balanceMode2").value =
     booking.balanceMode2 || "";
-    /* =====================================================
-   TRIP SUMMARY
+   /* =====================================================
+   CUSTOMER TRIP SUMMARY
 ===================================================== */
 
-document.getElementById("totalKmHrs").value =
-    booking.totalKmHrs || "";
-
 document.getElementById("minimumCharge").value =
-    booking.minimumCharge ?? "";
+    booking.minimumCharge !== undefined
+        ? booking.minimumCharge
+        : "";
+
+document.getElementById("totalKmHrs").value =
+    booking.totalKmHrs !== undefined
+        ? booking.totalKmHrs
+        : "";
 
 document.getElementById("extraKm").value =
-    booking.extraKm ?? "";
+    booking.extraKm !== undefined
+        ? booking.extraKm
+        : "";
 
 document.getElementById("extraKmRate").value =
-    booking.extraKmRate ?? "";
+    booking.extraKmRate !== undefined
+        ? booking.extraKmRate
+        : "";
 
 document.getElementById("totalHours").value =
-    booking.totalHours ?? "";
+    booking.totalHours !== undefined
+        ? booking.totalHours
+        : "";
 
 document.getElementById("extraHours").value =
-    booking.extraHours ?? "";
+    booking.extraHours !== undefined
+        ? booking.extraHours
+        : "";
 
 document.getElementById("extraHoursRate").value =
-    booking.extraHoursRate ?? "";
-
-
+    booking.extraHoursRate !== undefined
+        ? booking.extraHoursRate
+        : "";
 /* =====================================================
    PAYMENT DETAILS
 ===================================================== */
