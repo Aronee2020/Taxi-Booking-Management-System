@@ -624,90 +624,107 @@ function removeGuest(button) {
 
     updateGuestCounts();
 }
-
-
 /* =========================================================
    UPDATE GUEST COUNTS
-========================================================= */
-
-/* =========================================================
-   UPDATE GUEST COUNTS
-   CUSTOMER IS ALSO INCLUDED AS 1 ADULT
+   CUSTOMER IS INCLUDED AS 1 ADULT
 ========================================================= */
 
 function updateGuestCounts() {
 
-    const rows = document.querySelectorAll(".guest-row");
-
-    let hasDetailedGuest = false;
-
-    // Check whether at least one guest has both
-    // name and age entered.
-    rows.forEach(function (row) {
-
-        const nameInput = row.querySelector(".guest-name");
-        const ageInput = row.querySelector(".guest-age");
-
-        const name = nameInput ? nameInput.value.trim() : "";
-        const age = ageInput ? ageInput.value.trim() : "";
-
-        if (name !== "" && age !== "") {
-            hasDetailedGuest = true;
-        }
-    });
+    const rows =
+        document.querySelectorAll(".guest-row");
 
     /*
-       IMPORTANT:
-
-       If there are no complete guest details,
-       keep the manually entered Total Members,
-       Adults and Children values.
-
-       This is useful for short trips where
-       individual guest details are not required.
-    */
-    if (!hasDetailedGuest) {
-        return;
-    }
-
-    /*
-       Detailed guest mode:
-
-       Customer is automatically counted as
+       Customer is always counted as
        1 adult.
     */
     let totalMembers = 1;
     let adults = 1;
     let children = 0;
 
+
     rows.forEach(function (row) {
 
-        const nameInput = row.querySelector(".guest-name");
-        const ageInput = row.querySelector(".guest-age");
+        const nameInput =
+            row.querySelector(".guest-name");
 
-        const name = nameInput ? nameInput.value.trim() : "";
-        const ageValue = ageInput ? ageInput.value.trim() : "";
+        const ageInput =
+            row.querySelector(".guest-age");
 
-        // Count only guests with both name and age
-        if (name !== "" && ageValue !== "") {
+        const name =
+            nameInput
+                ? nameInput.value.trim()
+                : "";
 
-            const age = Number(ageValue);
+        const ageValue =
+            ageInput
+                ? ageInput.value.trim()
+                : "";
+
+
+        /*
+           Count guest when Guest Name
+           has been entered.
+        */
+        if (name !== "") {
 
             totalMembers++;
 
-            if (age >= 18) {
-                adults++;
+
+            /*
+               If age is entered,
+               calculate Adult / Child.
+            */
+            if (ageValue !== "") {
+
+                const age =
+                    Number(ageValue);
+
+                if (age >= 18) {
+
+                    adults++;
+
+                } else {
+
+                    children++;
+
+                }
+
             } else {
-                children++;
+
+                /*
+                   Age not entered yet.
+
+                   Keep the guest in Total Members,
+                   but don't add to Adult/Child count
+                   until age is entered.
+                */
+
             }
+
         }
+
     });
 
-    document.getElementById("totalMembers").value = totalMembers;
-    document.getElementById("adultCount").value = adults;
-    document.getElementById("childCount").value = children;
-}
-/* =========================================================
+
+    /*
+       Update the form.
+    */
+    document.getElementById(
+        "totalMembers"
+    ).value = totalMembers;
+
+
+    document.getElementById(
+        "adultCount"
+    ).value = adults;
+
+
+    document.getElementById(
+        "childCount"
+    ).value = children;
+
+}/* =========================================================
    GUEST INPUT LISTENERS
 ========================================================= */
 
