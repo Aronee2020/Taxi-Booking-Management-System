@@ -927,22 +927,28 @@ function getFormData() {
         itinerary:
             document.getElementById("itinerary").value.trim(),
 
+/* =================================================
+   VENDOR DETAILS
+================================================= */
 
-        /* =================================================
-           VENDOR DETAILS
-        ================================================= */
+vendorName:
+    document.getElementById("vendorName").value.trim(),
 
-        vendorDriver:
-            document.getElementById("vendorDriver").value.trim(),
+vendorMobile:
+    document.getElementById("vendorMobile").value.trim(),
 
-        vendorContact:
-            document.getElementById("vendorContact").value.trim(),
+driverName:
+    document.getElementById("driverName").value.trim(),
 
-        vehicleType:
-            document.getElementById("vehicleType").value.trim(),
+driverMobile:
+    document.getElementById("driverMobile").value.trim(),
 
+vehicleType:
+    document.getElementById("vehicleType").value.trim(),
 
-        /* =================================================
+vehicleNumber:
+    document.getElementById("vehicleNumber").value.trim(),
+       /* =================================================
            TRIP SUMMARY
         ================================================= */
 
@@ -1555,17 +1561,12 @@ document.getElementById(
     ).value = "";
 /* Clear Vendor Details */
 
-document.getElementById(
-    "vendorDriver"
-).value = "";
-
-document.getElementById(
-    "vendorContact"
-).value = "";
-
-document.getElementById(
-    "vehicleType"
-).value = "";
+document.getElementById("vendorName").value = "";
+document.getElementById("vendorMobile").value = "";
+document.getElementById("driverName").value = "";
+document.getElementById("driverMobile").value = "";
+document.getElementById("vehicleType").value = "";
+document.getElementById("vehicleNumber").value = "";
    /* Clear Vendor Trip Summary */
 
 document.getElementById("minimumCharge2").value = "";
@@ -2039,16 +2040,23 @@ function selectBooking(bookingId) {
    VENDOR DETAILS
 ===================================================== */
 
-document.getElementById("vendorDriver").value =
-    booking.vendorDriver || "";
+document.getElementById("vendorName").value =
+    booking.vendorName || "";
 
-document.getElementById("vendorContact").value =
-    booking.vendorContact || "";
+document.getElementById("vendorMobile").value =
+    booking.vendorMobile || "";
+
+document.getElementById("driverName").value =
+    booking.driverName || "";
+
+document.getElementById("driverMobile").value =
+    booking.driverMobile || "";
 
 document.getElementById("vehicleType").value =
     booking.vehicleType || "";
-   
-   /* =====================================================
+
+document.getElementById("vehicleNumber").value =
+    booking.vehicleNumber || "";   /* =====================================================
    VENDOR TRIP SUMMARY
 ===================================================== */
 
