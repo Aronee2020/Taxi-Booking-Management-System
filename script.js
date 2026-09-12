@@ -637,73 +637,77 @@ function removeGuest(button) {
 
 function updateGuestCounts() {
 
-    const rows =
-        document.querySelectorAll(".guest-row");
+    const rows = document.querySelectorAll(".guest-row");
+
+    let hasDetailedGuest = false;
+
+    // Check whether at least one guest has both
+    // name and age entered.
+    rows.forEach(function (row) {
+
+        const nameInput = row.querySelector(".guest-name");
+        const ageInput = row.querySelector(".guest-age");
+
+        const name = nameInput ? nameInput.value.trim() : "";
+        const age = ageInput ? ageInput.value.trim() : "";
+
+        if (name !== "" && age !== "") {
+            hasDetailedGuest = true;
+        }
+    });
 
     /*
-       Customer is automatically counted
-       as 1 adult.
-    */
+       IMPORTANT:
 
+       If there are no complete guest details,
+       keep the manually entered Total Members,
+       Adults and Children values.
+
+       This is useful for short trips where
+       individual guest details are not required.
+    */
+    if (!hasDetailedGuest) {
+        return;
+    }
+
+    /*
+       Detailed guest mode:
+
+       Customer is automatically counted as
+       1 adult.
+    */
     let totalMembers = 1;
     let adults = 1;
     let children = 0;
 
-
     rows.forEach(function (row) {
 
-        const name =
-            row.querySelector(".guest-name")
-                .value
-                .trim();
+        const nameInput = row.querySelector(".guest-name");
+        const ageInput = row.querySelector(".guest-age");
 
-        const ageValue =
-            row.querySelector(".guest-age")
-                .value;
+        const name = nameInput ? nameInput.value.trim() : "";
+        const ageValue = ageInput ? ageInput.value.trim() : "";
 
+        // Count only guests with both name and age
+        if (name !== "" && ageValue !== "") {
 
-        /*
-           Count only guests where
-           both name and age are entered.
-        */
-
-        if (
-            name !== "" &&
-            ageValue !== ""
-        ) {
-
-            const age =
-                Number(ageValue);
-
+            const age = Number(ageValue);
 
             totalMembers++;
 
-
             if (age >= 18) {
-
                 adults++;
-
             } else {
-
                 children++;
-
             }
-
         }
-
     });
 
-
-    document.getElementById("totalMembers").value =
-        totalMembers;
-
-    document.getElementById("adultCount").value =
-        adults;
-
-    document.getElementById("childCount").value =
-        children;
-
-}/* =========================================================
+    document.getElementById("totalMembers").value = totalMembers;
+    document.getElementById("adultCount").value = adults;
+    document.getElementById("childCount").value = children;
+}
+/* =========================================================
    GUEST INPUT LISTENERS
 ========================================================= */
 
@@ -2110,17 +2114,21 @@ document.getElementById("balanceMode").value =
 
 
     /* =====================================================
-       UPDATE DISPLAY
-    ===================================================== */
+   UPDATE DISPLAY
+===================================================== */
 
+if (
+    Array.isArray(booking.guestDetails) &&
+    booking.guestDetails.length > 0
+) {
     updateGuestCounts();
+}
 
-    calculateAmounts();
-   calculateVendorAmounts();
+calculateAmounts();
+calculateVendorAmounts();
 
-    displayBookings();
-
-}/* =========================================================
+displayBookings();
+   /* =========================================================
    SEARCH BOOKINGS
 ========================================================= */
 
