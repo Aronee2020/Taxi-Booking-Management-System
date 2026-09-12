@@ -360,59 +360,100 @@ function calculateAmounts() {
     const taxiFareElement =
         document.getElementById("taxiFare");
 
+    /* =========================================
+       KM-BASED CALCULATION
+    ========================================= */
+
+    const kmAmount =
+        minimumCharge +
+        (extraKm * extraKmRate);
+
+
+    /* =========================================
+       HOUR-BASED CALCULATION
+    ========================================= */
+
+    const hourAmount =
+        minimumCharge +
+        (extraHours * extraHoursRate);
+
+
+    /* =========================================
+       TAKE HIGHER VALUE
+    ========================================= */
+
+    let taxiAmount =
+        Math.max(kmAmount, hourAmount);
+
+
     /*
-     * If Minimum Charge, Extra KM or Extra Hours
-     * is entered, Trip Summary calculation is used.
-     */
+       If neither KM nor Hours calculation
+       is being used, allow manual Taxi Fare.
+    */
     const tripSummaryUsed =
         minimumCharge > 0 ||
         extraKm > 0 ||
         extraHours > 0;
 
-    let taxiAmount;
 
     if (tripSummaryUsed) {
 
-        // AUTOMATIC TAXI AMOUNT
-        taxiAmount =
-            minimumCharge +
-            (extraKm * extraKmRate) +
-            (extraHours * extraHoursRate);
-
-        taxiFareElement.value = taxiAmount;
+        taxiFareElement.value =
+            taxiAmount;
 
     } else {
 
-        // MANUAL TAXI AMOUNT
         taxiAmount =
             Number(taxiFareElement.value) || 0;
+
     }
 
-    // TOLL
-    const toll =
-        Number(document.getElementById("toll")?.value) || 0;
 
-    // TOTAL AMOUNT
+    /* =========================================
+       TOLL
+    ========================================= */
+
+    const toll =
+        Number(
+            document.getElementById("toll")?.value
+        ) || 0;
+
+
+    /* =========================================
+       TOTAL AMOUNT
+    ========================================= */
+
     const totalAmount =
         taxiAmount + toll;
 
-    // ADVANCE
+
+    /* =========================================
+       ADVANCE
+    ========================================= */
+
     const advanceReceived =
         Number(
             document.getElementById("advanceReceived")?.value
         ) || 0;
 
-    // BALANCE
+
+    /* =========================================
+       BALANCE
+    ========================================= */
+
     const balanceAmount =
-        Math.max(totalAmount - advanceReceived, 0);
+        Math.max(
+            totalAmount - advanceReceived,
+            0
+        );
+
 
     document.getElementById("totalAmount").value =
         totalAmount;
 
     document.getElementById("balanceAmount").value =
         balanceAmount;
-}  
-
+}
 /* =========================================================
    VENDOR AUTOMATIC CALCULATION
 ========================================================= */
