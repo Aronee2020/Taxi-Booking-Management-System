@@ -951,3 +951,226 @@ margin-bottom: 0;
 .vendor-area textarea {
     background: #ffffff;
 }
+/* =========================================================
+   FINAL FORM LAYOUT FIX
+   RESTORE PROPER BOOKING FORM STRUCTURE
+========================================================= */
+
+/* Main form grid */
+.form-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    width: 100% !important;
+    align-items: start !important;
+}
+
+/* Normal fields */
+.form-grid > .form-group {
+    width: 100% !important;
+    min-width: 0 !important;
+    grid-column: auto !important;
+}
+
+/* Full-width fields only when actually required */
+.form-grid > .form-group.full-width {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+}
+
+/* Customer ID should occupy ONE normal column */
+.form-grid .customer-id-field {
+    grid-column: auto !important;
+}
+
+/* Customer details fields */
+.form-grid .customer-name-field,
+.form-grid .mobile-field,
+.form-grid .address-field {
+    grid-column: auto !important;
+    width: 100% !important;
+}
+
+/* All inputs stay inside their grid cell */
+.form-grid .form-group input,
+.form-grid .form-group select,
+.form-grid .form-group textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+
+/* =========================================================
+   GUEST DETAILS
+========================================================= */
+
+.guest-details-box {
+    width: 100% !important;
+    overflow: hidden;
+}
+
+#guestList {
+    width: 100% !important;
+}
+
+.guest-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.5fr)
+                           100px
+                           minmax(0, 1.2fr)
+                           minmax(0, 1.5fr)
+                           45px !important;
+    gap: 10px !important;
+    width: 100% !important;
+    align-items: center !important;
+}
+
+.guest-row input {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+
+/* Add Guest button should NOT stretch across the screen */
+.add-guest-btn {
+    width: auto !important;
+    display: inline-block !important;
+}
+
+
+/* =========================================================
+   TRIP DETAILS
+========================================================= */
+
+.trip-summary {
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 12px !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+}
+
+.trip-summary .trip-field {
+    min-width: 0 !important;
+}
+
+.trip-summary .trip-field input {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+
+/* =========================================================
+   PREVENT FORM SECTIONS FROM OVERFLOWING
+========================================================= */
+
+.form-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+.form-section * {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   CUSTOMER DETAILS - 4 EQUAL COLUMNS
+========================================================= */
+
+.customer-details-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    width: 100% !important;
+}
+
+
+/* =========================================================
+   PAYMENT ROW
+========================================================= */
+
+.payment-row {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 15px !important;
+    width: 100% !important;
+}
+
+.payment-row .form-group {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+
+/* =========================================================
+   VENDOR DETAILS
+========================================================= */
+
+.vendor-row {
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    width: 100% !important;
+}
+
+.vendor-row .form-group {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+.vendor-row input,
+.vendor-row select {
+    width: 100% !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .customer-details-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .vendor-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .form-grid,
+    .customer-details-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .payment-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    .vendor-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    .trip-summary {
+        flex-wrap: wrap !important;
+    }
+
+    .trip-summary .trip-field {
+        flex: 1 1 140px !important;
+    }
+
+    .guest-row {
+        grid-template-columns: 1fr 100px 40px !important;
+    }
+}
