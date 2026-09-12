@@ -460,137 +460,115 @@ function calculateAmounts() {
 
 function calculateVendorAmounts() {
 
-    const minimumCharge2 =
+    const minimumCharge =
         Number(document.getElementById("minimumCharge2")?.value) || 0;
 
-    const extraKm2 =
+    const extraKm =
         Number(document.getElementById("extraKm2")?.value) || 0;
 
-    const extraKmRate2 =
+    const extraKmRate =
         Number(document.getElementById("extraKmRate2")?.value) || 0;
 
-    const extraHours2 =
+    const extraHours =
         Number(document.getElementById("extraHours2")?.value) || 0;
 
-    const extraHoursRate2 =
+    const extraHoursRate =
         Number(document.getElementById("extraHoursRate2")?.value) || 0;
 
-
-    /* =====================================================
-       VENDOR TAXI FARE
-    ===================================================== */
-
-    const taxiFare2 =
+    const taxiFareElement =
         document.getElementById("taxiFare2");
 
 
-    /*
-       Use automatic calculation when
-       Vendor Trip Summary has values.
-    */
+    /* =========================================================
+       KM BASED CALCULATION
+       Minimum Charge + Extra KM × KM Rate
+    ========================================================= */
 
-    const vendorTripSummaryUsed =
-        minimumCharge2 > 0 ||
-        extraKm2 > 0 ||
-        extraHours2 > 0;
+    const kmAmount =
+        minimumCharge + (extraKm * extraKmRate);
 
 
-    let vendorTaxiAmount;
+    /* =========================================================
+       HOURS BASED CALCULATION
+       Minimum Charge + Extra Hours × Hour Rate
+    ========================================================= */
+
+    const hourAmount =
+        minimumCharge + (extraHours * extraHoursRate);
 
 
-    if (vendorTripSummaryUsed) {
+    /* =========================================================
+       SELECT HIGHER AMOUNT
+    ========================================================= */
 
-        vendorTaxiAmount =
-            minimumCharge2 +
-            (extraKm2 * extraKmRate2) +
-            (extraHours2 * extraHoursRate2);
+    let vendorTaxiAmount =
+        Math.max(kmAmount, hourAmount);
 
 
-        if (taxiFare2) {
+    /* =========================================================
+       USE TRIP SUMMARY ONLY WHEN ENTERED
+       OTHERWISE ALLOW MANUAL TAXI AMOUNT
+    ========================================================= */
 
-            taxiFare2.value =
-                vendorTaxiAmount;
+    const tripSummaryUsed =
+        minimumCharge > 0 ||
+        extraKm > 0 ||
+        extraHours > 0;
 
-        }
+    if (tripSummaryUsed) {
+
+        taxiFareElement.value =
+            vendorTaxiAmount;
 
     } else {
 
-        /*
-           If Vendor Trip Summary is empty,
-           allow manual Vendor Taxi Fare.
-        */
-
         vendorTaxiAmount =
-            Number(taxiFare2?.value) || 0;
-
+            Number(taxiFareElement.value) || 0;
     }
 
 
-    /* =====================================================
+    /* =========================================================
        VENDOR TOLL
-    ===================================================== */
+    ========================================================= */
 
-    const toll2 =
-        Number(
-            document.getElementById("toll2")?.value
-        ) || 0;
+    const toll =
+        Number(document.getElementById("toll2")?.value) || 0;
 
 
-    /* =====================================================
-       VENDOR TOTAL AMOUNT
-    ===================================================== */
+    /* =========================================================
+       TOTAL VENDOR AMOUNT
+    ========================================================= */
 
-    const vendorTotalAmount =
-        vendorTaxiAmount + toll2;
-
-
-    const totalAmount2 =
-        document.getElementById("totalAmount2");
+    const totalAmount =
+        vendorTaxiAmount + toll;
 
 
-    if (totalAmount2) {
+    /* =========================================================
+       VENDOR ADVANCE PAID
+    ========================================================= */
 
-        totalAmount2.value =
-            vendorTotalAmount;
-
-    }
-
-
-    /* =====================================================
-       VENDOR ADVANCE
-    ===================================================== */
-
-    const advanceReceived2 =
-        Number(
-            document.getElementById("advanceReceived2")?.value
-        ) || 0;
+    const advanceReceived =
+        Number(document.getElementById("advanceReceived2")?.value) || 0;
 
 
-    /* =====================================================
+    /* =========================================================
        VENDOR BALANCE
-    ===================================================== */
+    ========================================================= */
 
-    const vendorBalanceAmount =
-        Math.max(
-            vendorTotalAmount -
-            advanceReceived2,
-            0
-        );
+    const balanceAmount =
+        Math.max(totalAmount - advanceReceived, 0);
 
 
-    const balanceAmount2 =
-        document.getElementById("balanceAmount2");
+    /* =========================================================
+       DISPLAY RESULTS
+    ========================================================= */
 
+    document.getElementById("totalAmount2").value =
+        totalAmount;
 
-    if (balanceAmount2) {
-
-        balanceAmount2.value =
-            vendorBalanceAmount;
-
-    }
-
-}
-   /* =========================================================
+    document.getElementById("balanceAmount2").value =
+        balanceAmount;
+}   /* =========================================================
    GUEST DETAILS
 ========================================================= */
 
