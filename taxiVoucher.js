@@ -193,7 +193,28 @@ function populateVoucher(booking) {
 
     }
 
+/* =====================================================
+   TOTAL PAX
+   ALWAYS SHOW
+===================================================== */
 
+const totalPax =
+    booking.totalMembers !== undefined &&
+    booking.totalMembers !== null &&
+    booking.totalMembers !== ""
+        ? booking.totalMembers
+        : (
+            booking.totalPax !== undefined &&
+            booking.totalPax !== null &&
+            booking.totalPax !== ""
+                ? booking.totalPax
+                : 0
+        );
+
+setText(
+    "totalPax",
+    totalPax
+);
     /* =====================================================
        GUEST DETAILS
     ===================================================== */
@@ -383,9 +404,10 @@ function populateVoucher(booking) {
     }
 
 }
+
 /* =========================================================
    GUEST DETAILS
-   LOAD ALL GUESTS INTO VOUCHER TABLE
+   SHOW ONLY WHEN ID PROOF / ID NUMBER IS PROVIDED
 ========================================================= */
 
 function loadGuestDetails(guestDetails) {
@@ -398,12 +420,18 @@ function loadGuestDetails(guestDetails) {
 
 
     if (!section || !container) {
-        console.error("Guest details container not found.");
+
+        console.error(
+            "Guest details container not found."
+        );
+
         return;
     }
 
 
-    /* Clear previous guest details */
+    /* =====================================================
+       CLEAR PREVIOUS DETAILS
+    ===================================================== */
 
     container.innerHTML = "";
 
@@ -415,6 +443,57 @@ function loadGuestDetails(guestDetails) {
     if (
         !Array.isArray(guestDetails) ||
         guestDetails.length === 0
+    ) {
+
+        section.style.display = "none";
+
+        return;
+    }
+
+
+    /* =====================================================
+       FIRST CHECK:
+       DOES ANY GUEST HAVE ID INFORMATION?
+    ===================================================== */
+
+    const guestsWithId =
+        guestDetails.filter(
+            function (guest) {
+
+                if (!guest) {
+                    return false;
+                }
+
+
+                const idProof =
+                    guest.idProofName ||
+                    guest.idProof ||
+                    guest.idProofType ||
+                    "";
+
+
+                const idNumber =
+                    guest.idNumber ||
+                    guest.idProofNumber ||
+                    "";
+
+
+                return (
+                    hasValue(idProof) ||
+                    hasValue(idNumber)
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       NO ID INFORMATION
+       → HIDE GUEST DETAILS
+    ===================================================== */
+
+    if (
+        guestsWithId.length === 0
     ) {
 
         section.style.display = "none";
@@ -455,10 +534,10 @@ function loadGuestDetails(guestDetails) {
 
 
     /* =====================================================
-       ADD ALL GUESTS
+       ADD ONLY GUESTS WITH ID INFORMATION
     ===================================================== */
 
-    guestDetails.forEach(
+    guestsWithId.forEach(
         function (guest, index) {
 
             if (!guest) {
@@ -542,7 +621,9 @@ function loadGuestDetails(guestDetails) {
     );
 
 
-    /* Close table */
+    /* =====================================================
+       CLOSE TABLE
+    ===================================================== */
 
     html += `
 
@@ -554,7 +635,7 @@ function loadGuestDetails(guestDetails) {
 
 
     /* =====================================================
-       SHOW TABLE
+       DISPLAY GUEST DETAILS
     ===================================================== */
 
     container.innerHTML = html;
@@ -563,11 +644,12 @@ function loadGuestDetails(guestDetails) {
 
 
     console.log(
-        "Guest details loaded:",
-        guestDetails
+        "Guest details with ID information loaded:",
+        guestsWithId
     );
 
-}/* =========================================================
+}
+/* =========================================================
    VEHICLE / DRIVER DETAILS
 ========================================================= */
 
