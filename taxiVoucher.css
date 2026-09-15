@@ -991,3 +991,20 @@ body {
         padding-bottom: 10px;
     }
 }
+/* =========================================================
+   CUSTOMER DETAILS
+   ADDRESS + TOTAL PAX SAME ROW
+========================================================= */
+
+.customer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.customer-grid .address-item {
+    grid-column: span 2;
+}
+
+.customer-grid .total-pax-item {
+    grid-column: span 1;
+}
