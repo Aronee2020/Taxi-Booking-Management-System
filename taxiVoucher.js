@@ -147,11 +147,7 @@ function populateVoucher(booking) {
 
 
     setText("bookingDate", formatDate(booking.pickupDate));
-   
-    );
-
-
-    setText(
+       setText(
         "customerName",
         booking.customerName
     );
